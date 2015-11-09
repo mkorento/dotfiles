@@ -1,0 +1,72 @@
+!based on arkkudvorak by kimmo kulovesi
+!            Key          Shift+Key   mode_switch+Key      mode_switch+Shift+Key    AltGr+Key   AltGr+Shift+Key
+keycode  9 = Escape       asciitilde  Escape
+keycode 10 = 1            exclam      onesuperior          exclamdown
+keycode 11 = 2            at          twosuperior          enfilledcircbullet
+keycode 12 = 3            numbersign  threesuperior        sterling
+keycode 13 = 4            dollar      EuroSign             onequarter
+keycode 14 = 5            percent     onehalf              threequarters
+keycode 15 = 6            asciicircum dead_circumflex      radical
+keycode 16 = 7            ampersand   paragraph            section
+keycode 17 = 8            asterisk    infinity             multiply
+keycode 18 = 9            parenleft   dagger               U2248
+keycode 19 = 0            parenright  degree               notequal
+keycode 20 = bracketleft  braceleft   lessthanequal        seconds
+keycode 21 = bracketright braceright  greaterthanequal     minutes
+keycode 24 = apostrophe   quotedbl    leftdoublequotemark  leftsinglequotemark
+keycode 25 = comma        less        rightdoublequotemark rightsinglequotemark
+keycode 26 = period       greater     ellipsis             periodcentered
+keycode 27 = p            P           Greek_pi             Greek_PI
+keycode 28 = y            Y           Greek_psi            Greek_PSI
+keycode 29 = f            F           function             Greek_PHI
+keycode 30 = g            G           Greek_gamma          Greek_GAMMA
+keycode 31 = c            C           ccedilla             Ccedilla
+keycode 32 = r            R           registered           copyright
+keycode 33 = l            L           Greek_lambda         Greek_LAMBDA
+keycode 34 = slash        question    dead_acute           questiondown
+keycode 35 = equal        plus        dead_grave           plusminus
+keycode 36 = Return       Return      Return               Return
+keycode 38 = a            A           Adiaeresis           acircumflex
+keycode 39 = o            O           Odiaeresis           oslash
+keycode 40 = e            E           egrave               eacute
+keycode 41 = u            U           udiaeresis           Udiaeresis
+keycode 42 = i            I           ae                   oe
+keycode 43 = d            D           Greek_delta          Greek_DELTA
+keycode 44 = h            H           Left                 heart
+keycode 45 = t            T           Down                 U03D1
+keycode 46 = n            N           Up                   Ntilde
+keycode 47 = s            S           Right                scircumflex
+keycode 48 = minus        underscore  endash               emdash
+keycode 49 = grave        asciitilde  dead_tilde           dead_caron
+keycode 51 = backslash    bar         guillemotright       dead_macron
+keycode 52 = semicolon    colon       dead_diaeresis       U2200
+keycode 53 = q            Q           Greek_omega          Greek_OMEGA
+keycode 54 = j            J           Greek_epsilon        U2203
+keycode 55 = k            K           Greek_chi            Greek_kappa
+keycode 56 = x            X           Greek_xi             Greek_XI
+keycode 57 = b            B           ssharp               Greek_beta
+keycode 58 = m            M           mu                   Greek_MU
+keycode 59 = w            W           ubreve               Ubreve
+keycode 60 = v            V           Greek_alpha          rightarrow
+keycode 61 = z            Z           Greek_sigma          Greek_SIGMA
+keycode 65 = space        Return      nobreakspace         enspace
+keycode 91 = KP_Delete    KP_Decimal  KP_Delete            KP_Decimal
+keycode 94 = adiaeresis   odiaeresis  aring                Aring
+keycode 133 = Super_L NoSymbol Super_L
+keycode 134 = Super_R NoSymbol Super_R
+
+!switch control and caps lock
+keycode 37 = Caps_Lock
+keycode 66 = Control_L
+
+clear mod1
+add mod1 = Alt_L Meta_L
+
+clear Lock
+add Lock = Caps_Lock
+
+clear Control
+add Control = Control_L Control_R
+
+!make Alt_Gr modeswitch
+keycode 108 = Mode_switch Mode_switch Mode_switch Mode_switch

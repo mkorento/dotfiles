@@ -1,0 +1,42 @@
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+	pager = less -S
+[rerere]
+	enabled = true
+[status]
+	submoduleSummary = true
+[diff]
+	submodule = log
+[fetch]
+	recurseSubmodules = on-demand
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	ui = 1
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red
+	new = green
+[color "status"]
+	added = yellow
+	changed = blue
+	untracked = cyan
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	lg = log --date-order --decorate --color --graph --pretty=format:'%Cred%h\
+    %Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' \
+    --abbrev-commit --all
+	lg1 = log --date-order --decorate --color --graph --pretty=format:'%Cred%h\
+    %Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' \
+    --abbrev-commit
+
+# vim: ft=gitconfig

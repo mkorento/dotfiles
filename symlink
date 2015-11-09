@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+dir=$HOME/config
+olddir=$HOME/old_config
+files="vimrc emacs inputrc bashrc Xmodmap Xdefaults xinitrc exrc tmux.conf \
+       gitconfig gitignore offlineimaprc zshrc vim emacs.d msmtprc mutt \
+       zprofile profile functions"
+
+mkdir -p $olddir
+for file in $files; do
+    mv --backup=numbered $HOME/.$file $olddir 2>/dev/null
+    ln -s $dir/$file $HOME/.$file
+done

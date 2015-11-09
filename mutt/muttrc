@@ -1,0 +1,82 @@
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+set header_cache = ~/.mutt/cache/headers
+set mailcap_path = ~/.mutt/mailcap
+set alias_file = ~/.mutt/aliases
+source `FILE=$HOME/.mutt/aliases;\
+if [ ! -f $FILE ]; then FILE=/dev/null;fi;echo "$FILE"`
+
+set send_charset = "us-ascii:utf-8"
+set mbox_type = Maildir
+set mark_old = no
+set sleep_time = 0
+set wait_key = no
+set move = no
+set mail_check = 120
+set include = yes
+set markers
+set smart_wrap
+set status_on_top
+set text_flowed = yes
+set pipe_decode
+set thorough_search
+set pager_context=5
+set pager_stop
+set tilde
+set fast_reply
+set sig_dashes
+set menu_scroll
+set edit_headers
+set fcc_attach
+set forward_format = "Fwd: %s"
+set forward_decode
+set attribution = "On %d, %n wrote:"
+set include
+set reply_to
+set forward_quote
+set envelope_from
+set reverse_name
+set sendmail_wait = 0
+set sort = "reverse-date"
+set date_format = "!%a, %b %d, %Y at %H:%M:%S %Z"
+unset mime_forward
+
+bind generic G last-entry
+bind index G last-entry
+bind index \Cb previous-page
+bind index \Cf next-page
+bind pager \Cb previous-page
+bind pager \Cf next-page
+bind index gg first-entry
+bind index G last-entry
+bind index N search-opposite
+bind pager N search-opposite
+bind pager gg top
+bind pager G  bottom
+bind attach <return> view-mailcap
+
+# Display recipient instead of sender in "Sent" folder view
+folder-hook   *[sS]ent* 'set index_format="%2C | %Z [%d] %-30.30t (%-4.4c) %s"'
+folder-hook ! *[sS]ent* 'set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"'
+
+folder-hook 'primary' 'source ~/.mutt/clear_variables; \
+                       source ~/.mutt/account.primary'
+
+# from Gary Bernhardt
+macro pager H <view-attachments>/html<enter>
+macro index y "<save-message>+archived<enter>"
+macro pager y "<exit><save-message>+archived<enter>"
+
+# from Steve Losh
+macro pager \Cu "|urlview <enter> >/dev/null" "call urlview to open links"
+set status_chars  = " *%A"
+set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? \
+(%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+ignore *
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+
+source ~/.mutt/colors
+source ~/.mutt/account.primary

@@ -1,0 +1,54 @@
+[general]
+accounts = Primary
+ui = ttyui
+pythonfile=~/.mutt/offlineimap.py
+fsync = False
+
+[Account Primary]
+localrepository = PrimaryLocal
+remoterepository = PrimaryRemote
+
+[Repository PrimaryLocal]
+type = Maildir
+localfolders = ~/Private/mail/primary
+nametrans = lambda folder: {'drafts':  '[Gmail]/Luonnokset',
+                            'sent':    '[Gmail]/L&AOQ-hetetyt viestit',
+                            'flagged': '[Gmail]/T&AOQ-hdell&AOQ- merkityt',
+                            'trash':   '[Gmail]/Roskakori',
+                            'spam':    '[Gmail]/Roskaposti',
+                            'INBOX':   '[Gmail]/Postilaatikko',
+                            'archived':'Arkistoidut',
+                            }.get(folder, folder)
+
+[Repository PrimaryRemote]
+maxconnections = 1
+type = Gmail
+realdelete = no
+remotehost = imap.gmail.com
+remoteport = 993
+ssl        = yes
+remoteusereval = get_user("primary")
+remotepasseval = get_password("primary")
+nametrans  = lambda folder: {'[Gmail]/Luonnokset':                  'drafts',
+                             '[Gmail]/L&AOQ-hetetyt viestit':       'sent',
+                             '[Gmail]/T&AOQ-hdell&AOQ- merkityt':   'flagged',
+                             '[Gmail]/Roskakori':                   'trash',
+                             '[Gmail]/Roskaposti':                  'spam',
+                             '[Gmail]/Postilaatikko':               'INBOX',
+                             'Arkistoidut':                         'archived'
+                             }.get(folder, folder)
+folderfilter = lambda folder: folder in ['drafts',
+                                         'sent',
+                                         'flagged',
+                                         'trash',
+                                         'archived',
+                                         'spam',
+                                         'INBOX',
+                                         '[Gmail]/Luonnokset',
+                                         '[Gmail]/L&AOQ-hetetyt viestit',
+                                         '[Gmail]/T&AOQ-hdell&AOQ- merkityt',
+                                         '[Gmail]/Roskakori',
+                                         '[Gmail]/Roskaposti',
+                                         'Arkistoidut'
+                                         ]
+# vim: ft=conf

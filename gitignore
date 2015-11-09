@@ -1,0 +1,35 @@
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+dev.vim
+Sessions.vim
+.netrwhist
+*~
+__pycache__/
+*.py[cod]
+tags
+.vimrc
+.lein-repl-history
+.nrepl-port
+# emacs:
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+emacs.d/saveplace
+*.elc
+auto-save-list
+tramp
+.\#*
+# Org-mode
+.org-id-locations
+*_archive
+# flymake-mode
+*_flymake.*
+/elpa/
+/melpa/
+elpa
+melpa
+# cask packages
+.cask/
+*.fasl
+id_rsa

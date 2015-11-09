@@ -1,0 +1,18 @@
+# Folder names
+set my_inbox="INBOX"
+set my_archive="archived"
+set my_drafts="drafts"
+set my_sent="sent"
+set my_spam="spam"
+set my_trash="trash"
+
+set folder = "~/Private/mail/primary"
+set spoolfile = "+INBOX"
+set postponed = "+drafts"
+set trash = "+trash"
+unset record
+
+set my_user = ""
+set sendmail = "/usr/bin/msmtp --user=$my_user -a primary"
+
+# vim: ft=muttrc

@@ -1,0 +1,19 @@
+unset my_inbox
+unset my_archive
+unset my_drafts
+unset my_sent
+unset my_spam
+unset my_trash
+unset folder
+unset spoolfile
+unset record
+unset postponed
+unset trash
+unset realname
+unset from
+unset use_from
+unset sendmail
+unset alias_file
+unset my_user
+
+# vim: ft=muttrc

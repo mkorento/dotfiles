@@ -1,0 +1,8 @@
+source ~/.vimrc
+set viminfo=
+set noswapfile
+set nobackup
+set nowritebackup
+set cm=blowfish2
+set noundofile
+:ClearRegisters

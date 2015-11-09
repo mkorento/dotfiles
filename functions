@@ -1,0 +1,8 @@
+function psf() {
+    ps aux | grep "$@" | grep -v "grep";
+}
+
+function psgrep() {
+    ps axuf | grep -v grep | grep "$@" -i --color=auto;
+}
+# vim: ft=zsh

@@ -1,0 +1,65 @@
+URxvt.scrollBar: false
+URxvt*shading: 40
+URxvt*saveLines: 12000
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
+
+URxvt.perl-ext-common: font-size
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+
+# URxvt*font: xft:terminus:Regular:antialias=true:hinting=true:pixelsize=19
+# URxvt*boldFont: xft:terminus:Regular:antialias=true:hinting=true:pixelsize=19
+URxvt*font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
+URxvt*boldFont: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+Rxvt*colorIT: #ff0000
+
+# True transparency
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
+URxvt*borderLess: true
+
+# # Fake transparency
+# urxvt*transparent: true
+# urxvt*shading: 30
+
+URxvt*colorUL: #86a2b0
+
+URxvt*foreground: #CFECFF
+URxvt*background: #000000
+
+#black
+Rxvt*color0  : #2E3436
+Rxvt*color8  : #555753
+#red
+Rxvt*color1  : #CC0000
+Rxvt*color9  : #EF2929
+#green
+Rxvt*color2  : #00AF00
+Rxvt*color10 : #8AE234
+#yellow
+Rxvt*color3  : #C4A000
+Rxvt*color11 : #FCE94F
+#blue
+Rxvt*color4  : #3465A4
+Rxvt*color12 : #729FCF
+#magenta
+Rxvt*color5  : #75507B
+Rxvt*color13 : #AD7FA8
+#cyan
+Rxvt*color6  : #06989A
+Rxvt*color14 : #34E2E2
+#white
+Rxvt*color7  : #D3D7CF
+Rxvt*color15 : #EEEEEC
+
+URxvt.cursorColor: #aaaaaa
+
+# vim: ft=xdefaults

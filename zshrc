@@ -1,0 +1,367 @@
+#!/bin/zsh
+autoload zmv
+stty -ixon
+
+autoload -U promptinit
+promptinit
+
+autoload -U colors
+colors
+
+autoload -U compinit
+compinit
+
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' actionformats '%b:%a'
+zstyle ':vcs_info:*' formats '%b'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+zstyle ':vcs_info:*' enable git
+
+zstyle ':completion:*:descriptions' format ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' special-dirs true
+
+# Some functions, like _apt and _dpkg, are very slow.
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Fuzzy matching of completions for when you mistype them
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# if  you  want  the  number  of  errors  allowed by _approximate to increase
+# with the length of what you have typed so far
+zstyle -e ':completion:*:approximate:*' max-errors \
+    'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+
+# Ignore completion functions for commands you don’t have
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# Completing process IDs with menu selection
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
+
+# If you end up using a directory  as  argument,  this  will  remove  the
+# trailing slash (useful in ln)
+zstyle ':completion:*' squeeze-slashes true
+
+# case insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z-_}={A-Z_-}'
+
+# generate descriptions with magic
+zstyle ':completion:*' auto-description 'specify: %d'
+
+# Don't prompt for a huge list, page it
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+
+# Don't prompt for a huge list, menu it
+zstyle ':completion:*:default' menu 'select=0'
+
+# color code completion
+zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
+
+# Don't complete stuff already on the line
+zstyle ':completion::*:(rm|vi|vim):*' ignore-line true
+
+# Don't complete directory we are already in (../here)
+zstyle ':completion:*' ignore-parents parent pwd
+
+
+# This will use named dirs when possible
+setopt AUTO_NAME_DIRS
+
+# No more annoying pushd messages
+setopt PUSHD_SILENT
+
+# blank pushd goes to home
+setopt PUSHD_TO_HOME
+
+# If we have a glob this will expand it
+setopt GLOB_COMPLETE
+setopt PUSHD_MINUS
+
+# this will ignore multiple directories for the stack
+setopt PUSHD_IGNORE_DUPS
+
+# 10 second wait if you do something that will delete everything
+setopt RM_STAR_WAIT
+
+# use magic
+setopt ZLE
+
+# disable Ctrl-s
+setopt NO_FLOW_CONTROL
+
+# Keep echo "station" > station from clobbering station
+setopt NO_CLOBBER
+
+# Case insensitive globbing
+setopt NO_CASE_GLOB
+
+setopt NUMERIC_GLOB_SORT
+setopt EXTENDED_GLOB
+setopt RC_EXPAND_PARAM
+setopt PROMPT_CR
+setopt PROMPT_SP
+setopt PROMPT_SUBST
+setopt NO_BEEP
+
+setopt menu_complete
+setopt autocd
+setopt extendedglob
+setopt multios
+setopt auto_pushd
+
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt HIST_NO_STORE
+setopt HIST_VERIFY
+disable r
+
+export HISTSIZE=10000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+export KEYTIMEOUT=10
+export PROMPT_EOL_MARK=""
+
+export LESS_TERMCAP_mb=$(printf "\e[1;31m");
+export LESS_TERMCAP_md=$(printf "\e[1;31m");
+export LESS_TERMCAP_me=$(printf "\e[0m");
+export LESS_TERMCAP_se=$(printf "\e[0m");
+export LESS_TERMCAP_so=$(printf "\e[1;41;33m");
+export LESS_TERMCAP_ue=$(printf "\e[0m");
+export LESS_TERMCAP_us=$(printf "\e[1;32m");
+export LESS_TERMCAP_mb=$(printf "\e[1;38;5;74m");
+
+if [ -d "$HOME/.zsh" ]; then
+    if [ -d "$HOME/.zsh/zsh-syntax-highlighting" ]; then
+        source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    fi
+fi
+
+if [ -f "$HOME/.functions" ]; then
+    source "$HOME/.functions"
+fi
+
+if [ -d "$HOME/.oh-my-zsh" ]; then
+    if [ -d "$HOME/.oh-my-zsh/plugins/git" ]; then
+        source "$HOME/.oh-my-zsh/plugins/git/git.plugin.zsh"
+    fi
+fi
+
+alias ls="ls --color=always"
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias r="ls -latr"
+alias o="ls -latr"
+alias cdr="cd"
+
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=always'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+if [ -f "$HOME/.aliases" ]; then
+    source "$HOME/.aliases"
+fi
+
+for c in cp rm chmod chown rename; do
+    alias $c="$c -v"
+done
+
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins ' ' magic-space
+bindkey -M vicmd '\e' noop
+bindkey -M vicmd v edit-command-line
+bindkey -M vicmd "q" push-line
+bindkey -M vicmd '!' edit-command-output
+bindkey -M vicmd "j" vi-down-line-or-history-and-BOL
+bindkey -M vicmd "k" vi-up-line-or-history-and-BOL
+bindkey -M vicmd "." repeat-last-action
+
+# Incremental search
+bindkey -M vicmd "/" history-incremental-search-forward
+bindkey -M vicmd "?" history-incremental-search-backward
+
+# Search based on what you typed in already
+bindkey -M vicmd "//" history-beginning-search-forward
+bindkey -M vicmd "??" history-beginning-search-backward
+
+# Who doesn't want home and end to work?
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
+
+bindkey -M isearch '^R' history-incremental-search-backward
+bindkey -M isearch '^S' history-incremental-search-forward
+bindkey -M isearch '^N' history-incremental-search-forward
+
+# Rebind the insert key
+bindkey '\e[2~' overwrite-mode
+
+# Rebind the delete key
+bindkey '\e[3~' delete-char
+
+bindkey '^[[Z' reverse-menu-complete
+bindkey '^T' gosmacs-transpose-chars
+
+# A script to make using 256 colors in zsh less painful.
+# P.C. Shyamshankar <sykora@lucentbeing.com>
+# Copied from http://github.com/sykora/etc/blob/master/zsh/functions/spectrum/
+typeset -Ag FX FG BG
+FX=(
+reset "%{[00m%}"
+bold "%{[01m%}" no-bold "%{[22m%}"
+italic "%{[03m%}" no-italic "%{[23m%}"
+underline "%{[04m%}" no-underline "%{[24m%}"
+blink "%{[05m%}" no-blink "%{[25m%}"
+reverse "%{[07m%}" no-reverse "%{[27m%}"
+)
+
+for color in {000..255}; do
+    FG[$color]="%{[38;5;${color}m%}"
+    BG[$color]="%{[48;5;${color}m%}"
+done
+
+normal_mode_colour='%F{012}'
+vi_mode_colour='%F{11}'
+prompt_char_color="$normal_mode_colour"
+
+if [ `id -u` -eq 0 ]; then
+    PROMPT='$BG[009]$FG[016]%n@%m%{$reset_color%} %F{009}${PWD/$HOME/~} \
+$(get-git-branch)$prompt_char_color$%f '
+else
+    PROMPT='%F{012}%n@%m%{$reset_color%} %F{012}${PWD/$HOME/~} \
+$(get-git-branch)$prompt_char_color$%f '
+fi
+
+get-git-branch() {
+    BRANCH_COLOR="%F{002}"
+
+    command git diff-index --quiet HEAD 2> /dev/null
+    if [ "$?" -ne 0 ]; then
+        BRANCH_COLOR="%F{001}"
+    fi
+
+    BRANCH="${vcs_info_msg_0_}"
+    if [ -n "$BRANCH" ]; then
+        if [ ${#BRANCH} -gt 20 ]; then
+            BRANCH=`echo $BRANCH | cut -c 1-14`
+        fi
+    fi
+    echo "$BRANCH_COLOR$BRANCH%f"
+}
+
+precmd() {
+    vcs_info
+}
+
+zle-keymap-select() {
+  if [ "$KEYMAP" = "vicmd" ]; then
+      prompt_char_color="$vi_mode_colour"
+  else
+      prompt_char_color="$normal_mode_colour"
+  fi
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+zle-line-finish() {
+  prompt_char_color="$normal_mode_colour"
+}
+zle -N zle-line-finish
+
+# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode
+# indicator, while in fact you would be in INS mode Fixed by catching SIGINT
+# (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything
+# else depends on it, we will not break it Thanks Ron!
+TRAPINT() {
+  prompt_char_color="$normal_mode_colour"
+  return $(( 128 + $1 ))
+}
+
+repeat-last-action() {
+    zle kill-whole-line
+    zle up-history
+    zle accept-line
+}
+zle -N repeat-last-action
+
+vi-up-line-or-history-and-BOL() {
+    zle vi-up-line-or-history
+    zle beginning-of-line
+}
+zle -N vi-up-line-or-history-and-BOL
+
+vi-down-line-or-history-and-BOL() {
+    zle vi-down-line-or-history
+    zle beginning-of-line
+}
+zle -N vi-down-line-or-history-and-BOL
+
+expand-or-complete-with-dots() {
+    echo -n "\e[31m...\e[0m"
+    zle expand-or-complete
+    zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "\t" expand-or-complete-with-dots
+
+stripped-edit-command-line() {
+    local tmpfile=${TMPPREFIX:-/tmp/zsh}ecl$$
+
+    print -R - "$PREBUFFER$BUFFER" >$tmpfile
+    exec </dev/tty
+    ${=${EDITOR:-vi}} $tmpfile
+    print -Rz - "$(<$tmpfile)"
+
+    command rm -f $tmpfile
+    zle send-break
+}
+zle -N edit-command-line stripped-edit-command-line
+
+insert_setsid() {
+    zle beginning-of-line; zle -U "setsid "
+}
+zle -N insert-setsid insert_setsid
+bindkey "^s" insert-setsid
+
+edit-command-output() {
+    BUFFER=$(eval $BUFFER)
+    CURSOR=0
+}
+zle -N edit-command-output
+
+noop() { }
+zle -N noop
+
+url-encode() {
+    echo "${${(j: :)@}//(#b)(?)/%$[[##16]##${match[1]}]}"
+}
+
+gos() {
+    $BROWSER "http://www.google.com/search?q=\
+        `url-encode "${(j: :)@}"`" > /dev/null 2>&1
+}
+
+_ag() {
+  if (( CURRENT == 2 )); then
+    compadd $(cut -f 1 tags .git/tags tmp/tags 2>/dev/null | grep -v '!_TAG')
+  fi
+}
+compdef _ag ag
+
+GPG_TTY=$(tty); export GPG_TTY
+
+if [ -f "/var/log/notifications/error" ]; then
+    echo '\033[00;41mERRORS!\033[00m'
+fi

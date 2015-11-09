@@ -1,0 +1,14 @@
+# name: guard
+# key: guard
+# binding: direct-keybinding
+# --
+#!/usr/bin/env sh
+#| -*- mode: lisp -*- |#
+
+#|
+exec sbcl --script \$0 \${1+"\$@"}
+|#
+
+(defvar *lib-path* "/usr/lib/lisp/")
+(load (concatenate 'string *lib-path* "shelisp.lisp"))
+(load (concatenate 'string *lib-path* "my-env.lisp"))
