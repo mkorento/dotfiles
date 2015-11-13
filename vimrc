@@ -3,7 +3,7 @@ set encoding=utf-8
 set completeopt=longest,menuone
 set complete+=k
 set number
-set cursorline
+"set cursorline
 set laststatus=2
 set wildmode=list:full
 set wildmenu
@@ -140,7 +140,6 @@ let g:niji_light_colours = [[248,  66], [37,  66], [207, 66], [124,  66],
 let g:niji_dark_colours = g:niji_light_colours
 
 if has("autocmd")
-    autocmd BufWritePost * :UC
     autocmd BufReadPost *.rkt,*.rktl set filetype=racket
     autocmd FileType mail,gitcommit,gitsendemail setlocal textwidth=72
     autocmd BufEnter,WinEnter * 2mat ErrorMsg '\%81v.'
@@ -246,6 +245,6 @@ function! NumList()
   exe "normal 0i".pad.i.". \<Esc>0"
 endf
 
-execute changecolour#changecolour#set_colour()
+colorscheme system16_mellow
 
 let g:gitgutter_max_signs = 10000
