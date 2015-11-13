@@ -12,8 +12,8 @@ URxvt.keysym.C-Down:   perl:font-size:decrease
 URxvt.keysym.C-S-Up:   perl:font-size:incglobal
 URxvt.keysym.C-S-Down: perl:font-size:decglobal
 
-# URxvt*font: xft:terminus:Regular:antialias=true:hinting=true:pixelsize=19
-# URxvt*boldFont: xft:terminus:Regular:antialias=true:hinting=true:pixelsize=19
+! URxvt*font: xft:terminus:Regular:antialias=true:hinting=true:pixelsize=19
+! URxvt*boldFont: xft:terminus:Regular:antialias=true:hinting=true:pixelsize=19
 URxvt*font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
 URxvt*boldFont: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
 
@@ -24,75 +24,83 @@ Xft*antialias:          true
 Xft*hinting:            full
 Rxvt*colorIT: #ff0000
 
-# True transparency
+! True transparency
 urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+!urxvt*background: [100]#ffffd7
+!urxvt*background: rgba:0000/0000/0200/c800
 URxvt*borderLess: true
 
-# # Fake transparency
-# urxvt*transparent: true
-# urxvt*shading: 30
+! ! Fake transparency
+! urxvt*transparent: true
+! urxvt*shading: 30
 
 URxvt*colorUL: #86a2b0
 
-URxvt*foreground: #c6c6c6
-URxvt*background: #000000
-# URxvt*foreground: #ffafaf
-# URxvt*background: #ffffd7
+! URxvt*foreground: #c6c6c6
+! URxvt*background: #000000
+! URxvt*foreground: #ffafaf
+! URxvt*foreground: #ffafaf
+! URxvt*foreground: #ffafaf
+URxvt*foreground: #729FCF
+URxvt*background: #ffffd7
 
 xterm*foreground: #ffafaf
 xterm*background: #ffffd7
 
-#black
-Rxvt*color0  : #2E3436
-Rxvt*color8  : #555753
-#red
-Rxvt*color1  : #CC0000
-Rxvt*color9  : #EF2929
-#green
-Rxvt*color2  : #00AF00
-Rxvt*color10 : #8AE234
-#yellow
-Rxvt*color3  : #C4A000
-Rxvt*color11 : #FCE94F
-#blue
-Rxvt*color4  : #3465A4
-Rxvt*color12 : #ffc15d
-#magenta
-Rxvt*color5  : #75507B
-Rxvt*color13 : #AD7FA8
-#cyan
-Rxvt*color6  : #06989A
-Rxvt*color14 : #34E2E2
-#white
-Rxvt*color7  : #D3D7CF
-Rxvt*color15 : #EEEEEC
+! !black
+! URxvt*color0  : #2E3436
+! URxvt*color8  : #555753
+! !red
+! URxvt*color1  : #CC0000
+! URxvt*color9  : #EF2929
+! !green
+! URxvt*color2  : #00AF00
+! URxvt*color10 : #8AE234
+! !yellow
+! URxvt*color3  : #C4A000
+! URxvt*color11 : #FCE94F
+! !blue
+! URxvt*color4  : #3465A4
+! ! Rxvt*color12 : #ffc15d
+! ! Rxvt*color12 : #ff8f8f
+! URxvt*color12 : #bbbbbb
+! !magenta
+! URxvt*color5  : #75507B
+! URxvt*color13 : #AD7FA8
+! !cyan
+! URxvt*color6  : #06989A
+! URxvt*color14 : #34E2E2
+! !white
+! URxvt*color7  : #D3D7CF
+! URxvt*color15 : #EEEEEC
 
 URxvt.cursorColor: #aaaaaa
 
-#black
-xterm*color0  : #2E3436
-xterm*color8  : #555753
-#red
-xterm*color1  : #CC0000
-xterm*color9  : #EF2929
-#green
-xterm*color2  : #00AF00
-xterm*color10 : #8AE234
-#yellow
-xterm*color3  : #C4A000
-xterm*color11 : #FCE94F
-#blue
-xterm*color4  : #3465A4
-xterm*color12 : #729FCF
-#magenta
-xterm*color5  : #75507B
-xterm*color13 : #AD7FA8
-#cyan
-xterm*color6  : #06989A
-xterm*color14 : #34E2E2
-#white
-xterm*color7  : #D3D7CF
-xterm*color15 : #EEEEEC
+!black
+*color0  : #2E3436
+*color8  : #555753
+!red
+*color1  : #CC0000
+*color9  : #EF2929
+!green
+*color2  : #00AF00
+*color10 : #8AE234
+!yellow
+*color3  : #C4A000
+*color11 : #FCE94F
+!blue
+*color4  : #3465A4
+!*color12 : #729FCF
+*color12 : #ffafaf
+!magenta
+*color5  : #75507B
+*color13 : #AD7FA8
+!cyan
+*color6  : #06989A
+!*color14 : #34E2E2
+*color14 : #afd7ff
+!white
+*color7  : #D3D7CF
+*color15 : #EEEEEC
 
-# vim: ft=xdefaults
+! vim: ft=xdefaults
