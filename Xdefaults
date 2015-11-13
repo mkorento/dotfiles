@@ -1,3 +1,4 @@
+URxvt*fading: 20
 URxvt.scrollBar: false
 URxvt*shading: 40
 URxvt*saveLines: 12000
@@ -16,6 +17,8 @@ URxvt.keysym.C-S-Down: perl:font-size:decglobal
 URxvt*font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
 URxvt*boldFont: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
 
+xterm*faceName: Terminus_nybergh:antialias=true:hinting=true:size=30
+
 Xft*dpi:                96
 Xft*antialias:          true
 Xft*hinting:            full
@@ -32,8 +35,13 @@ URxvt*borderLess: true
 
 URxvt*colorUL: #86a2b0
 
-URxvt*foreground: #CFECFF
+URxvt*foreground: #c6c6c6
 URxvt*background: #000000
+# URxvt*foreground: #ffafaf
+# URxvt*background: #ffffd7
+
+xterm*foreground: #ffafaf
+xterm*background: #ffffd7
 
 #black
 Rxvt*color0  : #2E3436
@@ -49,7 +57,7 @@ Rxvt*color3  : #C4A000
 Rxvt*color11 : #FCE94F
 #blue
 Rxvt*color4  : #3465A4
-Rxvt*color12 : #729FCF
+Rxvt*color12 : #ffc15d
 #magenta
 Rxvt*color5  : #75507B
 Rxvt*color13 : #AD7FA8
@@ -61,5 +69,30 @@ Rxvt*color7  : #D3D7CF
 Rxvt*color15 : #EEEEEC
 
 URxvt.cursorColor: #aaaaaa
+
+#black
+xterm*color0  : #2E3436
+xterm*color8  : #555753
+#red
+xterm*color1  : #CC0000
+xterm*color9  : #EF2929
+#green
+xterm*color2  : #00AF00
+xterm*color10 : #8AE234
+#yellow
+xterm*color3  : #C4A000
+xterm*color11 : #FCE94F
+#blue
+xterm*color4  : #3465A4
+xterm*color12 : #729FCF
+#magenta
+xterm*color5  : #75507B
+xterm*color13 : #AD7FA8
+#cyan
+xterm*color6  : #06989A
+xterm*color14 : #34E2E2
+#white
+xterm*color7  : #D3D7CF
+xterm*color15 : #EEEEEC
 
 # vim: ft=xdefaults
