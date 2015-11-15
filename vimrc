@@ -3,7 +3,6 @@ set encoding=utf-8
 set completeopt=longest,menuone
 set complete+=k
 set number
-"set cursorline
 set laststatus=2
 set wildmode=list:full
 set wildmenu
@@ -110,6 +109,7 @@ command! QA1 qa!
 command! Aq1 qa!
 command! AQ1 qa!
 
+let g:gitgutter_max_signs = 10000
 let g:CSApprox_verbose_level = 0
 let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
@@ -245,6 +245,8 @@ function! NumList()
   exe "normal 0i".pad.i.". \<Esc>0"
 endf
 
-colorscheme system16_mellow
-
-let g:gitgutter_max_signs = 10000
+if &term == 'linux'
+    colorscheme system16
+else
+    colorscheme mellowy
+endif

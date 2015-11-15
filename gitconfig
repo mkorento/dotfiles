@@ -21,13 +21,13 @@
 	remote = green
 [color "diff"]
 	meta = yellow bold
-	frag = magenta bold
+	frag = cyan bold
 	old = red
 	new = green
 [color "status"]
 	added = yellow
-	changed = blue
-	untracked = cyan
+	changed = blue bold
+	untracked = cyan bold
 [alias]
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
