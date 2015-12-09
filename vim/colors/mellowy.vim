@@ -1,3 +1,11 @@
+" Name:     Solarized vim colorscheme
+" Author:   Ethan Schoonover <es@ethanschoonover.com>
+" URL:      http://ethanschoonover.com/solarized
+"           (see this url for latest release & screenshots)
+" License:  OSI approved MIT license (see end of this file)
+" Created:  In the middle of the night
+" Modified: 2015 Dec 05
+
 let s:cpo_save = &cpo
 set cpo&vim
 hi clear
@@ -39,7 +47,7 @@ call s:highlight( 'Statement'   , 'none'   , 'darkyellow'  , 'none'          )
 call s:highlight( 'Type'        , 'none'   , 'blue'        , 'none'          )
 call s:highlight( 'Constant'    , 'none'   , 'darkblue'    , 'none'          )
 call s:highlight( 'Identifier'  , 'none'   , 'cyan'        , 'none'          )
-call s:highlight( 'Search'      , 'none'   , 'darkblue'    , 'gray'          )
+call s:highlight( 'Search'      , 'none'   , 'gray'        , 'red'           )
 call s:highlight( 'Todo'        , 'none'   , 'darkblue'    , 'yellow'        )
 call s:highlight( 'Comment'     , 'none'   , 'gray'        , 'none'          )
 call s:highlight( 'VertSplit'   , 'none'   , 'darkblue'    , 'gray'          )
@@ -82,7 +90,7 @@ call s:highlight( 'WarningMsg'  , 'bold'   , 'red'        , 'none'           )
 call s:highlight( 'WildMenu'    , 'none'   , 'background' , 'violet'         )
 call s:highlight( 'Error'       , 'none'   , 'background' , 'red'            )
 call s:highlight( 'Ignore'      , 'none'   , 'darkblue'   , 'none'           )
-call s:highlight( 'Underlined'  , 'none'   , 'darkblue'   ,    'none'        )
+call s:highlight( 'Underlined'  , 'none'   , 'darkblue'   , 'none'           )
 
 " gitcommit & diff
 call s:highlight( 'gitcommitFile' , 'none' ,  'darkblue' ,  'none'        )
@@ -103,10 +111,10 @@ call s:highlight( 'diffAdded'     , 'none' ,  'darkgreen',  'none'        )
 call s:highlight( 'diffCommon'    , 'none' ,  'yellow'   ,  'none'        )
 call s:highlight( 'diffChanged'   , 'none' ,  'magenta'  ,  'none'        )
 
-call s:highlight( 'SpellBad'    , 'bold'     , 'fixme'   , 'fixme'        )
-call s:highlight( 'SpellCap'    , 'bold'     , 'none'    ,  'none'        )
-call s:highlight( 'SpellLocal'  , 'underline', 'none'    ,  'none'        )
-call s:highlight( 'SpellRare'   , 'underline', 'none'    ,  'none'        )
+call s:highlight( 'SpellBad'    , 'bold'     , 'darkblue',  'fixme'       )
+"call s:highlight( 'SpellCap'    , 'bold'     , 'none'    ,  'none'        )
+"call s:highlight( 'SpellLocal'  , 'underline', 'none'    ,  'none'        )
+"call s:highlight( 'SpellRare'   , 'underline', 'none'    ,  'none'        )
 
 call s:highlight( 'htmlBold',                'none', 'darkblue',    'none')
 call s:highlight( 'htmlItalic',              'none', 'yellow',      'none')
@@ -121,3 +129,30 @@ set background=light
 let &cpo = s:cpo_save
 unlet! s:cpo_save s:rgb_map
 delfunction s:highlight
+
+"}}}
+" License "{{{
+" ---------------------------------------------------------------------
+"
+" Copyright (c) 2011 Ethan Schoonover
+"
+" Permission is hereby granted, free of charge, to any person obtaining a copy
+" of this software and associated documentation files (the "Software"), to deal
+" in the Software without restriction, including without limitation the rights
+" to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+" copies of the Software, and to permit persons to whom the Software is
+" furnished to do so, subject to the following conditions:
+"
+" The above copyright notice and this permission notice shall be included in
+" all copies or substantial portions of the Software.
+"
+" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+" IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+" FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+" AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+" LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+" OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+" THE SOFTWARE.
+"
+" vim:foldmethod=marker:foldlevel=0
+"}}}
