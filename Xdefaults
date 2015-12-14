@@ -36,16 +36,20 @@ Rxvt*colorIT: #ff0000
 
 URxvt*colorUL: #86a2b0
 
-URxvt*foreground: #586E75
-URxvt*background: #fdf6e3
+! LIGHT
+!URxvt*foreground: #586E75
+!URxvt*background: #fdf6e3
 
-xterm*foreground: #ffafaf
-xterm*background: #ffffd7
+! DARK
+URxvt*foreground: #839496
+URxvt*background: #002B36
+
+URxvt.cursorColor: #aaaaaa
 
 !black
-URxvt*color0  : #073642
+URxvt*color0  : #586E75
 !darkgrey
-URxvt*color8  : #073642
+URxvt*color8  : #586E75
 
 !darkred
 URxvt*color1  : #AF0000
@@ -73,7 +77,7 @@ URxvt*color5  : #6C71C4
 URxvt*color13 : #D33682
 
 !darkcyan
-URxvt*color6  : #06989A ! free
+URxvt*color6  : #2AA198
 !cyan
 URxvt*color14 : #2AA198
 
@@ -81,8 +85,6 @@ URxvt*color14 : #2AA198
 URxvt*color7  : #839496
 !white / background
 URxvt*color15 : #FDF6E3
-
-URxvt.cursorColor: #aaaaaa
 
 !black
 xterm*color0  : #2E3436

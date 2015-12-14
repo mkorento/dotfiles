@@ -21,19 +21,19 @@ endfunction
 
 let s:rgb_map = {
             \ "none": "NONE",
-            \ "background": "White",
-            \ "darkblue": "DarkBlue",
-            \ "darkred": "DarkRed",
-            \ "darkyellow": "DarkYellow",
-            \ "darkgreen": "DarkGreen",
-            \ "violet": "DarkMagenta",
-            \ "gray": "Gray",
-            \ "red": "Red",
-            \ "green": "Green",
-            \ "yellow": "Yellow",
-            \ "blue": "Blue",
-            \ "magenta": "Magenta",
-            \ "cyan": "Cyan",
+            \ "darkred": "1",
+            \ "darkgreen": "2",
+            \ "darkyellow": "3",
+            \ "darkblue": "4",
+            \ "violet": "5",
+            \ "gray": "7",
+            \ "red": "9",
+            \ "green": "10",
+            \ "yellow": "11",
+            \ "blue": "12",
+            \ "magenta": "13",
+            \ "cyan": "14",
+            \ "background": "15",
             \ "fixme": "51" }
 
 call s:highlight( 'Normal'      , 'none'   , 'darkblue'    , 'background'    )
@@ -43,7 +43,7 @@ call s:highlight( 'Number'      , 'none'   , 'blue'        , 'none'          )
 call s:highlight( 'String'      , 'none'   , 'magenta'     , 'none'          )
 call s:highlight( 'Function'    , 'none'   , 'darkgreen'   , 'none'          )
 call s:highlight( 'Special'     , 'none'   , 'cyan'        , 'none'          )
-call s:highlight( 'Statement'   , 'none'   , 'darkyellow'  , 'none'          )
+call s:highlight( 'Statement'   , 'none'   , 'yellow'      , 'none'          )
 call s:highlight( 'Type'        , 'none'   , 'blue'        , 'none'          )
 call s:highlight( 'Constant'    , 'none'   , 'darkblue'    , 'none'          )
 call s:highlight( 'Identifier'  , 'none'   , 'cyan'        , 'none'          )

@@ -21,20 +21,21 @@ endfunction
 
 let s:rgb_map = {
             \ "none": "NONE",
-            \ "background": "DarkBlue",
-            \ "black": "Black",
-            \ "darkblue": "DarkBlue",
-            \ "darkred": "DarkRed",
-            \ "darkyellow": "DarkYellow",
-            \ "darkgreen": "DarkGreen",
-            \ "violet": "DarkMagenta",
-            \ "gray": "Gray",
-            \ "red": "Red",
-            \ "green": "Green",
-            \ "yellow": "Yellow",
-            \ "blue": "Blue",
-            \ "magenta": "Magenta",
-            \ "cyan": "Cyan",
+            \ "black": "0",
+            \ "darkred": "1",
+            \ "darkgreen": "2",
+            \ "darkyellow": "3",
+            \ "background": "4",
+            \ "darkblue": "4",
+            \ "violet": "5",
+            \ "gray": "7",
+            \ "darkgray": "8",
+            \ "red": "9",
+            \ "green": "10",
+            \ "yellow": "11",
+            \ "blue": "12",
+            \ "magenta": "13",
+            \ "cyan": "14",
             \ "fixme": "51" }
 
 call s:highlight( 'Normal'      , 'none'   , 'gray'        , 'none'       )
@@ -44,13 +45,13 @@ call s:highlight( 'Number'      , 'none'   , 'blue'        , 'none'       )
 call s:highlight( 'String'      , 'none'   , 'magenta'     , 'none'       )
 call s:highlight( 'Function'    , 'none'   , 'darkgreen'   , 'none'       )
 call s:highlight( 'Special'     , 'none'   , 'cyan'        , 'none'       )
-call s:highlight( 'Statement'   , 'none'   , 'darkyellow'  , 'none'       )
+call s:highlight( 'Statement'   , 'none'   , 'yellow'      , 'none'       )
 call s:highlight( 'Type'        , 'none'   , 'blue'        , 'none'       )
-call s:highlight( 'Constant'    , 'none'   , 'darkblue'    , 'none'       )
+call s:highlight( 'Constant'    , 'none'   , 'gray'        , 'none'       )
 call s:highlight( 'Identifier'  , 'none'   , 'cyan'        , 'none'       )
 call s:highlight( 'Search'      , 'none'   , 'darkblue'    , 'darkred'    )
 call s:highlight( 'Todo'        , 'none'   , 'darkblue'    , 'yellow'     )
-call s:highlight( 'Comment'     , 'none'   , 'gray'        , 'none'       )
+call s:highlight( 'Comment'     , 'none'   , 'darkblue'    , 'none'       )
 call s:highlight( 'VertSplit'   , 'none'   , 'gray'        , 'darkblue'   )
 call s:highlight( 'Cursor'      , 'none'   , 'blue'        , 'none'       )
 call s:highlight( 'CursorColumn', 'none'   , 'none'        , 'darkblue'   )
