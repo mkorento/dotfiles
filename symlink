@@ -8,5 +8,5 @@ files="vimrc emacs inputrc bashrc Xmodmap Xdefaults xinitrc exrc tmux.conf \
 mkdir -p $olddir
 for file in $files; do
     mv --backup=numbered $HOME/.$file $olddir 2>/dev/null
-    ln -s $dir/$file $HOME/.$file
+    ln -s ./config/$file $HOME/.$file
 done
