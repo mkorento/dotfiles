@@ -83,7 +83,7 @@ call s:highlight( 'TabLine'     , 'none'   , 'darkblue'   ,    'darkblue'    )
 call s:highlight( 'TabLineSel'  , 'bold'   , 'none'       , 'none'           )
 call s:highlight( 'Title'       , 'none'   , 'magenta'    , 'none'           )
 
-call s:highlight( 'Visual'      , 'none'   , 'background' , 'violet'         )
+call s:highlight( 'Visual'      , 'none'   , 'green'      , 'violet'         )
 call s:highlight( 'VisualNOS'   , 'none'   , 'none'       , 'darkblue'       )
 call s:highlight( 'WarningMsg'  , 'bold'   , 'red'        , 'none'           )
 
