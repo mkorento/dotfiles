@@ -47,7 +47,7 @@ URxvt*background: #002B36
 URxvt.cursorColor: #aaaaaa
 
 !black
-URxvt*color0  : #586E75
+URxvt*color0  : #002B36
 !darkgrey
 URxvt*color8  : #586E75
 
