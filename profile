@@ -45,12 +45,6 @@ LESS="--RAW-CONTROL-CHARS"; export LESS
 LC_ALL=en_US.utf8; export LC_ALL
 LANG=en_US.utf8; export LANG
 
-if [ -n "$BASH_VERSION" ]; then
-    if [ -f "$HOME/.bashrc" ]; then
-        . $HOME/.bashrc
-    fi
-fi
-
 if [ "$(id -u)" != "0" ]; then
     if [ -f "$HOME/.gpg-agent-info" ]; then
         kill -s 0 `cut -d: -f 2 $HOME/.gpg-agent-info` 2>/dev/null
@@ -88,6 +82,12 @@ reset="\033[0m"; export reset
 
 stty -ixon
 stty -ixoff
+
+if [ -n "$BASH_VERSION" ]; then
+    if [ -f "$HOME/.bashrc" ]; then
+        . $HOME/.bashrc
+    fi
+fi
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] && [ "$(id -u)" -ne 0 ]; then
     (startx &)
