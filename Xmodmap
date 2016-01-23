@@ -1,6 +1,6 @@
 !based on arkkudvorak by kimmo kulovesi
 !            Key          Shift+Key   mode_switch+Key      mode_switch+Shift+Key    AltGr+Key   AltGr+Shift+Key
-keycode  9 = Escape       asciitilde  Escape
+keycode  9 = Escape       asciitilde  grave
 keycode 10 = 1            exclam      onesuperior          exclamdown
 keycode 11 = 2            at          twosuperior          enfilledcircbullet
 keycode 12 = 3            numbersign  threesuperior        sterling
