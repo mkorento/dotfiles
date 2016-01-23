@@ -77,13 +77,22 @@ nnoremap <C-l> <C-w>l
 nnoremap Q @@
 nnoremap <silent> <F4> :TlistToggle<CR>
 nnoremap <silent> <F5> :GundoToggle<CR>
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
 inoremap jj <ESC>
 inoremap JJ <ESC>
 inoremap jk <ESC>
 inoremap JK <ESC>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
 cnoremap w!! w !sudo tee % >/dev/null
 vnoremap <leader>a :call Incr()<CR>
 vnoremap <leader>d :call NumList()<CR>
+
 
 nmap H <Plug>Sneak_S
 omap H <Plug>Sneak_S
@@ -248,5 +257,5 @@ endf
 if &term == 'linux'
     colorscheme system16
 else
-    colorscheme mellowy
+    colorscheme solarized
 endif
