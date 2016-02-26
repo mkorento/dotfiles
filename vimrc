@@ -142,7 +142,7 @@ let g:syntastic_python_checkers = ['flake8', 'pep257', 'pep8', 'pyflakes',
                                   \'pylama', 'pylint', 'python']
 
 let g:niji_matching_filetypes = ['lisp', 'scheme', 'racket', 'clojure',
-                                \'ruby', 'python', 'sh', 'bash', 'zsh',
+                                \'sh', 'bash', 'zsh',
                                 \'conf']
 let g:niji_light_colours = [[248,  66], [37,  66], [207, 66], [124,  66],
                             \[34, 66], [127, 66], [203,  66], [63,  66]]
