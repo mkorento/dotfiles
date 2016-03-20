@@ -113,7 +113,7 @@ call s:highlight( 'diffAdded'     , 'none' ,  'darkgreen',  'none'        )
 call s:highlight( 'diffCommon'    , 'none' ,  'yellow'   ,  'none'        )
 call s:highlight( 'diffChanged'   , 'none' ,  'magenta'  ,  'none'        )
 
-call s:highlight( 'SpellBad'    , 'bold'     , 'fixme'   , 'fixme'        )
+call s:highlight( 'SpellBad'    , 'bold'     , 'fixme'   ,  'red'         )
 call s:highlight( 'SpellCap'    , 'bold'     , 'none'    ,  'none'        )
 call s:highlight( 'SpellLocal'  , 'underline', 'none'    ,  'none'        )
 call s:highlight( 'SpellRare'   , 'underline', 'none'    ,  'none'        )
