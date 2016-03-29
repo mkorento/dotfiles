@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 dir=$HOME/config
 olddir=$HOME/old_config
-files="vimrc emacs inputrc bashrc Xmodmap Xdefaults xinitrc exrc tmux.conf \
+files="vimrc emacs inputrc bashrc Xmodmap Xresources xinitrc exrc tmux.conf \
        gitconfig gitignore offlineimaprc zshrc vim emacs.d msmtprc mutt \
        zprofile profile functions"
 
