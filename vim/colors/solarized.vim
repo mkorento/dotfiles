@@ -13,7 +13,7 @@ hi clear
 if exists('syntax_on')
     syntax reset
 endif
-let colors_name = 'mellowy'
+let colors_name = 'solarized'
 
 function s:highlight(groupname, attr, fg, bg)
     exec 'hi' a:groupname 'cterm='.a:attr 'ctermfg='.s:rgb_map[a:fg] 'ctermbg='.s:rgb_map[a:bg]
@@ -57,9 +57,9 @@ call s:highlight( 'Cursor'      , 'none'   , 'blue'        , 'none'       )
 call s:highlight( 'CursorColumn', 'none'   , 'none'        , 'darkblue'   )
 call s:highlight( 'CursorLine'  , 'none'   , 'none'        , 'none'       )
 call s:highlight( 'DiffAdd'     , 'none'   , 'green'       , 'darkgreen'  )
-call s:highlight( 'DiffChange'  , 'none'   , 'none'        , 'gray'       )
-call s:highlight( 'DiffDelete'  , 'none'   , 'background'  , 'darkred'    )
-call s:highlight( 'DiffText'    , 'bold'   , 'background'  , 'darkblue'   )
+call s:highlight( 'DiffChange'  , 'none'   , 'black'       , 'darkblue'   )
+call s:highlight( 'DiffDelete'  , 'none'   , 'red'         , 'darkred'    )
+call s:highlight( 'DiffText'    , 'bold'   , 'darkyellow'  , 'darkgray'   )
 call s:highlight( 'Directory'   , 'none'   , 'cyan'        , 'none'       )
 call s:highlight( 'ErrorMsg'    , 'none'   , 'background'  , 'darkred'    )
 call s:highlight( 'FoldColumn'  , 'none'   , 'gray'        , 'none'       )

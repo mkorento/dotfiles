@@ -21,6 +21,7 @@ endfunction
 
 let s:rgb_map = {
             \ "none": "NONE",
+            \ "foreground": "0",
             \ "darkred": "1",
             \ "darkgreen": "2",
             \ "darkyellow": "3",
@@ -55,9 +56,9 @@ call s:highlight( 'Cursor'      , 'none'   , 'blue'        , 'none'          )
 call s:highlight( 'CursorColumn', 'none'   , 'none'        , 'darkblue'      )
 call s:highlight( 'CursorLine'  , 'none'   , 'none'        , 'none'          )
 call s:highlight( 'DiffAdd'     , 'none'   , 'darkgreen'   , 'green'         )
-call s:highlight( 'DiffChange'  , 'none'   , 'none'        , 'gray'          )
-call s:highlight( 'DiffDelete'  , 'none'   , 'background'  , 'red'           )
-call s:highlight( 'DiffText'    , 'bold'   , 'background'  , 'darkblue'      )
+call s:highlight( 'DiffChange'  , 'none'   , 'none'        , 'background'    )
+call s:highlight( 'DiffDelete'  , 'none'   , 'darkred'     , 'red'           )
+call s:highlight( 'DiffText'    , 'bold'   , 'yellow'      , 'foreground'    )
 call s:highlight( 'Directory'   , 'none'   , 'cyan'        , 'none'          )
 call s:highlight( 'ErrorMsg'    , 'none'   , 'background'  , 'darkred'       )
 call s:highlight( 'FoldColumn'  , 'none'   , 'darkblue'    , 'background'    )
