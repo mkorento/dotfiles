@@ -62,7 +62,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 PATH=/usr/non-portage/bin:$PATH
-BROWSER='/usr/bin/google-chrome-stable'; export BROWSER
+BROWSER='/usr/bin/chromium'; export BROWSER
 if [ "$TERM" = "rxvt-unicode-256color" ]; then
     TERM=rxvt-unicode-256color-noit; export TERM
 fi
