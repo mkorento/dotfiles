@@ -54,6 +54,7 @@ map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 map <C-e> <esc>:w<CR>
 map <C-a> <esc>:qa!<CR>
+map <leader>r <esc>:silent !test -f update_pdf && ./update_pdf<CR><esc>:redraw!<CR>
 imap <C-e> <esc>:w<CR>
 imap <C-a> <esc>:qa!<CR>
 cmap <C-e> <esc>:w<CR>
