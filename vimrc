@@ -137,6 +137,10 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeHijackNetrw=0
 let g:netrw_browsex_viewer= $BROWSER
 let g:netrw_dirhistmax = 0
+" Use whole "words" when opening URLs.
+" This avoids cutting off parameters (after '?') and anchors (after '#').
+" See http://vi.stackexchange.com/q/2801/1631
+let g:netrw_gx="<cWORD>"
 let g:syntastic_racket_code_ayatollah_script = $HOME.'/.vim/bin/code-ayatollah'
 let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_c_checkers = ['gcc', 'make']
