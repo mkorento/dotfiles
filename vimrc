@@ -39,6 +39,7 @@ set viminfo^=h
 set ttimeoutlen=10
 set modeline
 set nojoinspaces
+set wildignore+=*.pyc
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
