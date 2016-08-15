@@ -124,6 +124,7 @@ let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 let g:EasyMotion_leader_key = '<C-\>'
 let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlq;vz'
+let g:EasyMotion_verbose = 0
 let g:netrw_liststyle=0
 let g:netrw_preview=1
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
