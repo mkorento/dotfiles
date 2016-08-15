@@ -152,6 +152,7 @@ if has("autocmd")
     autocmd BufReadPost *.rkt,*.rktl set filetype=racket
     autocmd FileType mail,gitcommit,gitsendemail setlocal textwidth=72
     autocmd BufEnter,WinEnter * 2mat ErrorMsg '\%81v.'
+    autocmd BufWritePost * call SetTheme()
     autocmd WinEnter * :set winfixheight
     autocmd WinEnter * :wincmd =
     autocmd BufNewFile,BufReadPost *.md,*.markdown,*.mdown,*.mkd,*.mkdn
@@ -254,8 +255,30 @@ function! NumList()
   exe "normal 0i".pad.i.". \<Esc>0"
 endf
 
+let s:status_file = substitute(expand('<sfile>:p'),
+                               \'changecolour.vim$',
+                               \'.misc/status', '')
+
+let g:theme = "dark"
+function! SetTheme()
+    let in = readfile('/home/mika/.theme')
+    if in[0] != g:theme
+        if in[0] == "light"
+            colorscheme mellowy
+            let g:theme = "light"
+        else
+            colorscheme solarized
+            let g:theme = "dark"
+        endif
+    endif
+
+    unlet in
+endf
+
 if &term == 'linux'
     colorscheme system16
 else
     colorscheme solarized
 endif
+
+call SetTheme()

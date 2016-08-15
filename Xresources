@@ -1,3 +1,24 @@
+#define fg_light    #586E75
+#define bg_light    #fdf6e3
+#define fg_dark     #839496
+#define bg_dark     #002B36
+#define black       #002B36
+#define darkgrey    #586E75
+#define darkred     #AF0000
+#define red         #DC322F
+#define darkgreen   #00AF00
+#define green       #5FFF5F
+#define darkyellow  #CB4B16
+#define yellow      #B58900
+#define darkblue    #586E75
+#define blue        #268BD2
+#define darkmagenta #6C71C4
+#define magenta     #D33682
+#define darkcyan    #2AA198
+#define cyan        #2AA198
+#define gray        #839496
+#define white       #FDF6E3
+
 URxvt*fading: 20
 URxvt.scrollBar: false
 URxvt*shading: 40
@@ -5,8 +26,10 @@ URxvt*saveLines: 12000
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
+URxvt.urlLauncher:      /usr/bin/chromium
+URxvt.matcher.button:   1
 
-URxvt.perl-ext-common: font-size
+URxvt.perl-ext-common: font-size,rotate-colors
 URxvt.keysym.C-Up:     perl:font-size:increase
 URxvt.keysym.C-Down:   perl:font-size:decrease
 URxvt.keysym.C-S-Up:   perl:font-size:incglobal
@@ -36,55 +59,52 @@ Rxvt*colorIT: #ff0000
 
 URxvt*colorUL: #86a2b0
 
-! LIGHT
-!URxvt*foreground: #586E75
-!URxvt*background: #fdf6e3
-
-! DARK
-URxvt*foreground: #839496
-URxvt*background: #002B36
+URxvt*foreground: fg_dark
+URxvt*background: bg_dark
+/* URxvt*foreground: fg_light */
+/* URxvt*background: bg_light */
 
 URxvt.cursorColor: #aaaaaa
 
 !black
-URxvt*color0  : #002B36
+URxvt*color0  : black
 !darkgrey
-URxvt*color8  : #586E75
+URxvt*color8  : darkgrey
 
 !darkred
-URxvt*color1  : #AF0000
+URxvt*color1  : darkred
 !red
-URxvt*color9  : #DC322F
+URxvt*color9  : red
 
 !darkgreen
-URxvt*color2  : #00AF00
+URxvt*color2  : darkgreen
 !green
-URxvt*color10 : #5FFF5F
+URxvt*color10 : green
 
 !darkyellow
-URxvt*color3  : #CB4B16
+URxvt*color3  : darkyellow
 !yellow
-URxvt*color11 : #B58900
+URxvt*color11 : yellow
 
 !darkblue
-URxvt*color4  : #586E75
+URxvt*color4  : darkblue
 !blue
-URxvt*color12 : #268BD2
+URxvt*color12 : blue
 
 !darkmagenta
-URxvt*color5  : #6C71C4
+URxvt*color5  : darkmagenta
 !magenta
-URxvt*color13 : #D33682
+URxvt*color13 : magenta
 
 !darkcyan
-URxvt*color6  : #2AA198
+URxvt*color6  : darkcyan
 !cyan
-URxvt*color14 : #2AA198
+URxvt*color14 : cyan
 
 !gray
-URxvt*color7  : #839496
+URxvt*color7  : gray
 !white / background
-URxvt*color15 : #FDF6E3
+URxvt*color15 : white
 
 !black
 xterm*color0  : #2E3436
@@ -111,5 +131,7 @@ xterm*color14 : #afd7ff
 !white
 xterm*color7  : #D3D7CF
 xterm*color15 : #EEEEEC
+
+URxvt.keysym.M-C-l:   rotate-colors:next
 
 ! vim: ft=xdefaults
