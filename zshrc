@@ -330,7 +330,7 @@ stripped-edit-command-line() {
 zle -N edit-command-line stripped-edit-command-line
 
 insert_setsid() {
-    zle beginning-of-line; zle -U "setsid "
+    zle beginning-of-line; zle -U "setsid ";
 }
 zle -N insert-setsid insert_setsid
 bindkey "^s" insert-setsid
