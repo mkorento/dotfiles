@@ -277,6 +277,10 @@ function! SetTheme()
             colorscheme solarized
             let g:theme = "dark"
         endif
+
+        if exists(':PowerlineReloadColorscheme')
+            :PowerlineReloadColorscheme
+        endif
     endif
 
     unlet in
