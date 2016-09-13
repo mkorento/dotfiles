@@ -152,8 +152,8 @@ let g:syntastic_python_checkers = ['flake8', 'pep257', 'pep8', 'pyflakes',
 let g:niji_matching_filetypes = ['lisp', 'scheme', 'racket', 'clojure',
                                 \'sh', 'bash', 'zsh',
                                 \'conf']
-let g:niji_light_colours = [[248,  66], [37,  66], [207, 66], [124,  66],
-                            \[34, 66], [127, 66], [203,  66], [63,  66]]
+let g:niji_light_colours = [[248,  'NONE'], [37,  'NONE'], [207, 'NONE'], [124,  'NONE'],
+                            \[34, 'NONE'], [127, 'NONE'], [203,  'NONE'], [63,  'NONE']]
 let g:niji_dark_colours = g:niji_light_colours
 
 if has("autocmd")
