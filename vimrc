@@ -92,7 +92,7 @@ inoremap <Up>    <NOP>
 inoremap <Down>  <NOP>
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
-cnoremap w!! w !sudo tee % >/dev/null
+cnoremap w!! w !sudo /usr/bin/tee % >/dev/null
 vnoremap <leader>a :call Incr()<CR>
 vnoremap <leader>d :call NumList()<CR>
 
