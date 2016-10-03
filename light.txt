@@ -1,0 +1,38 @@
+!Colors are taken from solarized colorscheme
+!made by Ethan Schoonover <es@ethanschoonover.com>
+!http://ethanschoonover.com/solarized
+
+URxvt.background: #FDF6E3
+URxvt.foreground: #586E75
+
+! Black
+URxvt.color0: #002B36
+URxvt.color8: #586E75
+
+! Red
+URxvt.color1: #AF0000
+URxvt.color9: #DC322F
+
+! Green
+URxvt.color2: #00AF00
+URxvt.color10: #5FFF5F
+
+! Yellow
+URxvt.color3: #CB4B16
+URxvt.color11: #B58900
+
+! Blue
+URxvt.color4: #586E75
+URxvt.color12: #268BD2
+
+! Magenta
+URxvt.color5: #6C71C4
+URxvt.color13: #D33682
+
+! Cyan
+URxvt.color6: #2AA198
+URxvt.color14: #2AA198
+
+! White
+URxvt.color7: #839496
+URxvt.color15: #FDF6E3

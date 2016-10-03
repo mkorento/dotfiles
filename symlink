@@ -3,7 +3,7 @@ dir=$HOME/config
 olddir=$HOME/old_config
 files="vimrc emacs inputrc bashrc Xmodmap Xresources xinitrc exrc tmux.conf \
        gitconfig gitignore offlineimaprc zshrc vim emacs.d msmtprc mutt \
-       zprofile profile functions"
+       zprofile profile functions light.txt dark.txt theme"
 
 mkdir -p $olddir
 for file in $files; do
