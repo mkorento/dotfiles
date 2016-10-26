@@ -329,6 +329,249 @@ stripped-edit-command-line() {
 }
 zle -N edit-command-line stripped-edit-command-line
 
+sneak_forward_f() {
+    if [[ $sneak_on -eq 0 ]]; then
+        sneak_on=1
+        orig_region_highlight=("${region_highlight[@]}")
+    fi
+
+    : ${STYLE:="fg=0,bg=yellow"}
+
+    region_highlight=("${orig_region_highlight[@]}")
+
+    if [[ $# -ge 2 ]]; then
+        sneak_a=$1
+        sneak_b=$2
+    else
+        read -ks 1 sneak_a
+        read -ks 1 sneak_b
+    fi
+
+    if [[ $# -eq 3 ]]; then
+        #pass
+    else
+        forward_sneak=1
+    fi
+
+    local target_i=$CURSOR
+
+    # correct the starting point
+    (( target_i=$target_i+1 ))
+
+    # if <this> and <this+1> contains a matching pair, ignore it and advance
+    # parwise.
+    # if ^ not, then move one forward and then pairwise scan
+    if [[ ${BUFFER[target_i]} == "$sneak_a" ]] && [[ ${BUFFER[(($target_i+1))]} == "$sneak_b" ]]; then
+        (( target_i=$target_i+2 ))
+    else
+        (( target_i=$target_i+1 ))
+    fi
+
+    # scan for matching pairs
+    unset hits
+    set -A hits
+    while (($target_i < $#BUFFER)); do
+        if [[ ${BUFFER[$target_i]} == "$sneak_a" ]] && [[ ${BUFFER[(($target_i+1))]} == "$sneak_b" ]]; then
+            local temp=$target_i
+
+            # subtract one for use in CURSOR assignment
+            (( temp=$temp-1 ))
+
+            hits+=($temp)
+
+            # pairwise advancement
+            (( target_i=target_i+1 ))
+        fi
+
+        (( target_i++ ))
+
+    done
+
+    if [[ $#hits -gt 0 ]]; then
+
+        local i=1
+        while (($i <= $#hits)); do
+            local start_idx=${hits[$i]}
+
+            local end_idx=$start_idx
+            (( end_idx=$end_idx+2 ))
+
+            region_highlight+=( "$start_idx $end_idx $STYLE" )
+            (( i++ ))
+        done
+        CURSOR=${hits[1]}
+        shift hits
+    fi
+}
+zle -N sneak_forward sneak_forward_f
+bindkey -M vicmd "s" sneak_forward
+
+sneak_backward_f() {
+    if [[ $sneak_on -eq 0 ]]; then
+        sneak_on=1
+        orig_region_highlight=("${region_highlight[@]}")
+    fi
+
+    : ${STYLE:="fg=0,bg=yellow"}
+
+    region_highlight=("${orig_region_highlight[@]}")
+
+    if [[ $# -ge 2 ]]; then
+        sneak_a=$1
+        sneak_b=$2
+    else
+        read -ks 1 sneak_a
+        read -ks 1 sneak_b
+    fi
+
+    if [[ $# -eq 3 ]]; then
+        #pass
+    else
+        forward_sneak=0
+    fi
+
+    local target_i=$CURSOR
+
+    # correct the starting point
+    # (( target_i=$target_i+1 ))
+
+    # if <this> and <this+1> contains a matching pair, ignore it and advance
+    # parwise.
+    # if ^ not, then move one forward and then pairwise scan
+    # if [[ ${BUFFER[target_i]} == "$sneak_a" ]] && [[ ${BUFFER[(($target_i+1))]} == "$sneak_b" ]]; then
+    #     (( target_i=$target_i+2 ))
+    # else
+    #     (( target_i=$target_i+1 ))
+    # fi
+
+    # scan for matching pairs
+    unset hits
+    set -A hits
+    while (($target_i >= 0)); do
+        if [[ ${BUFFER[$target_i]} == "$sneak_b" ]] && [[ ${BUFFER[(($target_i-1))]} == "$sneak_a" ]]; then
+            local temp=$target_i
+
+            # subtract one to get to the right  starting place
+            (( temp=$temp-1 ))
+
+            # subtract one for use in CURSOR assignment
+            (( temp=$temp-1 ))
+
+            hits+=($temp)
+
+            # pairwise advancement
+            (( target_i=target_i-1 ))
+        fi
+
+        (( target_i-- ))
+
+    done
+
+    if [[ $#hits -gt 0 ]]; then
+
+        local i=1
+        while (($i <= $#hits)); do
+            local start_idx=${hits[$i]}
+
+            local end_idx=$start_idx
+            (( end_idx=$end_idx+2 ))
+
+            region_highlight+=( "$start_idx $end_idx $STYLE" )
+            (( i++ ))
+        done
+        CURSOR=${hits[1]}
+        shift hits
+    fi
+}
+zle -N sneak_backward sneak_backward_f
+bindkey -M vicmd "H" sneak_backward
+
+new-repeat-find_f() {
+    if [[ $sneak_on -eq 1 ]]; then
+        if [[ $forward_sneak -eq 1 ]]; then
+            sneak_forward_f $sneak_a $sneak_b
+        else
+            sneak_backward_f $sneak_a $sneak_b
+        fi
+    else
+        zle vi-repeat-find
+    fi
+
+}
+zle -N new-repeat-find new-repeat-find_f
+bindkey -M vicmd ";" new-repeat-find
+
+new-rev-repeat-find_f() {
+    if [[ $sneak_on -eq 1 ]]; then
+        if [[ $forward_sneak -eq 1 ]]; then
+            sneak_backward_f $sneak_a $sneak_b skip
+        else
+            sneak_forward_f $sneak_a $sneak_b skip
+        fi
+    else
+        zle vi-rev-repeat-find
+    fi
+
+}
+zle -N new-rev-repeat-find new-rev-repeat-find_f
+bindkey -M vicmd "," new-rev-repeat-find
+
+new-find-next-char_f() {
+    if [[ $sneak_on -eq 1 ]]; then
+        unset sneak_on
+        region_highlight=("${orig_region_highlight[@]}")
+
+        # redisplay command-line?
+        # zle -cR ''
+    fi
+
+    zle vi-find-next-char
+}
+zle -N new-find-next-char new-find-next-char_f
+bindkey -M vicmd "f" new-find-next-char
+
+new-find-next-char-skip_f() {
+    if [[ $sneak_on -eq 1 ]]; then
+        unset sneak_on
+        region_highlight=("${orig_region_highlight[@]}")
+
+        # redisplay command-line?
+        # zle -cR ''
+    fi
+
+    zle vi-find-next-char-skip
+}
+zle -N new-find-next-char-skip new-find-next-char-skip_f
+bindkey -M vicmd "t" new-find-next-char-skip
+
+new-find-prev-char_f() {
+    if [[ $sneak_on -eq 1 ]]; then
+        unset sneak_on
+        region_highlight=("${orig_region_highlight[@]}")
+
+        # redisplay command-line?
+        # zle -cR ''
+    fi
+
+    zle vi-find-prev-char
+}
+zle -N new-find-prev-char new-find-prev-char_f
+bindkey -M vicmd "F" new-find-prev-char
+
+new-find-prev-char-skip_f() {
+    if [[ $sneak_on -eq 1 ]]; then
+        unset sneak_on
+        region_highlight=("${orig_region_highlight[@]}")
+
+        # redisplay command-line?
+        # zle -cR ''
+    fi
+
+    zle vi-find-prev-char-skip
+}
+zle -N new-find-prev-char-skip new-find-prev-char-skip_f
+bindkey -M vicmd "T" new-find-prev-char-skip
+
 insert_setsid() {
     zle beginning-of-line; zle -U "setsid ";
 }
