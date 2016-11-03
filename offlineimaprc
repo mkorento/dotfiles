@@ -10,7 +10,7 @@ remoterepository = PrimaryRemote
 
 [Repository PrimaryLocal]
 type = Maildir
-localfolders = ~/Private/mail/primary
+localfolders = ~/mail/primary
 nametrans = lambda folder: {'drafts':  '[Gmail]/Luonnokset',
                             'sent':    '[Gmail]/L&AOQ-hetetyt viestit',
                             'flagged': '[Gmail]/T&AOQ-hdell&AOQ- merkityt',

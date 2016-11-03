@@ -6,7 +6,7 @@ set my_sent="sent"
 set my_spam="spam"
 set my_trash="trash"
 
-set folder = "~/Private/mail/primary"
+set folder = "~/mail/primary"
 set spoolfile = "+INBOX"
 set postponed = "+drafts"
 set trash = "+trash"
