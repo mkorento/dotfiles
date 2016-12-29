@@ -13,6 +13,7 @@ keycode 18 = 9            parenleft   dagger               U2248
 keycode 19 = 0            parenright  degree               notequal
 keycode 20 = bracketleft  braceleft   lessthanequal        seconds
 keycode 21 = bracketright braceright  greaterthanequal     minutes
+keycode 22 = BackSpace    BackSpace   BackSpace            BackSpace
 keycode 24 = apostrophe   quotedbl    leftdoublequotemark  leftsinglequotemark
 keycode 25 = comma        less        rightdoublequotemark rightsinglequotemark
 keycode 26 = period       greater     ellipsis             periodcentered
@@ -49,6 +50,7 @@ keycode 58 = m            M           mu                   Greek_MU
 keycode 59 = w            W           ubreve               Ubreve
 keycode 60 = v            V           Greek_alpha          rightarrow
 keycode 61 = z            Z           Greek_sigma          Greek_SIGMA
+keycode 64 = Alt_L        Meta_L      Alt_L                Meta_L
 keycode 65 = space        space       nobreakspace         enspace
 keycode 91 = KP_Delete    KP_Decimal  KP_Delete            KP_Decimal
 keycode 94 = adiaeresis   odiaeresis  aring                Aring
@@ -59,14 +61,18 @@ keycode 134 = Super_R NoSymbol Super_R
 keycode 37 = Caps_Lock
 keycode 66 = Control_L
 
-clear mod1
-add mod1 = Alt_L Meta_L
-
 clear Lock
 add Lock = Caps_Lock
 
 clear Control
 add Control = Control_L Control_R
 
-!make Alt_Gr modeswitch
-keycode 108 = Mode_switch Mode_switch Mode_switch Mode_switch
+!Menu -> modeswitch
+keycode 135 = Mode_switch Mode_switch Mode_switch Mode_switch
+keycode 108 = Alt_R Alt_R Alt_R Alt_R
+
+! clear mod1
+! add mod1 = Alt_L Meta_L
+
+! ! clear Mod4
+! ! add Mod4    = Control_L
