@@ -30,10 +30,10 @@ URxvt.urlLauncher:      /usr/bin/chromium
 URxvt.matcher.button:   1
 
 URxvt.perl-ext-common: font-size,rotate-colors
-URxvt.keysym.C-Up:     perl:font-size:increase
-URxvt.keysym.C-Down:   perl:font-size:decrease
-URxvt.keysym.C-S-Up:   perl:font-size:incglobal
-URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.keysym.M-Up:     perl:font-size:increase
+URxvt.keysym.M-Down:   perl:font-size:decrease
+URxvt.keysym.M-S-Up:   perl:font-size:incglobal
+URxvt.keysym.M-S-Down: perl:font-size:decglobal
 
 ! URxvt*font: xft:terminus:Regular:antialias=true:hinting=true:pixelsize=19
 ! URxvt*boldFont: xft:terminus:Regular:antialias=true:hinting=true:pixelsize=19
