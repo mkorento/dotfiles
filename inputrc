@@ -53,3 +53,5 @@ set bell-style none
 set show-all-if-unmodified on
 set completion-map-case on
 set echo-control-characters off
+
+"\C-_": " "

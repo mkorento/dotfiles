@@ -51,11 +51,18 @@ keycode 59 = w            W           ubreve               Ubreve
 keycode 60 = v            V           Greek_alpha          rightarrow
 keycode 61 = z            Z           Greek_sigma          Greek_SIGMA
 keycode 64 = Alt_L        Meta_L      Alt_L                Meta_L
-keycode 65 = space        space       nobreakspace         enspace
+keycode 65 = Super_L      space       nobreakspace         enspace
 keycode 91 = KP_Delete    KP_Decimal  KP_Delete            KP_Decimal
 keycode 94 = adiaeresis   odiaeresis  aring                Aring
-keycode 133 = Super_L NoSymbol Super_L
+keycode 133 =
 keycode 134 = Super_R NoSymbol Super_R
+
+!switch Tab and left shift
+keycode 50 = Tab ISO_Left_Tab Tab ISO_Left_Tab
+keycode 23 = Shift_L NoSymbol Shift_L
+
+clear Shift
+add Shift = Shift_L Shift_R
 
 !switch control and caps lock
 keycode 37 = Caps_Lock

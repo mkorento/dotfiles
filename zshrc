@@ -584,6 +584,12 @@ edit-command-output() {
 }
 zle -N edit-command-output
 
+emit-space() {
+    zle -U " ";
+}
+zle -N emit-space
+bindkey "^_" emit-space
+
 noop() { }
 zle -N noop
 

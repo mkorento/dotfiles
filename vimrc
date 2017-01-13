@@ -62,6 +62,11 @@ imap <C-e> <esc>:w<CR>
 imap <C-a> <esc>:qa!<CR>
 cmap <C-e> <esc>:w<CR>
 cmap <C-a> <esc>:qa!<CR>
+map <C-_> <space>
+imap <C-_> <space>
+cmap <C-_> <space>
+imap <C-d> <NOP>
+imap <C-t> <NOP>
 
 nnoremap j gj
 nnoremap k gk
