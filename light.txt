@@ -15,7 +15,7 @@ URxvt.color9: #DC322F
 
 ! Green
 URxvt.color2: #00AF00
-URxvt.color10: #5FFF5F
+URxvt.color10: #00C88A
 
 ! Yellow
 URxvt.color3: #CB4B16
