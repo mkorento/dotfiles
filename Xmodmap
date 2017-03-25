@@ -27,7 +27,7 @@ keycode 33 = l            L           Greek_lambda         Greek_LAMBDA
 keycode 34 = slash        question    dead_acute           questiondown
 keycode 35 = equal        plus        dead_grave           plusminus
 keycode 36 = Return       Return      Return               Return
-keycode 38 = a            A           Adiaeresis           acircumflex
+keycode 38 = a            A           Greek_alpha          acircumflex
 keycode 39 = o            O           Odiaeresis           oslash
 keycode 40 = e            E           egrave               eacute
 keycode 41 = u            U           udiaeresis           Udiaeresis
@@ -37,9 +37,9 @@ keycode 44 = h            H           Left                 heart
 keycode 45 = t            T           Down                 U03D1
 keycode 46 = n            N           Up                   Ntilde
 keycode 47 = s            S           Right                scircumflex
-keycode 48 = minus        underscore  endash               emdash
+keycode 48 = space        bar         guillemotright       dead_macron
 keycode 49 = grave        asciitilde  dead_tilde           dead_caron
-keycode 51 = backslash    bar         guillemotright       dead_macron
+keycode 51 = minus        underscore  endash               emdash
 keycode 52 = semicolon    colon       dead_diaeresis       U2200
 keycode 53 = q            Q           Greek_omega          Greek_OMEGA
 keycode 54 = j            J           Greek_epsilon        U2203
@@ -48,21 +48,17 @@ keycode 56 = x            X           Greek_xi             Greek_XI
 keycode 57 = b            B           ssharp               Greek_beta
 keycode 58 = m            M           mu                   Greek_MU
 keycode 59 = w            W           ubreve               Ubreve
-keycode 60 = v            V           Greek_alpha          rightarrow
+keycode 60 = v            V           Adiaeresis           rightarrow
 keycode 61 = z            Z           Greek_sigma          Greek_SIGMA
 keycode 64 = Alt_L        Meta_L      Alt_L                Meta_L
-keycode 65 = Super_L      space       nobreakspace         enspace
+! fix: tmux
+! keycode 64 =
+keycode 65 = backslash    space       nobreakspace         enspace
 keycode 91 = KP_Delete    KP_Decimal  KP_Delete            KP_Decimal
 keycode 94 = adiaeresis   odiaeresis  aring                Aring
+! keycode 133 = Super_L NoSymbol Super_L
 keycode 133 =
 keycode 134 = Super_R NoSymbol Super_R
-
-!switch Tab and left shift
-keycode 50 = Tab ISO_Left_Tab Tab ISO_Left_Tab
-keycode 23 = Shift_L NoSymbol Shift_L
-
-clear Shift
-add Shift = Shift_L Shift_R
 
 !switch control and caps lock
 keycode 37 = Caps_Lock
