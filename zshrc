@@ -244,6 +244,11 @@ else
 $(get-git-branch)$prompt_char_color$%f '
 fi
 
+if [ -d "./venv" ]; then
+    VIRTUAL_ENV_DISABLE_PROMPT="true"; export VIRTUAL_ENV_DISABLE_PROMPT
+    . ./venv/bin/activate
+fi
+
 get-git-branch() {
     BRANCH_COLOR="%F{002}"
 
@@ -614,3 +619,15 @@ GPG_TTY=$(tty); export GPG_TTY
 if [ -f "/var/log/notifications/error" ]; then
     echo '\033[00;41mERRORS!\033[00m'
 fi
+
+export JAVA_HOME=/usr/lib/jvm/oracle-jdk-bin-1.8
+export PATH=$JAVA_HOME/bin:$PATH
+
+export SCALA_HOME=/home/mika/scala-2.12.1
+export PATH=$SCALA_HOME/bin:$PATH
+
+export SPARK_HOME=/home/mika/spark-2.1.0-bin-hadoop2.7
+export PATH=$SPARK_HOME/bin:$PATH
+
+# export PYTHONPATH=$SPARK_HOME/python
+# export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
