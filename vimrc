@@ -67,6 +67,7 @@ imap <C-_> <space>
 cmap <C-_> <space>
 imap <C-d> <NOP>
 imap <C-t> <NOP>
+imap <C-i> <NOP>
 
 nnoremap j gj
 nnoremap k gk
@@ -79,6 +80,7 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>m <C-w>s<C-w>j
 nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
+nnoremap <BS> <C-w>h
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -101,11 +103,12 @@ inoremap <Right> <NOP>
 cnoremap w!! w !sudo /usr/bin/tee % >/dev/null
 vnoremap <leader>a :call Incr()<CR>
 vnoremap <leader>d :call NumList()<CR>
-
+noremap <leader>; "0I <Esc>gqgqA"<Esc>{jr""
 
 nmap H <Plug>Sneak_S
 omap H <Plug>Sneak_S
 xmap H <Plug>Sneak_S
+imap <Tab> <Plug>snipMateNextOrTrigger
 
 onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
 xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
@@ -131,7 +134,7 @@ let g:gitgutter_max_signs = 10000
 let g:CSApprox_verbose_level = 0
 let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-let g:EasyMotion_leader_key = '<C-\>'
+let g:EasyMotion_leader_key = '<C-s>'
 let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlq;vz'
 let g:EasyMotion_verbose = 0
 let g:netrw_liststyle=0
@@ -265,6 +268,20 @@ function! NumList()
   let i = line('.') - line("'<") + 1
   let pad = repeat(" ",(len(n)-len(i)))
   exe "normal 0i".pad.i.". \<Esc>0"
+endf
+
+function! Quotes()
+  let line_count = line("'>") - line("'<") + 1
+  let line_i = line('.') - line("'<") + 1
+
+  if line_i == 1
+      normal0i"
+  else
+      normal0i 
+      if line_i == line_count
+          exe "normal 0A\"\<Esc>0"
+      endif
+  endif
 endf
 
 let s:status_file = substitute(expand('<sfile>:p'),
