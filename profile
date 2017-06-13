@@ -46,19 +46,7 @@ LC_ALL=en_US.utf8; export LC_ALL
 LANG=en_US.utf8; export LANG
 
 if [ "$(id -u)" != "0" ]; then
-    if [ -f "$HOME/.gpg-agent-info" ]; then
-        kill -s 0 `cut -d: -f 2 $HOME/.gpg-agent-info` 2>/dev/null
-
-        if [ "$?" -eq 0 ]; then
-            GPG_AGENT_INFO=`cat $HOME/.gpg-agent-info | cut -c 16-`;
-            export GPG_AGENT_INFO
-        else
-            rm "$HOME/.gpg-agent-info" >/dev/null 2>&1
-            eval $(gpg-agent --daemon --write-env-file "$HOME/.gpg-agent-info")
-        fi
-    else
-        eval $(gpg-agent --daemon --write-env-file "$HOME/.gpg-agent-info")
-    fi
+    eval $(gpg-agent --quiet --daemon)
 fi
 
 PATH=/usr/non-portage/bin:$PATH
