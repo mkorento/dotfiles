@@ -218,6 +218,22 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+function! GenerateReference()
+    let chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    let ref=''
+
+    for i in [1,2]
+        " numero väliltä 0-61
+        " let i=system("strings -n 1 < /dev/urandom | grep -o '[[:digit:]]'  | head -c1")
+        let o=system("echo $(($RANDOM%62))")
+
+        let ref=ref . chars[o]
+    endfor
+
+    exe "normal a_".ref."\<Esc>"
+endf
+command Ref call GenerateReference()
+
 function! ClearRegisters()
     let regs='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-="*+'
     let i=0
@@ -277,7 +293,7 @@ function! Quotes()
   if line_i == 1
       normal0i"
   else
-      normal0i 
+      normal0i
       if line_i == line_count
           exe "normal 0A\"\<Esc>0"
       endif
