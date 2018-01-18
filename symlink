@@ -10,3 +10,5 @@ for file in $files; do
     mv --backup=numbered $HOME/.$file $olddir 2>/dev/null
     ln -s ./config/$file $HOME/.$file
 done
+
+git update-index --skip-worktree theme
