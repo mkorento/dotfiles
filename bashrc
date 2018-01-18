@@ -84,6 +84,7 @@ fi
 GPG_TTY=$(tty); export GPG_TTY
 
 stty -ixon
+stty -ixoff
 
 if [ -f "/var/log/notifications/error" ]; then
     echo -e '\033[00;41mERRORS!\033[00m'
