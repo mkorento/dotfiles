@@ -107,6 +107,7 @@ nmap H <Plug>Sneak_S
 omap H <Plug>Sneak_S
 xmap H <Plug>Sneak_S
 imap <Tab> <Plug>snipMateNextOrTrigger
+nmap z <Plug>VinegarUp
 
 onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
 xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
