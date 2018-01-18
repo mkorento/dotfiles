@@ -64,9 +64,6 @@ cyan="\033[36m"; export cyan
 white="\033[37m"; export white
 reset="\033[0m"; export reset
 
-stty -ixon
-stty -ixoff
-
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . $HOME/.bashrc
