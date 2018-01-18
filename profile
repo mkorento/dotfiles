@@ -50,7 +50,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 PATH=/usr/non-portage/bin:$PATH
-BROWSER='/usr/bin/chromium'; export BROWSER
+BROWSER='/usr/bin/chromium-browser'; export BROWSER
 if [ "$TERM" = "rxvt-unicode-256color" ]; then
     TERM=rxvt-unicode-256color-noit; export TERM
 fi
