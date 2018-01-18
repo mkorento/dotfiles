@@ -45,10 +45,6 @@ LESS="--RAW-CONTROL-CHARS"; export LESS
 LC_ALL=en_US.utf8; export LC_ALL
 LANG=en_US.utf8; export LANG
 
-if [ "$(id -u)" != "0" ]; then
-    eval $(gpg-agent --quiet --daemon)
-fi
-
 PATH=/usr/non-portage/bin:$PATH
 BROWSER='/usr/bin/chromium-browser'; export BROWSER
 if [ "$TERM" = "rxvt-unicode-256color" ]; then
