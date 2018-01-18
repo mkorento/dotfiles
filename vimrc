@@ -76,8 +76,6 @@ nnoremap <leader>x <C-x>
 nnoremap <leader>2 :tabnext<cr>
 nnoremap <leader>1 :tabprevious<cr>
 nnoremap <leader><leader> <c-^>
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>m <C-w>s<C-w>j
 nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
 nnoremap <BS> <C-w>h
