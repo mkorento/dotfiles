@@ -12,3 +12,9 @@ for file in $files; do
 done
 
 git update-index --skip-worktree theme
+
+cd vim/bundle/command-t/ruby/command-t
+ruby extconf.rb >/dev/null 2>&1 && make >/dev/null 2>&1
+if [ ! $? -eq 0 ]; then
+    echo "Failed to setup command-t"
+fi
