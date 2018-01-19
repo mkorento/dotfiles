@@ -68,7 +68,7 @@ call s:highlight( 'IncSearch'   , 'none'   , 'background'  , 'blue'          )
 
 call s:highlight( 'LineNr'      , 'none'   , 'darkblue'   , 'none'           )
 call s:highlight( 'CursorLineNr', 'bold'   , 'darkgreen'  , 'none'           )
-call s:highlight( 'MatchParen'  , 'bold'   , 'red'        , 'gray'           )
+call s:highlight( 'MatchParen'  , 'bold'   , 'red'        , 'none'           )
 call s:highlight( 'MoreMsg'     , 'bold'   , 'green'      , 'none'           )
 call s:highlight( 'NonText'     , 'none'   , 'blue'       , 'none'           )
 call s:highlight( 'Pmenu'       , 'none'   , 'darkblue'   , 'gray'           )
