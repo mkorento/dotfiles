@@ -28,6 +28,7 @@ let s:rgb_map = {
             \ "background": "4",
             \ "darkblue": "4",
             \ "violet": "5",
+            \ "darkcyan": "6",
             \ "gray": "7",
             \ "darkgray": "8",
             \ "red": "9",
@@ -36,6 +37,7 @@ let s:rgb_map = {
             \ "blue": "12",
             \ "magenta": "13",
             \ "cyan": "14",
+            \ "white": "15",
             \ "fixme": "51" }
 
 call s:highlight( 'Normal'      , 'none'   , 'gray'        , 'none'       )
@@ -49,7 +51,7 @@ call s:highlight( 'Statement'   , 'none'   , 'yellow'      , 'none'       )
 call s:highlight( 'Type'        , 'none'   , 'blue'        , 'none'       )
 call s:highlight( 'Constant'    , 'none'   , 'gray'        , 'none'       )
 call s:highlight( 'Identifier'  , 'none'   , 'cyan'        , 'none'       )
-call s:highlight( 'Search'      , 'none'   , 'darkblue'    , 'darkred'    )
+call s:highlight( 'Search'      , 'none'   , 'white'       , 'blue'       )
 call s:highlight( 'Todo'        , 'none'   , 'darkyellow'  , 'black'      )
 call s:highlight( 'Comment'     , 'none'   , 'darkblue'    , 'none'       )
 call s:highlight( 'VertSplit'   , 'none'   , 'gray'        , 'darkblue'   )
@@ -61,10 +63,10 @@ call s:highlight( 'DiffChange'  , 'none'   , 'black'       , 'darkblue'   )
 call s:highlight( 'DiffDelete'  , 'none'   , 'red'         , 'darkred'    )
 call s:highlight( 'DiffText'    , 'bold'   , 'darkyellow'  , 'darkgray'   )
 call s:highlight( 'Directory'   , 'none'   , 'cyan'        , 'none'       )
-call s:highlight( 'ErrorMsg'    , 'none'   , 'background'  , 'darkred'    )
+call s:highlight( 'ErrorMsg'    , 'none'   , 'white'       , 'darkred'    )
 call s:highlight( 'FoldColumn'  , 'none'   , 'gray'        , 'none'       )
 call s:highlight( 'Folded'      , 'none'   , 'black'       , 'blue'       )
-call s:highlight( 'IncSearch'   , 'none'   , 'background'  , 'blue'       )
+call s:highlight( 'IncSearch'   , 'none'   , 'white'       , 'darkred'    )
 
 call s:highlight( 'LineNr'      , 'none'   , 'darkblue'   , 'none'        )
 call s:highlight( 'CursorLineNr', 'bold'   , 'darkgreen'  , 'none'        )
@@ -78,8 +80,8 @@ call s:highlight( 'PmenuThumb'  , 'none'   , 'none'       , 'background'  )
 call s:highlight( 'Question'    , 'none'   , 'green'      , 'none'        )
 call s:highlight( 'SignColumn'  , 'none'   , 'darkblue'   , 'none'        )
 call s:highlight( 'SpecialKey'  , 'none'   , 'blue'       , 'none'        )
-call s:highlight( 'StatusLine'  , 'none'   , 'green'      , 'background'  )
-call s:highlight( 'StatusLineNC', 'reverse', 'none'       , 'none'        )
+call s:highlight( 'StatusLine'  , 'none'   , 'black'      , 'darkgray'    )
+call s:highlight( 'StatusLineNC', 'none'   , 'black'      , 'black'       )
 call s:highlight( 'TabLineFill' , 'none'   , 'darkblue'   , 'darkblue'    )
 call s:highlight( 'TabLine'     , 'none'   , 'darkblue'   , 'darkblue'    )
 call s:highlight( 'TabLineSel'  , 'bold'   , 'none'       , 'none'        )

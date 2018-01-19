@@ -28,6 +28,7 @@ let s:rgb_map = {
             \ "darkblue": "4",
             \ "violet": "5",
             \ "gray": "7",
+            \ "darkgray": "8",
             \ "red": "9",
             \ "green": "10",
             \ "yellow": "11",
@@ -48,7 +49,7 @@ call s:highlight( 'Statement'   , 'none'   , 'yellow'      , 'none'          )
 call s:highlight( 'Type'        , 'none'   , 'blue'        , 'none'          )
 call s:highlight( 'Constant'    , 'none'   , 'darkblue'    , 'none'          )
 call s:highlight( 'Identifier'  , 'none'   , 'cyan'        , 'none'          )
-call s:highlight( 'Search'      , 'none'   , 'gray'        , 'red'           )
+call s:highlight( 'Search'      , 'none'   , 'background'  , 'red'           )
 call s:highlight( 'Todo'        , 'none'   , 'darkyellow'  , 'none'          )
 call s:highlight( 'Comment'     , 'none'   , 'gray'        , 'none'          )
 call s:highlight( 'VertSplit'   , 'none'   , 'darkblue'    , 'gray'          )
@@ -77,8 +78,8 @@ call s:highlight( 'PmenuThumb'  , 'none'   , 'none'       , 'background'     )
 call s:highlight( 'Question'    , 'none'   , 'green'      , 'none'           )
 call s:highlight( 'SignColumn'  , 'none'   , 'darkblue'   , 'background'     )
 call s:highlight( 'SpecialKey'  , 'none'   , 'blue'       , 'none'           )
-call s:highlight( 'StatusLine'  , 'none'   , 'darkyellow' , 'background'     )
-call s:highlight( 'StatusLineNC', 'reverse', 'none'       , 'none'           )
+call s:highlight( 'StatusLine'  , 'none'   , 'background' , 'gray'           )
+call s:highlight( 'StatusLineNC', 'none'   , 'background' , 'background'     )
 call s:highlight( 'TabLineFill' , 'none'   , 'darkblue'   , 'darkblue'       )
 call s:highlight( 'TabLine'     , 'none'   , 'darkblue'   , 'darkblue'       )
 call s:highlight( 'TabLineSel'  , 'bold'   , 'none'       , 'none'           )
