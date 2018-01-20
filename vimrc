@@ -56,12 +56,12 @@ map <silent><leader>= :close<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 map <C-e> <esc>:w<CR>
-map <C-a> <esc>:qa!<CR>
+map <C-a> <esc>:silent CQuit<CR>
 map <leader>r <esc>:silent !test -f update_pdf && ./update_pdf<CR><esc>:redraw!<CR>
 imap <C-e> <esc>:w<CR>
-imap <C-a> <esc>:qa!<CR>
+imap <C-a> <esc>:silent CQuit<CR>
 cmap <C-e> <esc>:w<CR>
-cmap <C-a> <esc>:qa!<CR>
+cmap <C-a> <esc>:silent CQuit<CR>
 map <C-_> <space>
 imap <C-_> <space>
 cmap <C-_> <space>
@@ -216,6 +216,14 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
+
+function! ConfirmQuit()
+    let l:confirmed = confirm("Do you really want to quit?", "&Yes\n&No", 1)
+    if l:confirmed == 1
+        qall!
+    endif
+endf
+command CQuit call ConfirmQuit()
 
 function! GenerateReference()
     let chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
