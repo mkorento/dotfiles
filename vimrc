@@ -313,7 +313,7 @@ let s:status_file = substitute(expand('<sfile>:p'),
 
 let g:theme = "dark"
 function! SetTheme()
-    let in = readfile('/home/mika/.theme')
+    let in = readfile($HOME.'/.theme')
     if in[0] != g:theme
         if in[0] == "light"
             colorscheme mellowy
