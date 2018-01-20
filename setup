@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-dir=$HOME/config
+confdir=$HOME/config
 olddir=$HOME/old_config
 files="vimrc emacs inputrc bashrc Xmodmap Xresources xinitrc exrc tmux.conf \
        gitconfig gitignore offlineimaprc zshrc vim emacs.d msmtprc mutt \
@@ -11,15 +11,21 @@ for file in $files; do
     ln -s ./config/$file $HOME/.$file
 done
 
-test ! -e $HOME/.i3 && mkdir $HOME/.i3
-test -e $HOME/.i3/config && mv --backup=numbered $HOME/.i3/config $olddir
-ln -s $dir/i3config $HOME/.i3/config
-
 git update-index --skip-worktree theme
 
 if [ -f "$HOME/patches/config_patch" ]; then
     $HOME/patches/config_patch
 fi
+
+command -v apt-get >/dev/null 2>&1 && $confdir/install_packages
+
+test ! -e $HOME/.i3 && mkdir $HOME/.i3
+test -e $HOME/.i3/config && mv --backup=numbered $HOME/.i3/config $olddir
+ln -s $confdir/i3config $HOME/.i3/config
+
+test ! -e $HOME/.config/i3status && mkdir -p $HOME/.config/i3status
+test -e $HOME/.config/i3status/config && mv --backup=numbered $HOME/.config/i3status/config $olddir
+ln -s $confdir/i3status $HOME/.config/i3status/config
 
 cd vim/bundle/command-t/ruby/command-t
 ruby extconf.rb >/dev/null 2>&1 && make >/dev/null 2>&1

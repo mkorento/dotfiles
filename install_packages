@@ -1,0 +1,68 @@
+#!/bin/bash
+sudo apt-get install --assume-yes i3 \
+i3status \
+rxvt-unicode \
+zsh \
+ruby \
+ruby-dev \
+python-dev \
+exuberant-ctags \
+silversearcher-ag \
+libx11-dev \
+libncurses5 \
+libncurses5-dev \
+xosd-bin \
+xdotool \
+xbindkeys \
+xvkbd \
+feh \
+zathura \
+libasound2-plugin-equal \
+mpd \
+ncmpcpp \
+mplayer \
+swh-plugins \
+mutt \
+msmtp \
+sendmail \
+xfonts-terminus
+
+sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
+sudo chsh -s /usr/bin/zsh $USER
+
+test ! -e $HOME/sources && mkdir $HOME/sources
+if [ ! -e $HOME/sources/vim ]; then
+    git clone https://github.com/vim/vim.git $HOME/sources/vim
+fi
+
+command -v vim >/dev/null 2>&1
+if [ ! $? -eq 0 ]; then
+    cd $HOME/sources/vim
+    rm -f src/auto/config.cache
+    ./configure --prefix=/usr \
+    --with-x \
+    --with-features=big \
+    --enable-rubyinterp \
+    --enable-pythoninterp \
+    --enable-gui=athena \
+    --enable-fail-if-missing \
+    --disable-darwin \
+    --disable-netbeans \
+    --enable-cscope \
+    --enable-xim \
+    --enable-xsmp_interact \
+    --disable-sniff \
+    --mandir=/usr/share/man | tee compile_output && make && sudo make install
+fi
+
+if [ ! -e $HOME/.oh-my-zsh ]; then
+    git clone http://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+    cd $HOME/.oh-my-zsh
+    git checkout efd6d4d5930a0f407f1107dc7d864e5c67a0cac6
+fi
+
+cd /etc/fonts
+cd conf.d
+sudo rm /etc/fonts/conf.d/10*
+sudo rm -rf 70-no-bitmaps.conf
+sudo ln -s ../conf.avail/70-yes-bitmaps.conf .
