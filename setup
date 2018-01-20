@@ -11,6 +11,10 @@ for file in $files; do
     ln -s ./config/$file $HOME/.$file
 done
 
+test ! -e $HOME/.i3 && mkdir $HOME/.i3
+test -e $HOME/.i3/config && mv --backup=numbered $HOME/.i3/config $olddir
+ln -s $dir/i3config $HOME/.i3/config
+
 git update-index --skip-worktree theme
 
 if [ -f "$HOME/patches/config_patch" ]; then
