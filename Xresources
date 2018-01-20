@@ -40,11 +40,6 @@ URxvt*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
 ! URxvt*font:xft:Terminus_nybergh:Regular:antialias=true:hinting=true:pixelsize=20
 ! URxvt*boldFont:xft:Terminus_nybergh:Bold:antialias=true:hinting=true:pixelsize=20
 
-! URxvt*font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
-! URxvt*boldFont: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
-
-xterm*faceName: Terminus_nybergh:antialias=true:hinting=true:size=30
-
 Xft*dpi:                96
 Xft*antialias:          true
 Xft*hinting:            full
