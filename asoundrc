@@ -1,0 +1,64 @@
+defaults.ctl.card 2
+defaults.pcm.card 2
+defaults.pcm.device 0
+defaults.pcm.subdevice 0
+
+pcm.!default master
+# NormalVol pitää olla 50
+# EqualizedVol pitää olla 35
+
+# master preamp volume for everything
+pcm.master {
+    type softvol
+    slave.pcm "normal" ###
+    control.name "MasterVol"
+    control.card 2 # gentoossa tämä oli 0, debianissa nyt 1
+    min_dB -30.0;
+    max_dB 0.0;
+}
+
+# normal channel (preamp for normal playback)
+pcm.normal {
+    type softvol
+    slave.pcm "output"
+    control.name "NormalVol"
+#   control.card 2
+    min_dB -30.0;
+    max_dB 0.0;
+}
+
+# meq channel (preamp for equalized playback)
+pcm.meq {
+  type softvol
+  slave.pcm "equal"
+  control.name "EqualizedVol"
+# control.card 2
+  min_dB -30.0
+  max_dB 0.0
+  #resolution 6
+}
+
+# eq core (needs alsaequal package)
+pcm.equal {
+  type plug;
+  slave.pcm "plugequal";
+}
+
+ctl.equal {
+  type equal;
+  library "/usr/lib/ladspa/mbeq_1197.so";
+  module "mbeq";
+}
+
+pcm.plugequal {
+  type equal;
+  slave.pcm "output"
+  library "/usr/lib/ladspa/mbeq_1197.so";
+  module "mbeq";
+}
+
+# final output stage
+pcm.output {
+    type plug;
+    slave.pcm "dmix"
+}
