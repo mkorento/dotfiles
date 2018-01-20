@@ -7,7 +7,7 @@
 #define darkred     #AF0000
 #define red         #DC322F
 #define darkgreen   #00AF00
-#define green       #859900
+#define green       #00C88A
 #define darkyellow  #CB4B16
 #define yellow      #B58900
 #define darkblue    #586E75
@@ -120,7 +120,7 @@ xterm*color1  : #CC0000
 xterm*color9  : #EF2929
 !green
 xterm*color2  : #00AF00
-xterm*color10 : #8AE234
+xterm*color10 : #00C88A
 !yellow
 xterm*color3  : #C4A000
 xterm*color11 : #FFAF00
