@@ -35,10 +35,10 @@ URxvt.keysym.M-Down:   perl:font-size:decrease
 URxvt.keysym.M-S-Up:   perl:font-size:incglobal
 URxvt.keysym.M-S-Down: perl:font-size:decglobal
 
-! URxvt*font: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
-! URxvt*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
-URxvt*font:xft:Terminus_nybergh:Regular:antialias=true:hinting=true:pixelsize=20
-URxvt*boldFont:xft:Terminus_nybergh:Bold:antialias=true:hinting=true:pixelsize=20
+URxvt*font: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
+URxvt*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
+! URxvt*font:xft:Terminus_nybergh:Regular:antialias=true:hinting=true:pixelsize=20
+! URxvt*boldFont:xft:Terminus_nybergh:Bold:antialias=true:hinting=true:pixelsize=20
 
 ! URxvt*font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
 ! URxvt*boldFont: -*-terminus-medium-*-*-*-18-*-*-*-*-*-*-*
