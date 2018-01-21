@@ -41,6 +41,7 @@ set modeline
 set nojoinspaces
 set wildignore+=venv/*,**/venv/**,*.pyc
 set textwidth=80
+set ruler
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
