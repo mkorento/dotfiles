@@ -78,9 +78,6 @@ alias grep='grep --color=always'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias vim=nvi
-alias vi=nvi
-
 alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
 
 alias ga="git add"

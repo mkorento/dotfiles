@@ -1,5 +1,5 @@
 [core]
-	editor = nvi
+	editor = vim
 	excludesfile = ~/.gitignore
 	pager = less -S
 [rerere]

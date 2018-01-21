@@ -35,7 +35,7 @@ if [ -d "$HOME/.pyenv/bin" ]; then
     eval "$(pyenv init -)"
 fi
 
-EDITOR=nvi; export EDITOR
+EDITOR=vim; export EDITOR
 PAGER=/usr/bin/less; export PAGER
 
 # Get color support for 'less'

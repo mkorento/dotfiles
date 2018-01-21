@@ -86,6 +86,4 @@ xterm*color14 : cyan
 xterm*color7  : gray
 xterm*color15 : white
 
-URxvt.keysym.M-C-l:   rotate-colors:next
-
 ! vim: ft=xdefaults
