@@ -93,6 +93,7 @@ alias gco="git checkout"
 alias gcm="git checkout master"
 alias gre="git reset"
 alias gwc="git whatchanged -p --abbrev-commit --pretty=medium"
+alias grv="git remote -vvv"
 
 cd () { builtin cd "$@" && ls; }
 
