@@ -37,6 +37,9 @@ URxvt.keysym.M-S-Down: perl:font-size:decglobal
 
 URxvt*font: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
 URxvt*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
+
+xterm*font: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
+xterm*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
 ! URxvt*font:xft:Terminus_nybergh:Regular:antialias=true:hinting=true:pixelsize=20
 ! URxvt*boldFont:xft:Terminus_nybergh:Bold:antialias=true:hinting=true:pixelsize=20
 
@@ -62,8 +65,8 @@ URxvt*colorUL: #86a2b0
 
 URxvt*foreground: fg_dark
 URxvt*background: bg_dark
-/* URxvt*foreground: fg_light */
-/* URxvt*background: bg_light */
+xterm*foreground: fg_dark
+xterm*background: bg_dark
 
 URxvt.cursorColor: #aaaaaa
 
@@ -107,31 +110,22 @@ URxvt*color7  : gray
 !white / background
 URxvt*color15 : white
 
-!black
-xterm*color0  : #2E3436
-xterm*color8  : #555753
-!red
-xterm*color1  : #CC0000
-xterm*color9  : #EF2929
-!green
-xterm*color2  : #00AF00
-xterm*color10 : #00C88A
-!yellow
-xterm*color3  : #C4A000
-xterm*color11 : #FFAF00
-!blue
-xterm*color4  : #3465A4
-xterm*color12 : #ffafaf
-!magenta
-xterm*color5  : #75507B
-xterm*color13 : #AD7FA8
-!cyan
-xterm*color6  : #06989A
-!*color14 : #34E2E2
-xterm*color14 : #afd7ff
-!white
-xterm*color7  : #D3D7CF
-xterm*color15 : #EEEEEC
+xterm*color0  : black
+xterm*color8  : darkgrey
+xterm*color1  : darkred
+xterm*color9  : red
+xterm*color2  : darkgreen
+xterm*color10 : green
+xterm*color3  : darkyellow
+xterm*color11 : yellow
+xterm*color4  : darkblue
+xterm*color12 : blue
+xterm*color5  : darkmagenta
+xterm*color13 : magenta
+xterm*color6  : darkcyan
+xterm*color14 : cyan
+xterm*color7  : gray
+xterm*color15 : white
 
 URxvt.keysym.M-C-l:   rotate-colors:next
 
