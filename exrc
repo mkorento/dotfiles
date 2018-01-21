@@ -1,2 +1,2 @@
-set compatible
-colorscheme system16
+set number
+set nomodeline
