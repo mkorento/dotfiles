@@ -27,7 +27,6 @@ sendmail \
 xfonts-terminus
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
-sudo chsh -s /usr/bin/zsh $USER
 
 test ! -e $HOME/sources && mkdir $HOME/sources
 if [ ! -e $HOME/sources/vim ]; then
@@ -52,12 +51,6 @@ if [ ! $? -eq 0 ]; then
     --enable-xsmp_interact \
     --disable-sniff \
     --mandir=/usr/share/man | tee compile_output && make && sudo make install
-fi
-
-if [ ! -e $HOME/.oh-my-zsh ]; then
-    git clone http://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-    cd $HOME/.oh-my-zsh
-    git checkout efd6d4d5930a0f407f1107dc7d864e5c67a0cac6
 fi
 
 cd /etc/fonts
