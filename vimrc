@@ -70,6 +70,10 @@ imap <C-d> <NOP>
 imap <C-t> <NOP>
 imap <C-i> <NOP>
 
+nmap v <nop>
+nmap <S-v> <nop>
+nmap <C-v> <nop>
+
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>a <C-a>
