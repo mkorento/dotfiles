@@ -30,7 +30,6 @@ URxvt*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
 
 xterm*font: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
 xterm*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
-
 ! URxvt*font:xft:Terminus_nybergh:Regular:antialias=true:hinting=true:pixelsize=20
 ! URxvt*boldFont:xft:Terminus_nybergh:Bold:antialias=true:hinting=true:pixelsize=20
 
@@ -86,3 +85,7 @@ xterm*color6  : darkcyan
 xterm*color14 : cyan
 xterm*color7  : gray
 xterm*color15 : white
+
+URxvt.keysym.M-C-l:   rotate-colors:next
+
+! vim: ft=xdefaults
