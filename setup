@@ -8,13 +8,13 @@ files="vimrc emacs inputrc bashrc Xmodmap Xresources xinitrc exrc tmux.conf \
 mkdir -p $olddir
 for file in $files; do
     mv --backup=numbered $HOME/.$file $olddir 2>/dev/null
-    ln -s ./config/$file $HOME/.$file
+    ln -s ./config/$file $HOME/.$file 2>/dev/null
 done
 
 test ! -e $HOME/scripts && mkdir $HOME/scripts
-ln -s ./config/tmx $HOME/scripts/tmx
+cp tmx $HOME/scripts/tmx
 
-ln -s ./config/xbindkeysrc $HOME/.xbindkeysrc
+ln -s ./config/xbindkeysrc $HOME/.xbindkeysrc 2>/dev/null
 
 git update-index --skip-worktree theme
 
@@ -26,11 +26,11 @@ command -v apt-get >/dev/null 2>&1 && $confdir/install_packages
 
 test ! -e $HOME/.i3 && mkdir $HOME/.i3
 test -e $HOME/.i3/config && mv --backup=numbered $HOME/.i3/config $olddir
-ln -s $confdir/i3config $HOME/.i3/config
+ln -s $confdir/i3config $HOME/.i3/config 2>/dev/null
 
 test ! -e $HOME/.config/i3status && mkdir -p $HOME/.config/i3status
 test -e $HOME/.config/i3status/config && mv --backup=numbered $HOME/.config/i3status/config $olddir
-ln -s $confdir/i3status $HOME/.config/i3status/config
+ln -s $confdir/i3status $HOME/.config/i3status/config 2>/dev/null
 
 cd vim/bundle/command-t/ruby/command-t
 ruby extconf.rb >/dev/null 2>&1 && make >/dev/null 2>&1
