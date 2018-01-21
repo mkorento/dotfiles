@@ -80,6 +80,10 @@ alias gcm="git checkout master"
 
 cd () { builtin cd "$@" && ls; }
 
+if [ -n "$TMUX" ]; then
+    ls --color=auto
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
