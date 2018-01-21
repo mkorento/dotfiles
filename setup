@@ -11,6 +11,9 @@ for file in $files; do
     ln -s ./config/$file $HOME/.$file
 done
 
+test ! -e $HOME/scripts && mkdir $HOME/scripts
+ln -s ./config/tmx $HOME/scripts/tmx
+
 ln -s ./config/xbindkeysrc $HOME/.xbindkeysrc
 
 git update-index --skip-worktree theme

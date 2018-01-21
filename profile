@@ -19,10 +19,6 @@ if [ -d "$HOME/tmpscripts" ]; then
     PATH=$PATH:$HOME/tmpscripts
 fi
 
-if [ -d "$HOME/heroku/bin" ]; then
-    PATH="$HOME/heroku/bin:$PATH"
-fi
-
 unset RUBYOPT
 if [ -d "$HOME/.rbenv/bin" ]; then
     PATH="$HOME/.rbenv/bin:$PATH"
@@ -45,11 +41,7 @@ LESS="--RAW-CONTROL-CHARS"; export LESS
 LC_ALL=en_US.utf8; export LC_ALL
 LANG=en_US.utf8; export LANG
 
-PATH=/usr/non-portage/bin:$PATH
 BROWSER='/usr/bin/chromium-browser'; export BROWSER
-if [ "$TERM" = "rxvt-unicode-256color" ]; then
-    TERM=rxvt-unicode-256color-noit; export TERM
-fi
 
 export PATH
 export MANPATH
