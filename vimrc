@@ -74,8 +74,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <leader>a <C-a>
 nnoremap <leader>x <C-x>
-nnoremap <leader>2 :tabnext<cr>
-nnoremap <leader>1 :tabprevious<cr>
 nnoremap <leader><leader> <c-^>
 nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
@@ -85,8 +83,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap Q @@
-nnoremap <silent> <F4> :TlistToggle<CR>
-nnoremap <silent> <F5> :GundoToggle<CR>
 noremap <Up>    <NOP>
 noremap <Down>  <NOP>
 noremap <Left>  <NOP>
@@ -121,40 +117,30 @@ xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
 command! Q q
 command! W w
-command! Qa qa
-command! QA qa
-command! Aq qa
-command! AQ qa
-command! Qa1 qa!
-command! QA1 qa!
-command! Aq1 qa!
-command! AQ1 qa!
+cmap qa call No()
+cmap qa! call No()
+cmap wqa call No()
+cmap wqa! call No()
 
-let g:gitgutter_max_signs = 10000
 let g:CSApprox_verbose_level = 0
-let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 let g:EasyMotion_leader_key = '<C-s>'
 let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlq;vz'
 let g:EasyMotion_verbose = 0
 let g:netrw_liststyle=0
 let g:netrw_preview=1
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-let g:gundo_preview_bottom=1
-let g:gundo_preview_height=25
 let NERDTreeShowLineNumbers=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeHijackNetrw=0
 let g:netrw_browsex_viewer= $BROWSER
 let g:netrw_dirhistmax = 0
+
 " Use whole "words" when opening URLs.
 " This avoids cutting off parameters (after '?') and anchors (after '#').
 " See http://vi.stackexchange.com/q/2801/1631
 let g:netrw_gx="<cWORD>"
-let g:syntastic_racket_code_ayatollah_script = $HOME.'/.vim/bin/code-ayatollah'
 let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_c_checkers = ['gcc', 'make']
-let g:syntastic_racket_checkers = ['code_ayatollah']
 let g:syntastic_python_checkers = ['flake8', 'pep257', 'pep8', 'pyflakes',
                                   \'pylama', 'pylint', 'python']
 
@@ -166,7 +152,6 @@ let g:niji_light_colours = [[248,  'NONE'], [37,  'NONE'], [207, 'NONE'], [124, 
 let g:niji_dark_colours = g:niji_light_colours
 
 if has("autocmd")
-    autocmd BufReadPost *.rkt,*.rktl set filetype=racket
     autocmd FileType mail,gitcommit,gitsendemail setlocal textwidth=72
     autocmd BufEnter,WinEnter * 2mat ErrorMsg '\%81v.'
     autocmd BufWritePost * call SetTheme()
@@ -174,8 +159,6 @@ if has("autocmd")
     autocmd WinEnter * :wincmd =
     autocmd BufNewFile,BufReadPost *.md,*.markdown,*.mdown,*.mkd,*.mkdn
     \ set filetype=markdown
-    autocmd filetype lisp,scheme,art,racket
-                \ setlocal equalprg=$HOME/.vim/bin/scmindent/scmindent.rkt
     autocmd BufRead,BufNewFile *mutt-*
                 \ setfiletype mail set spell spelllang=fi,en
     autocmd BufReadPost *
@@ -199,25 +182,6 @@ if has("autocmd")
     augroup END
 endif
 
-if has('python')
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-endif
-
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
-endif
-
 function! ConfirmQuit()
     let l:confirmed = confirm("Do you really want to quit?", "&Yes\n&No", 1)
     if l:confirmed == 1
@@ -231,8 +195,6 @@ function! GenerateReference()
     let ref=''
 
     for i in [1,2]
-        " numero väliltä 0-61
-        " let i=system("strings -n 1 < /dev/urandom | grep -o '[[:digit:]]'  | head -c1")
         let o=system("echo $(($RANDOM%62))")
 
         let ref=ref . chars[o]
@@ -306,6 +268,10 @@ function! Quotes()
           exe "normal 0A\"\<Esc>0"
       endif
   endif
+endf
+
+function! No()
+    echo "No."
 endf
 
 let s:status_file = substitute(expand('<sfile>:p'),
