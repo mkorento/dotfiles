@@ -1,0 +1,5 @@
+#!/bin/bash
+sed --in-place -e 's/colorscheme solarized/colorscheme mellowy/' vimrc
+sed --in-place -e 's/URxvt\*foreground: fg_dark/URxvt\*foreground: fg_light/' Xresources
+sed --in-place -e 's/URxvt\*background: bg_dark/URxvt\*background: bg_light/' Xresources
+xrdb -merge ~/.Xresources
