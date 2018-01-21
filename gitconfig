@@ -1,5 +1,5 @@
 [core]
-	editor = vim
+	editor = nvi
 	excludesfile = ~/.gitignore
 	pager = less -S
 [rerere]
@@ -34,9 +34,9 @@
 	dump = cat-file -p
 	lg = log --date-order --decorate --color --graph --pretty=format:'%Cred%h\
     %Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' \
-    --abbrev-commit --all
+    --abbrev-commit
 	lg1 = log --date-order --decorate --color --graph --pretty=format:'%Cred%h\
     %Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' \
-    --abbrev-commit
+    --abbrev-commit --all
 
 # vim: ft=gitconfig
