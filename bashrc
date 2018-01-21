@@ -64,6 +64,7 @@ alias egrep='egrep --color=auto'
 
 alias vim=nvi
 alias vi=nvi
+alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
