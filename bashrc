@@ -66,6 +66,28 @@ if [ -f "$HOME/.aliases" ]; then
     . "$HOME/.aliases"
 fi
 
+alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
+
+alias ga="git add"
+alias gb="git branch"
+alias gst"=git status"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gl="git pull"
+alias gp="git push"
+alias gc="git commit -v"
+alias gc!="git commit -v --amend"
+alias gco="git checkout"
+alias gcm="git checkout master"
+alias gre="git reset"
+alias gwc="git whatchanged -p --abbrev-commit --pretty=medium"
+
+cd () { builtin cd "$@" && ls; }
+
+if [ -n "$TMUX" ]; then
+    ls --color=auto
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
