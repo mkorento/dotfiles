@@ -158,7 +158,6 @@ let g:niji_dark_colours = g:niji_light_colours
 if has("autocmd")
     autocmd FileType mail,gitcommit,gitsendemail setlocal textwidth=72
     autocmd BufEnter,WinEnter * 2mat ErrorMsg '\%81v.'
-    autocmd BufWritePost * call SetTheme()
     autocmd WinEnter * :set winfixheight
     autocmd WinEnter * :wincmd =
     autocmd BufNewFile,BufReadPost *.md,*.markdown,*.mdown,*.mkd,*.mkdn
@@ -278,34 +277,8 @@ function! No()
     echo "No."
 endf
 
-let s:status_file = substitute(expand('<sfile>:p'),
-                               \'changecolour.vim$',
-                               \'.misc/status', '')
-
-let g:theme = "dark"
-function! SetTheme()
-    let in = readfile($HOME.'/.theme')
-    if in[0] != g:theme
-        if in[0] == "light"
-            colorscheme mellowy
-            let g:theme = "light"
-        else
-            colorscheme solarized
-            let g:theme = "dark"
-        endif
-
-        if exists(':PowerlineReloadColorscheme')
-            :PowerlineReloadColorscheme
-        endif
-    endif
-
-    unlet in
-endf
-
 if &term == 'linux'
     colorscheme system16
 else
     colorscheme solarized
 endif
-
-call SetTheme()
