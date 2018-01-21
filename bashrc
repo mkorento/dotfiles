@@ -78,6 +78,8 @@ alias gc!="git commit -v --amend"
 alias gco="git checkout"
 alias gcm="git checkout master"
 
+cd () { builtin cd "$@" && ls; }
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

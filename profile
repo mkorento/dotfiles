@@ -64,6 +64,10 @@ cyan="\033[36m"; export cyan
 white="\033[37m"; export white
 reset="\033[0m"; export reset
 
+if [ -e "$TMUX" ]; then
+    ls --color=auto
+fi
+
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . $HOME/.bashrc
