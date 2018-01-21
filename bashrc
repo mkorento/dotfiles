@@ -78,9 +78,8 @@ alias grep='grep --color=always'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-if [ -f "$HOME/.aliases" ]; then
-    . "$HOME/.aliases"
-fi
+alias vim=nvi
+alias vi=nvi
 
 alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
 
@@ -114,16 +113,6 @@ alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
 if [ -f "/etc/bash_completion" ] && ! shopt -oq posix; then
     . "/etc/bash_completion"
 fi
-
-if [ -f "$HOME/.git-completion.bash" ]; then
-    . "$HOME/.git-completion.bash"
-fi
-
-if [ -f "$HOME/.functions" ]; then
-    . "$HOME/.functions"
-fi
-
-GPG_TTY=$(tty); export GPG_TTY
 
 stty -ixon
 stty -ixoff
