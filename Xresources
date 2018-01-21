@@ -19,27 +19,12 @@
 #define gray        #839496
 #define white       #FDF6E3
 
-URxvt*fading: 20
-URxvt.scrollBar: false
-URxvt*shading: 40
-URxvt*saveLines: 12000
-URxvt.scrollWithBuffer: true
-URxvt.scrollTtyOutput: false
-URxvt.scrollTtyKeypress: true
-URxvt.urlLauncher:      /usr/bin/chromium
-URxvt.matcher.button:   1
-
-URxvt.perl-ext-common: font-size,rotate-colors
-URxvt.keysym.M-Up:     perl:font-size:increase
-URxvt.keysym.M-Down:   perl:font-size:decrease
-URxvt.keysym.M-S-Up:   perl:font-size:incglobal
-URxvt.keysym.M-S-Down: perl:font-size:decglobal
-
 URxvt*font: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
 URxvt*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
 
 xterm*font: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
 xterm*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
+
 ! URxvt*font:xft:Terminus_nybergh:Regular:antialias=true:hinting=true:pixelsize=20
 ! URxvt*boldFont:xft:Terminus_nybergh:Bold:antialias=true:hinting=true:pixelsize=20
 
@@ -48,16 +33,6 @@ Xft*antialias:          true
 Xft*hinting:            full
 Rxvt*colorIT: #ff0000
 
-! True transparency
-! urxvt*depth: 32
-! urxvt*background: [100]#ffffd7
-! urxvt*background: rgba:0000/0000/0200/c800
-! URxvt*borderLess: true
-
-! ! Fake transparency
-! urxvt*transparent: true
-! urxvt*shading: 30
-
 URxvt*iso14755: False
 URxvt*iso14755_52: False
 
@@ -65,49 +40,28 @@ URxvt*colorUL: #86a2b0
 
 URxvt*foreground: fg_dark
 URxvt*background: bg_dark
+
 xterm*foreground: fg_dark
 xterm*background: bg_dark
 
 URxvt.cursorColor: #aaaaaa
+xterm.cursorColor: #aaaaaa
 
-!black
 URxvt*color0  : black
-!darkgrey
 URxvt*color8  : darkgrey
-
-!darkred
 URxvt*color1  : darkred
-!red
 URxvt*color9  : red
-
-!darkgreen
 URxvt*color2  : darkgreen
-!green
 URxvt*color10 : green
-
-!darkyellow
 URxvt*color3  : darkyellow
-!yellow
 URxvt*color11 : yellow
-
-!darkblue
 URxvt*color4  : darkblue
-!blue
 URxvt*color12 : blue
-
-!darkmagenta
 URxvt*color5  : darkmagenta
-!magenta
 URxvt*color13 : magenta
-
-!darkcyan
 URxvt*color6  : darkcyan
-!cyan
 URxvt*color14 : cyan
-
-!gray
 URxvt*color7  : gray
-!white / background
 URxvt*color15 : white
 
 xterm*color0  : black
@@ -126,7 +80,3 @@ xterm*color6  : darkcyan
 xterm*color14 : cyan
 xterm*color7  : gray
 xterm*color15 : white
-
-URxvt.keysym.M-C-l:   rotate-colors:next
-
-! vim: ft=xdefaults
