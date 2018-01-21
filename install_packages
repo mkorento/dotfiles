@@ -2,6 +2,7 @@
 sudo apt-get install --assume-yes i3 \
 i3status \
 rxvt-unicode \
+tmux \
 ruby \
 ruby-dev \
 python-dev \
