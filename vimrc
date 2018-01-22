@@ -70,9 +70,9 @@ imap <C-d> <NOP>
 imap <C-t> <NOP>
 imap <C-i> <NOP>
 
-nmap v <nop>
-nmap <S-v> <nop>
-nmap <C-v> <nop>
+nmap v :call Flash()<cr>
+nmap <S-v> :call Flash()<cr>
+nmap <C-v> :call Flash()<cr>
 
 nnoremap j gj
 nnoremap k gk
@@ -121,10 +121,10 @@ xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
 command! Q q
 command! W w
-cmap qa call No()
-cmap qa! call No()
-cmap wqa call No()
-cmap wqa! call No()
+cmap qa call Flash()
+cmap qa! call Flash()
+cmap wqa call Flash()
+cmap wqa! call Flash()
 
 let g:CSApprox_verbose_level = 0
 let g:EasyMotion_leader_key = '<C-s>'
@@ -276,6 +276,19 @@ endf
 function! No()
     echo "No."
 endf
+
+function! Flash()
+    highlight CursorColumn ctermfg=white ctermbg=darkred
+    execute 'match CursorColumn /\%#/'
+
+    set cursorcolumn
+    redraw
+
+    execute "sleep 500m"
+
+    match none
+    set nocursorcolumn
+endfunction
 
 if &term == 'linux'
     colorscheme system16
