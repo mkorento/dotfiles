@@ -2,6 +2,7 @@
 sudo apt-get install --assume-yes i3 \
 i3status \
 rxvt-unicode \
+zsh \
 tmux \
 ruby \
 ruby-dev \
@@ -28,6 +29,7 @@ sendmail \
 xfonts-terminus
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
+sudo chsh -s /usr/bin/zsh $USER
 
 test ! -e $HOME/sources && mkdir $HOME/sources
 if [ ! -e $HOME/sources/vim ]; then
