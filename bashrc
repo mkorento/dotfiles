@@ -78,22 +78,13 @@ alias grep='grep --color=always'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
+if [ -f "$HOME/.git_aliases" ]; then
+    . "$HOME/.git_aliases"
+fi
 
-alias ga="git add"
-alias gb="git branch"
-alias gst"=git status"
-alias gd="git diff"
-alias gdc="git diff --cached"
-alias gl="git pull"
-alias gp="git push"
-alias gc="git commit -v"
-alias gc!="git commit -v --amend"
-alias gco="git checkout"
-alias gcm="git checkout master"
-alias gre="git reset"
-alias gwc="git whatchanged -p --abbrev-commit --pretty=medium"
-alias grv="git remote -vvv"
+if [ -f "$HOME/.aliases" ]; then
+    . "$HOME/.aliases"
+fi
 
 cd () { builtin cd "$@" && ls; }
 
@@ -102,8 +93,6 @@ if [ -n "$TMUX" ]; then
 fi
 
 cd () { builtin cd "$@" && ls; }
-
-alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

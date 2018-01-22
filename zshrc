@@ -170,6 +170,10 @@ alias grep='grep --color=always'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+if [ -f "$HOME/.git_aliases" ]; then
+    . "$HOME/.git_aliases"
+fi
+
 if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
 fi

@@ -60,6 +60,8 @@ if [ -e "$TMUX" ]; then
     ls --color=auto
 fi
 
+alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
+
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . $HOME/.bashrc
