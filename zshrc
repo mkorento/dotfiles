@@ -197,17 +197,15 @@ bindkey -M vicmd "." repeat-last-action
 bindkey -M vicmd "/" history-incremental-search-forward
 bindkey -M vicmd "?" history-incremental-search-backward
 
-# Search based on what you typed in already
-bindkey -M vicmd "//" history-beginning-search-forward
-bindkey -M vicmd "??" history-beginning-search-backward
+bindkey -M viins "^R" history-incremental-search-forward
+bindkey -M viins "^N" history-incremental-search-backward
+
+bindkey -M isearch '^R' history-incremental-search-backward
+bindkey -M isearch '^N' history-incremental-search-forward
 
 # Who doesn't want home and end to work?
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
-
-bindkey -M isearch '^R' history-incremental-search-backward
-bindkey -M isearch '^S' history-incremental-search-forward
-bindkey -M isearch '^N' history-incremental-search-forward
 
 # Rebind the insert key
 bindkey '\e[2~' overwrite-mode
