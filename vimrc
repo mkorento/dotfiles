@@ -56,13 +56,13 @@ map <silent><leader>, :noh<CR>
 map <silent><leader>= :close<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
-" map <C-e> <esc>:w<CR>
-" map <C-a> <esc>:silent CQuit<CR>
+map <C-e> <esc>:w<CR>
+map <C-a> <esc>:silent CQuit<CR>
 map <leader>r <esc>:silent !test -f update_pdf && ./update_pdf<CR><esc>:redraw!<CR>
-" imap <C-e> <esc>:w<CR>
-" imap <C-a> <esc>:silent CQuit<CR>
-" cmap <C-e> <esc>:w<CR>
-" cmap <C-a> <esc>:silent CQuit<CR>
+imap <C-e> <esc>:w<CR>
+imap <C-a> <esc>:silent CQuit<CR>
+cmap <C-e> <esc>:w<CR>
+cmap <C-a> <esc>:silent CQuit<CR>
 map <C-_> <space>
 imap <C-_> <space>
 cmap <C-_> <space>
@@ -119,8 +119,6 @@ xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
 onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
-command! Q q
-command! W w
 cmap qa call Flash()
 cmap qa! call Flash()
 cmap wqa call Flash()
@@ -293,5 +291,5 @@ endfunction
 if &term == 'linux'
     colorscheme system16
 else
-    colorscheme solarized
+    colorscheme mellowy
 endif
