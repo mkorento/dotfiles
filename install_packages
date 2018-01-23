@@ -1,6 +1,4 @@
 #!/bin/bash
-echo "Installing packages..."
-
 # redirect stdout for the time being
 exec 4<&1
 exec 1>/dev/null
