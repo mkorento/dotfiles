@@ -70,9 +70,9 @@ cmap <C-e> <esc>:w<CR>
 map <C-e> <esc>:w<CR>
 
 " :q shortcut, confirm when quitting
-imap <C-a> <esc>:silent CQuit<CR>
-cmap <C-a> <esc>:silent CQuit<CR>
-map <C-a> <esc>:silent CQuit<CR>
+imap <C-a> <esc>:CQuit<CR>
+cmap <C-a> <esc>:CQuit<CR>
+map <C-a> <esc>:CQuit<CR>
 
 " remove (annoying) aligning during insert mode
 imap <C-d> <NOP>
@@ -101,7 +101,10 @@ nnoremap <silent> N N:call HLNext(0.4)<cr>
 
 " move easily between windows
 nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
+nnoremap <C-l> <C-w>l
+
+" remap backspace to moving into left window (because of reasons (xbindkeys))
+nnoremap <BS> <C-w>h
 
 " repeat last macro
 nnoremap Q @@
@@ -140,12 +143,12 @@ onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
 " disable some commands to find better alternatives
-ca qa call Flash()
-ca wqa call Flash()
-ca sp call Flash()<CR>
-ca spl call Flash()<CR>
-ca spli call Flash()<CR>
-ca split call Flash()<CR>
+cabbrev qa call Flash()
+cabbrev wqa call Flash()
+cabbrev sp call Flash()<CR>
+cabbrev spl call Flash()<CR>
+cabbrev spli call Flash()<CR>
+cabbrev split call Flash()<CR>
 
 let g:CSApprox_verbose_level = 0
 let g:EasyMotion_leader_key = '<C-s>'
@@ -212,7 +215,7 @@ function! ConfirmQuit()
         qall!
     endif
 endf
-command CQuit call ConfirmQuit()
+command CQuit :silent call ConfirmQuit()
 
 function! GenerateReference()
     let chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
