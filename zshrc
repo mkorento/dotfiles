@@ -178,6 +178,12 @@ if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
 fi
 
+cd () { builtin cd "$@" && ls; }
+
+if [ -n "$TMUX" ]; then
+    ls --color=auto
+fi
+
 for c in cp rm chmod chown rename; do
     alias $c="$c -v"
 done
