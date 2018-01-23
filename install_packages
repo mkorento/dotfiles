@@ -17,19 +17,9 @@ echo "libx11-dev" >&2 && sudo apt-get install --assume-yes libx11-dev
 echo "libncurses5" >&2 && sudo apt-get install --assume-yes libncurses5
 echo "libncurses5-dev" >&2 && sudo apt-get install --assume-yes libncurses5-dev
 echo "xosd-bin" >&2 && sudo apt-get install --assume-yes xosd-bin
-echo "xdotool" >&2 && sudo apt-get install --assume-yes xdotool
 echo "xbindkeys" >&2 && sudo apt-get install --assume-yes xbindkeys
-echo "xvkbd" >&2 && sudo apt-get install --assume-yes xvkbd
 echo "feh" >&2 && sudo apt-get install --assume-yes feh
 echo "zathura" >&2 && sudo apt-get install --assume-yes zathura
-echo "libasound2-plugin-equal" >&2 && sudo apt-get install --assume-yes libasound2-plugin-equal
-echo "mpd" >&2 && sudo apt-get install --assume-yes mpd
-echo "ncmpcpp" >&2 && sudo apt-get install --assume-yes ncmpcpp
-echo "mplayer" >&2 && sudo apt-get install --assume-yes mplayer
-echo "swh-plugins" >&2 && sudo apt-get install --assume-yes swh-plugins
-echo "mutt" >&2 && sudo apt-get install --assume-yes mutt
-echo "msmtp" >&2 && sudo apt-get install --assume-yes msmtp
-echo "sendmail" >&2 && sudo apt-get install --assume-yes sendmail
 echo "xfonts-terminus" >&2 && sudo apt-get install --assume-yes xfonts-terminus
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
