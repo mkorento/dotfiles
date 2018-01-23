@@ -19,38 +19,17 @@
 #define gray        #839496
 #define white       #FDF6E3
 
-URxvt*fading: 20
-URxvt.scrollBar: false
-URxvt.scrollWithBuffer: true
-URxvt.scrollTtyOutput: false
-URxvt.scrollTtyKeypress: true
-
-URxvt*font:xft:Terminus_nybergh:Regular:antialias=true:hinting=true:pixelsize=20
-URxvt*boldFont:xft:Terminus_nybergh:Bold:antialias=true:hinting=true:pixelsize=20
-
-xterm*font: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
-xterm*boldFont: -*-terminus-medium-*-*-*-19-*-*-*-*-*-*-*
-! URxvt*font:xft:Terminus_nybergh:Regular:antialias=true:hinting=true:pixelsize=20
-! URxvt*boldFont:xft:Terminus_nybergh:Bold:antialias=true:hinting=true:pixelsize=20
-
-Xft*dpi:                96
-Xft*antialias:          true
-Xft*hinting:            full
-Rxvt*colorIT:           #ff0000
-
-URxvt*iso14755: False
-URxvt*iso14755_52: False
-
-URxvt*colorUL: #86a2b0
-
-URxvt*foreground: fg_light
-URxvt*background: bg_light
+URxvt*foreground: fg_dark
+URxvt*background: bg_dark
 
 xterm*foreground: fg_dark
 xterm*background: bg_dark
 
 URxvt.cursorColor: #aaaaaa
 xterm.cursorColor: #aaaaaa
+
+URxvt*colorUL : grey
+Rxvt*colorIT  : darkred
 
 URxvt*color0  : black
 URxvt*color8  : darkgrey
@@ -85,5 +64,24 @@ xterm*color6  : darkcyan
 xterm*color14 : cyan
 xterm*color7  : gray
 xterm*color15 : white
+
+URxvt*fading: 20
+URxvt.scrollBar: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+
+URxvt*iso14755: False
+URxvt*iso14755_52: False
+
+URxvt*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+URxvt*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+
+xterm*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+xterm*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
 
 ! vim: ft=xdefaults
