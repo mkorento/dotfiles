@@ -37,17 +37,17 @@ fi
 
 branch () {
     if [ -d .git ]; then
-	BRANCH_COLOUR=""
-	git diff-index --quiet HEAD 2> /dev/null
-	if [ "$?" -ne 0 ]; then
-	    BRANCH_COLOUR="\033[31m"
-	else
-	    BRANCH_COLOUR="\033[32m"
-	fi
+        BRANCH_COLOUR=""
+        git diff-index --quiet HEAD 2> /dev/null
+        if [ "$?" -ne 0 ]; then
+            BRANCH_COLOUR="\033[31m"
+        else
+            BRANCH_COLOUR="\033[32m"
+        fi
 
         BRANCH=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/ ' | cut -c-10)
 
-	echo -ne "$BRANCH_COLOUR$BRANCH\033[00m"
+        echo -ne "$BRANCH_COLOUR$BRANCH\033[00m"
     fi
 }
 
@@ -91,8 +91,6 @@ cd () { builtin cd "$@" && ls; }
 if [ -n "$TMUX" ]; then
     ls --color=auto
 fi
-
-cd () { builtin cd "$@" && ls; }
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
