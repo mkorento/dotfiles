@@ -19,6 +19,7 @@
 #define gray        #839496
 #define white       #FDF6E3
 
+URxvt*fading: 20
 URxvt.scrollBar: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyOutput: false
