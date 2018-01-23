@@ -1,32 +1,38 @@
 #!/bin/bash
-sudo apt-get install --assume-yes i3 \
-i3status \
-rxvt-unicode \
-zsh \
-tmux \
-ruby \
-ruby-dev \
-python-dev \
-exuberant-ctags \
-silversearcher-ag \
-libx11-dev \
-libncurses5 \
-libncurses5-dev \
-xosd-bin \
-xdotool \
-xbindkeys \
-xvkbd \
-feh \
-zathura \
-libasound2-plugin-equal \
-mpd \
-ncmpcpp \
-mplayer \
-swh-plugins \
-mutt \
-msmtp \
-sendmail \
-xfonts-terminus
+echo "Installing packages..."
+
+# redirect stdout for the time being
+exec 4<&1
+exec 1>/dev/null
+
+sudo apt-get install --assume-yes i3
+sudo apt-get install --assume-yes i3status
+sudo apt-get install --assume-yes rxvt-unicode
+sudo apt-get install --assume-yes zsh
+sudo apt-get install --assume-yes tmux
+sudo apt-get install --assume-yes ruby
+sudo apt-get install --assume-yes ruby-dev
+sudo apt-get install --assume-yes python-dev
+sudo apt-get install --assume-yes exuberant-ctags
+sudo apt-get install --assume-yes silversearcher-ag
+sudo apt-get install --assume-yes libx11-dev
+sudo apt-get install --assume-yes libncurses5
+sudo apt-get install --assume-yes libncurses5-dev
+sudo apt-get install --assume-yes xosd-bin
+sudo apt-get install --assume-yes xdotool
+sudo apt-get install --assume-yes xbindkeys
+sudo apt-get install --assume-yes xvkbd
+sudo apt-get install --assume-yes feh
+sudo apt-get install --assume-yes zathura
+sudo apt-get install --assume-yes libasound2-plugin-equal
+sudo apt-get install --assume-yes mpd
+sudo apt-get install --assume-yes ncmpcpp
+sudo apt-get install --assume-yes mplayer
+sudo apt-get install --assume-yes swh-plugins
+sudo apt-get install --assume-yes mutt
+sudo apt-get install --assume-yes msmtp
+sudo apt-get install --assume-yes sendmail
+sudo apt-get install --assume-yes xfonts-terminus
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
@@ -36,10 +42,11 @@ if [ ! -e $HOME/sources/vim ]; then
     git clone https://github.com/vim/vim.git $HOME/sources/vim
 fi
 
-command -v vim >/dev/null 2>&1
+command -v vim
 if [ ! $? -eq 0 ]; then
     cd $HOME/sources/vim
     rm -f src/auto/config.cache
+
     ./configure --prefix=/usr \
     --with-x \
     --with-features=big \
@@ -53,11 +60,29 @@ if [ ! $? -eq 0 ]; then
     --enable-xim \
     --enable-xsmp_interact \
     --disable-sniff \
-    --mandir=/usr/share/man | tee compile_output && make && sudo make install
+    --mandir=/usr/share/man \
+    > compile_output && make && sudo make install
 fi
 
-cd /etc/fonts
-cd conf.d
-sudo rm -f /etc/fonts/conf.d/10*
-sudo rm -rf 70-no-bitmaps.conf
-sudo ln -s ../conf.avail/70-yes-bitmaps.conf . 2>/dev/null
+for f in /etc/fonts/conf.d/10*; do
+
+    # Check if the glob gets expanded to existing files.
+    # If not, f here will be exactly the pattern above
+    # and the exists test will evaluate to false.
+    [ -e "$f" ] && sudo rm /etc/fonts/conf.d/10* || false
+
+    # This is all we needed to know, so we can break after the first iteration
+    break
+done
+
+if [ -e /etc/fonts/conf.d/70-no-bitmaps.conf ]; then
+    sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
+fi
+
+if [ ! -e /etc/fonts/conf.d/70-yes-bitmaps.conf ]; then
+    cd /etc/fonts/conf.d
+    sudo ln -s ../conf.avail/70-yes-bitmaps.conf .
+fi
+
+# restore stdout
+exec 1<&4
