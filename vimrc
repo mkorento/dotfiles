@@ -79,11 +79,6 @@ imap <C-d> <NOP>
 imap <C-t> <NOP>
 imap <C-i> <NOP>
 
-" try to find better alternatives for visual and visual block
-nmap v :call Flash()<cr>
-nmap <S-v> :call Flash()<cr>
-nmap <C-v> :call Flash()<cr>
-
 " more common-sensical movement with j and k
 nnoremap j gj
 nnoremap k gk
@@ -142,16 +137,21 @@ xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
 onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
-" disable some commands to find better alternatives
+" disable some commands to learn better alternatives
+nmap v :call Flash()<cr>
+nmap <S-v> :call Flash()<cr>
+nmap <C-v> :call Flash()<cr>
+
 cabbrev qa call Flash()
 cabbrev wqa call Flash()
 cabbrev sp call Flash()<CR>
+
 cabbrev spl call Flash()<CR>
 cabbrev spli call Flash()<CR>
 cabbrev split call Flash()<CR>
 
 let g:CSApprox_verbose_level = 0
-let g:EasyMotion_leader_key = '<C-s>'
+let g:EasyMotion_leader_key = '<nop>'
 let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlvz'
 let g:EasyMotion_verbose = 0
 let g:netrw_liststyle=0
@@ -275,16 +275,20 @@ function! NumList()
 endf
 
 function! Flash()
+    highlight CursorLine ctermfg=white ctermbg=darkred
     highlight CursorColumn ctermfg=white ctermbg=darkred
     execute 'match CursorColumn /\%#/'
+    execute 'match CursorLine /\%#/'
 
+    set cursorline
     set cursorcolumn
     redraw
 
-    execute "sleep 500m"
+    execute "sleep 1000m"
 
     match none
     set nocursorcolumn
+    set nocursorline
 endfunction
 
 if &term == 'linux'
