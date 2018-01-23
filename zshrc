@@ -13,6 +13,8 @@ compinit
 
 autoload -Uz vcs_info
 
+zmodload zsh/complist
+
 zstyle ':vcs_info:*' actionformats '%b:%a'
 zstyle ':vcs_info:*' formats '%b'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
@@ -198,6 +200,9 @@ bindkey -M vicmd '!' edit-command-output
 bindkey -M vicmd "j" vi-down-line-or-history-and-BOL
 bindkey -M vicmd "k" vi-up-line-or-history-and-BOL
 bindkey -M vicmd "." repeat-last-action
+
+# select autocompletion suggestion with pressing enter once
+bindkey -M menuselect '^M' .accept-line
 
 # Incremental search
 bindkey -M vicmd "/" history-incremental-search-forward
