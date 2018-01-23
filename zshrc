@@ -208,8 +208,8 @@ bindkey -M menuselect '^M' .accept-line
 bindkey -M vicmd "/" history-incremental-search-forward
 bindkey -M vicmd "?" history-incremental-search-backward
 
-bindkey -M viins "^R" history-incremental-search-forward
-bindkey -M viins "^N" history-incremental-search-backward
+bindkey -M viins "^R" history-incremental-search-backward
+bindkey -M viins "^N" history-incremental-search-forward
 
 bindkey -M isearch '^R' history-incremental-search-backward
 bindkey -M isearch '^N' history-incremental-search-forward
