@@ -294,5 +294,5 @@ endfunction
 if &term == 'linux'
     colorscheme system16
 else
-    colorscheme mellowy
+    colorscheme solarized
 endif
