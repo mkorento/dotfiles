@@ -3,34 +3,34 @@
 exec 4<&1
 exec 1>/dev/null
 
-sudo apt-get install --assume-yes i3
-sudo apt-get install --assume-yes i3status
-sudo apt-get install --assume-yes rxvt-unicode
-sudo apt-get install --assume-yes zsh
-sudo apt-get install --assume-yes tmux
-sudo apt-get install --assume-yes ruby
-sudo apt-get install --assume-yes ruby-dev
-sudo apt-get install --assume-yes python-dev
-sudo apt-get install --assume-yes exuberant-ctags
-sudo apt-get install --assume-yes silversearcher-ag
-sudo apt-get install --assume-yes libx11-dev
-sudo apt-get install --assume-yes libncurses5
-sudo apt-get install --assume-yes libncurses5-dev
-sudo apt-get install --assume-yes xosd-bin
-sudo apt-get install --assume-yes xdotool
-sudo apt-get install --assume-yes xbindkeys
-sudo apt-get install --assume-yes xvkbd
-sudo apt-get install --assume-yes feh
-sudo apt-get install --assume-yes zathura
-sudo apt-get install --assume-yes libasound2-plugin-equal
-sudo apt-get install --assume-yes mpd
-sudo apt-get install --assume-yes ncmpcpp
-sudo apt-get install --assume-yes mplayer
-sudo apt-get install --assume-yes swh-plugins
-sudo apt-get install --assume-yes mutt
-sudo apt-get install --assume-yes msmtp
-sudo apt-get install --assume-yes sendmail
-sudo apt-get install --assume-yes xfonts-terminus
+echo "i3" >&2 && sudo apt-get install --assume-yes i3
+echo "i3status" >&2 && sudo apt-get install --assume-yes i3status
+echo "rxvt-unicode" >&2 && sudo apt-get install --assume-yes rxvt-unicode
+echo "zsh" >&2 && sudo apt-get install --assume-yes zsh
+echo "tmux" >&2 && sudo apt-get install --assume-yes tmux
+echo "ruby" >&2 && sudo apt-get install --assume-yes ruby
+echo "ruby-dev" >&2 && sudo apt-get install --assume-yes ruby-dev
+echo "python-dev" >&2 && sudo apt-get install --assume-yes python-dev
+echo "exuberant-ctags" >&2 && sudo apt-get install --assume-yes exuberant-ctags
+echo "silversearcher-ag" >&2 && sudo apt-get install --assume-yes silversearcher-ag
+echo "libx11-dev" >&2 && sudo apt-get install --assume-yes libx11-dev
+echo "libncurses5" >&2 && sudo apt-get install --assume-yes libncurses5
+echo "libncurses5-dev" >&2 && sudo apt-get install --assume-yes libncurses5-dev
+echo "xosd-bin" >&2 && sudo apt-get install --assume-yes xosd-bin
+echo "xdotool" >&2 && sudo apt-get install --assume-yes xdotool
+echo "xbindkeys" >&2 && sudo apt-get install --assume-yes xbindkeys
+echo "xvkbd" >&2 && sudo apt-get install --assume-yes xvkbd
+echo "feh" >&2 && sudo apt-get install --assume-yes feh
+echo "zathura" >&2 && sudo apt-get install --assume-yes zathura
+echo "libasound2-plugin-equal" >&2 && sudo apt-get install --assume-yes libasound2-plugin-equal
+echo "mpd" >&2 && sudo apt-get install --assume-yes mpd
+echo "ncmpcpp" >&2 && sudo apt-get install --assume-yes ncmpcpp
+echo "mplayer" >&2 && sudo apt-get install --assume-yes mplayer
+echo "swh-plugins" >&2 && sudo apt-get install --assume-yes swh-plugins
+echo "mutt" >&2 && sudo apt-get install --assume-yes mutt
+echo "msmtp" >&2 && sudo apt-get install --assume-yes msmtp
+echo "sendmail" >&2 && sudo apt-get install --assume-yes sendmail
+echo "xfonts-terminus" >&2 && sudo apt-get install --assume-yes xfonts-terminus
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
