@@ -51,64 +51,84 @@ syntax on
 syntax enable
 filetype plugin indent on
 
+" MAPPINGS
+" change leader key
 map <space> <leader>
+
+" quick shortcut for removing highlighting
 map <silent><leader>, :noh<CR>
+
+" quick shortcut for closing windows
 map <silent><leader>= :close<CR>
+
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
-map <C-e> <esc>:w<CR>
-map <C-a> <esc>:silent CQuit<CR>
-map <leader>r <esc>:silent !test -f update_pdf && ./update_pdf<CR><esc>:redraw!<CR>
+
+" :w shortcut
 imap <C-e> <esc>:w<CR>
-imap <C-a> <esc>:silent CQuit<CR>
 cmap <C-e> <esc>:w<CR>
+map <C-e> <esc>:w<CR>
+
+" :q shortcut, confirm when quitting
+imap <C-a> <esc>:silent CQuit<CR>
 cmap <C-a> <esc>:silent CQuit<CR>
-map <C-_> <space>
-imap <C-_> <space>
-cmap <C-_> <space>
+map <C-a> <esc>:silent CQuit<CR>
+
+" remove (annoying) aligning during insert mode
 imap <C-d> <NOP>
 imap <C-t> <NOP>
 imap <C-i> <NOP>
 
+" try to find better alternatives for visual and visual block
 nmap v :call Flash()<cr>
 nmap <S-v> :call Flash()<cr>
 nmap <C-v> :call Flash()<cr>
 
+" more common-sensical movement with j and k
 nnoremap j gj
 nnoremap k gk
+
+" restore increment and decrement 
 nnoremap <leader>a <C-a>
 nnoremap <leader>x <C-x>
-nnoremap <leader><leader> <c-^>
+
+" create numbered list of the selected lines
+vnoremap <leader>d :call NumList()<CR>
+
+" blink higlighting when searching
 nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
-nnoremap <BS> <C-w>h
+
+" move easily between windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+
+" repeat last macro
 nnoremap Q @@
+
+" no need for arrow keys
 noremap <Up>    <NOP>
 noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
-inoremap jj <ESC>
-inoremap JJ <ESC>
-inoremap jk <ESC>
-inoremap JK <ESC>
 inoremap <Up>    <NOP>
 inoremap <Down>  <NOP>
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
-cnoremap w!! w !sudo /usr/bin/tee % >/dev/null
-vnoremap <leader>a :call Incr()<CR>
-vnoremap <leader>d :call NumList()<CR>
-noremap <leader>; "0I <Esc>gqgqA"<Esc>{jr""
 
-nmap H <Plug>Sneak_S
-omap H <Plug>Sneak_S
-xmap H <Plug>Sneak_S
+" quickly overwrite read-only files
+cnoremap w!! w !sudo /usr/bin/tee % >/dev/null
+
+" for quick moving
+map s <Plug>(easymotion-W)
+map H <Plug>(easymotion-B)
+
+" start plugins
 imap <Tab> <Plug>snipMateNextOrTrigger
 nmap Z <Plug>VinegarUp
+
+" quote and intendate a line nicely
+noremap <leader>; "0I <Esc>gqgqA"<Esc>{jr""
 
 onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
 xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
@@ -119,14 +139,17 @@ xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
 onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
-cmap qa call Flash()
-cmap qa! call Flash()
-cmap wqa call Flash()
-cmap wqa! call Flash()
+" disable some commands to find better alternatives
+ca qa call Flash()
+ca wqa call Flash()
+ca sp call Flash()<CR>
+ca spl call Flash()<CR>
+ca spli call Flash()<CR>
+ca split call Flash()<CR>
 
 let g:CSApprox_verbose_level = 0
 let g:EasyMotion_leader_key = '<C-s>'
-let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlq;vz'
+let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlvz'
 let g:EasyMotion_verbose = 0
 let g:netrw_liststyle=0
 let g:netrw_preview=1
@@ -241,38 +264,11 @@ function! s:NextTextObject(motion, dir)
     exe "normal! ".a:dir.c."v".a:motion.c
 endfunction
 
-function! Incr()
-  let a = line('.') - line("'<")
-  let c = virtcol("'<")
-  if a > 0
-    execute 'normal! '.c.'|'.a."\<C-a>"
-  endif
-  normal `<
-endfunction
-
 function! NumList()
   let n = line("'>") - line("'<") + 1
   let i = line('.') - line("'<") + 1
   let pad = repeat(" ",(len(n)-len(i)))
   exe "normal 0i".pad.i.". \<Esc>0"
-endf
-
-function! Quotes()
-  let line_count = line("'>") - line("'<") + 1
-  let line_i = line('.') - line("'<") + 1
-
-  if line_i == 1
-      normal0i"
-  else
-      normal0i
-      if line_i == line_count
-          exe "normal 0A\"\<Esc>0"
-      endif
-  endif
-endf
-
-function! No()
-    echo "No."
 endf
 
 function! Flash()
