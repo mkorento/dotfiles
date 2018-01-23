@@ -18,6 +18,7 @@ echo "libncurses5" >&2 && sudo apt-get install --assume-yes libncurses5
 echo "libncurses5-dev" >&2 && sudo apt-get install --assume-yes libncurses5-dev
 echo "xosd-bin" >&2 && sudo apt-get install --assume-yes xosd-bin
 echo "xbindkeys" >&2 && sudo apt-get install --assume-yes xbindkeys
+echo "xvkbd" >&2 && sudo apt-get install --assume-yes xvkbd
 echo "feh" >&2 && sudo apt-get install --assume-yes feh
 echo "zathura" >&2 && sudo apt-get install --assume-yes zathura
 echo "xfonts-terminus" >&2 && sudo apt-get install --assume-yes xfonts-terminus
