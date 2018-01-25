@@ -11,12 +11,16 @@ for file in $files; do
     ln -s ./config/$file $HOME/.$file 2>/dev/null
 done
 
+git update-index --skip-worktree theme
+
 test ! -e $HOME/scripts && mkdir $HOME/scripts
 cp tmx $HOME/scripts/tmx
 
-ln -s ./config/xbindkeysrc $HOME/.xbindkeysrc 2>/dev/null
+if [ $(id -u) -eq 0 ]; then
+    exit
+fi
 
-git update-index --skip-worktree theme
+ln -s ./config/xbindkeysrc $HOME/.xbindkeysrc 2>/dev/null
 
 if [ -f "$HOME/patches/config_patch" ]; then
     $HOME/patches/config_patch
