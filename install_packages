@@ -5,7 +5,7 @@ exec 1>/dev/null
 
 echo "i3" >&2 && sudo apt-get install --assume-yes i3
 echo "i3status" >&2 && sudo apt-get install --assume-yes i3status
-echo "rxvt-unicode" >&2 && sudo apt-get install --assume-yes rxvt-unicode
+echo "rxvt-unicode-256color" >&2 && sudo apt-get install --assume-yes rxvt-unicode-256color
 echo "zsh" >&2 && sudo apt-get install --assume-yes zsh
 echo "tmux" >&2 && sudo apt-get install --assume-yes tmux
 echo "ruby" >&2 && sudo apt-get install --assume-yes ruby
