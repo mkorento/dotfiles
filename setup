@@ -22,8 +22,8 @@ fi
 
 ln -s ./config/xbindkeysrc $HOME/.xbindkeysrc 2>/dev/null
 
-if [ -f "$HOME/patches/config_patch" ]; then
-    $HOME/patches/config_patch
+if [ -f "$HOME/patches/config.patch" ]; then
+    $HOME/patches/config.patch
 fi
 
 command -v apt-get >/dev/null && $confdir/install_packages
