@@ -51,13 +51,13 @@ call s:highlight( 'Cursor'      , 'none'   , 'gray'     , 'none'       )
 call s:highlight( 'CursorColumn', 'none'   , 'none'     , 'none'       )
 call s:highlight( 'CursorLine'  , 'none'   , 'none'     , 'none'       )
 call s:highlight( 'DiffAdd'     , 'none'   , 'green'    , 'darkgreen'  )
-call s:highlight( 'DiffChange'  , 'none'   , 'black'    , 'darkblue'   )
+call s:highlight( 'DiffChange'  , 'none'   , 'black'    , 'darkgray'   )
 call s:highlight( 'DiffDelete'  , 'none'   , 'red'      , 'darkred'    )
-call s:highlight( 'DiffText'    , 'bold'   , 'darkyellow', 'darkgray'  )
+call s:highlight( 'DiffText'    , 'bold'   , 'darkyellow', 'black'     )
 call s:highlight( 'Directory'   , 'none'   , 'cyan'     , 'none'       )
 call s:highlight( 'ErrorMsg'    , 'none'   , 'gray'     , 'darkgray'   )
-call s:highlight( 'FoldColumn'  , 'none'   , 'gray'     , 'none'       )
-call s:highlight( 'Folded'      , 'none'   , 'gray'     , 'gray'       )
+call s:highlight( 'FoldColumn'  , 'none'   , 'darkgray' , 'none'       )
+call s:highlight( 'Folded'      , 'none'   , 'gray'     , 'darkgray'   )
 call s:highlight( 'IncSearch'   , 'none'   , 'darkgray' , 'gray'       )
 
 call s:highlight( 'LineNr'      , 'none'   , 'darkblue'   , 'none'        )
@@ -126,29 +126,4 @@ let &cpo = s:cpo_save
 unlet! s:cpo_save s:rgb_map
 delfunction s:highlight
 
-"}}}
-" License "{{{
-" ---------------------------------------------------------------------
-"
-" Copyright (c) 2011 Ethan Schoonover
-"
-" Permission is hereby granted, free of charge, to any person obtaining a copy
-" of this software and associated documentation files (the "Software"), to deal
-" in the Software without restriction, including without limitation the rights
-" to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-" copies of the Software, and to permit persons to whom the Software is
-" furnished to do so, subject to the following conditions:
-"
-" The above copyright notice and this permission notice shall be included in
-" all copies or substantial portions of the Software.
-"
-" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-" IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-" FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-" AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-" LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-" OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-" THE SOFTWARE.
-"
-" vim:foldmethod=marker:foldlevel=0
 "}}}
