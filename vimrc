@@ -42,6 +42,7 @@ set nojoinspaces
 set wildignore+=venv/*,**/venv/**,*.pyc
 set textwidth=80
 set ruler
+set t_Co=256
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
@@ -181,6 +182,7 @@ let g:niji_dark_colours = g:niji_light_colours
 
 if has("autocmd")
     autocmd FileType mail,gitcommit,gitsendemail setlocal textwidth=72
+    autocmd FileType gitcommit highlight Keyword ctermfg=darkgreen ctermbg=none
     autocmd BufEnter,WinEnter * 2mat ErrorMsg '\%81v.'
     autocmd WinEnter * :set winfixheight
     autocmd WinEnter * :wincmd =
