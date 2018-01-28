@@ -61,6 +61,7 @@ if [ -e "$TMUX" ]; then
 fi
 
 alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
+alias tmux="tmux -2"
 
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
