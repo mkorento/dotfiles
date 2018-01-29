@@ -59,9 +59,6 @@ map <space> <leader>
 " quick shortcut for removing highlighting
 map <silent><leader>, :noh<CR>
 
-" quick shortcut for closing windows
-map <silent><leader>= :close<CR>
-
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 
@@ -139,10 +136,6 @@ onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
 " disable some commands to learn better alternatives
-nmap v :call Flash()<cr>
-nmap <S-v> :call Flash()<cr>
-nmap <C-v> :call Flash()<cr>
-
 cabbrev qa call Flash()
 cabbrev wqa call Flash()
 cabbrev sp call Flash()<CR>
