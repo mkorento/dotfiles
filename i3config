@@ -112,7 +112,7 @@ bindcode $mod+87 exec /home/mika/tmpscripts/timetable
 bindcode $mod+88 exec /home/mika/tmpscripts/kirja
 bindcode $mod+89 exec /home/mika/tmpscripts/kirja3
 
-bindcode $mod+83 exec /home/mika/tmpscripts/kirjalista
+bindcode $mod+83 exec /home/mika/tmpscripts/vim_opittua
 bindcode $mod+84 exec /home/mika/tmpscripts/ostoslista
 bindcode $mod+85 exec /home/mika/tmpscripts/nappainkomennot
 
