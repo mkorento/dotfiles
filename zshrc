@@ -151,12 +151,6 @@ if [ -f "$HOME/.functions" ]; then
     source "$HOME/.functions"
 fi
 
-if [ -d "$HOME/.oh-my-zsh" ]; then
-    if [ -d "$HOME/.oh-my-zsh/plugins/git" ]; then
-        source "$HOME/.oh-my-zsh/plugins/git/git.plugin.zsh"
-    fi
-fi
-
 alias ls="ls --color=always"
 alias ll='ls -alF'
 alias la='ls -A'
