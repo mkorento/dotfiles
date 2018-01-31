@@ -21,6 +21,7 @@ endfunction
 
 let s:rgb_map = {
             \ "none": "NONE",
+            \ "black": "0",
             \ "foreground": "0",
             \ "darkred": "1",
             \ "darkgreen": "2",
@@ -36,6 +37,7 @@ let s:rgb_map = {
             \ "magenta": "13",
             \ "cyan": "14",
             \ "background": "15",
+            \ "white": "15",
             \ "fixme": "51" }
 
 call s:highlight( 'Normal'      , 'none'   , 'darkblue'    , 'background'    )
@@ -56,9 +58,9 @@ call s:highlight( 'VertSplit'   , 'none'   , 'darkblue'    , 'gray'          )
 call s:highlight( 'Cursor'      , 'none'   , 'blue'        , 'none'          )
 call s:highlight( 'CursorColumn', 'none'   , 'none'        , 'none'          )
 call s:highlight( 'CursorLine'  , 'none'   , 'none'        , 'none'          )
-call s:highlight( 'DiffAdd'     , 'none'   , 'darkgreen'   , 'green'         )
+call s:highlight( 'DiffAdd'     , 'none'   , 'black'       , 'green'         )
 call s:highlight( 'DiffChange'  , 'none'   , 'none'        , 'background'    )
-call s:highlight( 'DiffDelete'  , 'none'   , 'darkred'     , 'red'           )
+call s:highlight( 'DiffDelete'  , 'none'   , 'none'        , 'red'           )
 call s:highlight( 'DiffText'    , 'bold'   , 'yellow'      , 'foreground'    )
 call s:highlight( 'Directory'   , 'none'   , 'cyan'        , 'none'          )
 call s:highlight( 'ErrorMsg'    , 'none'   , 'background'  , 'darkred'       )
@@ -113,10 +115,10 @@ call s:highlight( 'diffAdded'     , 'none' ,  'darkgreen',  'none'        )
 call s:highlight( 'diffCommon'    , 'none' ,  'yellow'   ,  'none'        )
 call s:highlight( 'diffChanged'   , 'none' ,  'magenta'  ,  'none'        )
 
-call s:highlight( 'SpellBad'     , 'bold'  ,  'red'      ,  'fixme'        )
-"call s:highlight( 'SpellCap'    , 'bold'     , 'none'    ,  'none'        )
-"call s:highlight( 'SpellLocal'  , 'underline', 'none'    ,  'none'        )
-"call s:highlight( 'SpellRare'   , 'underline', 'none'    ,  'none'        )
+call s:highlight( 'SpellBad'    , 'bold'     , 'red'     ,  'fixme'       )
+call s:highlight( 'SpellCap'    , 'bold'     , 'none'    ,  'none'        )
+call s:highlight( 'SpellLocal'  , 'underline', 'none'    ,  'none'        )
+call s:highlight( 'SpellRare'   , 'underline', 'none'    ,  'none'        )
 
 call s:highlight( 'htmlBold',                'none', 'darkblue',    'none')
 call s:highlight( 'htmlItalic',              'none', 'yellow',      'none')
