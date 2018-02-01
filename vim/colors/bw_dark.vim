@@ -51,13 +51,13 @@ call s:highlight( 'Cursor'      , 'none'   , 'gray'     , 'none'       )
 call s:highlight( 'CursorColumn', 'none'   , 'none'     , 'none'       )
 call s:highlight( 'CursorLine'  , 'none'   , 'none'     , 'none'       )
 call s:highlight( 'DiffAdd'     , 'none'   , 'black'    , 'darkgreen'  )
-call s:highlight( 'DiffChange'  , 'none'   , 'black'    , 'darkgray'   )
+call s:highlight( 'DiffChange'  , 'none'   , 'none'     , 'none'       )
 call s:highlight( 'DiffDelete'  , 'none'   , 'none'     , 'darkred'    )
 call s:highlight( 'DiffText'    , 'bold'   , 'darkyellow', 'black'     )
 call s:highlight( 'Directory'   , 'none'   , 'cyan'     , 'none'       )
 call s:highlight( 'ErrorMsg'    , 'none'   , 'gray'     , 'darkgray'   )
 call s:highlight( 'FoldColumn'  , 'none'   , 'darkgray' , 'none'       )
-call s:highlight( 'Folded'      , 'none'   , 'gray'     , 'darkgray'   )
+call s:highlight( 'Folded'      , 'none'   , 'black'    , 'darkgray'   )
 call s:highlight( 'IncSearch'   , 'none'   , 'darkgray' , 'gray'       )
 
 call s:highlight( 'LineNr'      , 'none'   , 'darkblue'   , 'none'        )
@@ -125,5 +125,3 @@ set background=dark
 let &cpo = s:cpo_save
 unlet! s:cpo_save s:rgb_map
 delfunction s:highlight
-
-"}}}
