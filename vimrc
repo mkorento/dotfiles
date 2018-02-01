@@ -140,9 +140,11 @@ cabbrev qa call Flash()
 cabbrev wqa call Flash()
 cabbrev sp call Flash()<CR>
 
-cabbrev spl call Flash()<CR>
-cabbrev spli call Flash()<CR>
-cabbrev split call Flash()<CR>
+cabbrev spl echo('use vs')
+cabbrev spli echo('use vs')
+cabbrev split echo('use vs')
+
+cabbrev new echo('use vne')
 
 let g:CSApprox_verbose_level = 0
 let g:EasyMotion_leader_key = '<nop>'
