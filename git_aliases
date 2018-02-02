@@ -11,5 +11,6 @@ alias gco="git checkout"
 alias gcm="git checkout master"
 alias gre="git reset"
 alias grv="git remote -v"
+alias gm="git merge"
 
 # vim: ft=sh
