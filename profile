@@ -47,13 +47,21 @@ export PATH
 export MANPATH
 
 black="\033[30m"; export black
-red="\033[31m"; export red
-green="\033[32m"; export green
-yellow="\033[33m"; export yellow
-blue="\033[34m"; export blue
-magenta="\033[35m"; export magenta
-cyan="\033[36m"; export cyan
-white="\033[37m"; export white
+darkred="\033[31m"; export darkred
+darkgreen="\033[32m"; export darkgreen
+darkyellow="\033[33m"; export darkyellow
+darkblue="\033[34m"; export darkblue
+darkmagenta="\033[35m"; export darkmagenta
+darkcyan="\033[36m"; export darkcyan
+gray="\033[37m"; export gray
+darkgray="\033[90m"; export darkgray
+red="\033[91m"; export red
+green="\033[92m"; export green
+yellow="\033[93m"; export yellow
+blue="\033[94m"; export blue
+magenta="\033[95m"; export magenta
+cyan="\033[96m"; export cyan
+white="\033[97m"; export white
 reset="\033[0m"; export reset
 
 if [ -e "$TMUX" ]; then
