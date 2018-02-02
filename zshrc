@@ -132,15 +132,6 @@ export SAVEHIST=$HISTSIZE
 export KEYTIMEOUT=10
 export PROMPT_EOL_MARK=""
 
-export LESS_TERMCAP_mb=$(printf "\e[1;31m");
-export LESS_TERMCAP_md=$(printf "\e[1;31m");
-export LESS_TERMCAP_me=$(printf "\e[0m");
-export LESS_TERMCAP_se=$(printf "\e[0m");
-export LESS_TERMCAP_so=$(printf "\e[1;41;33m");
-export LESS_TERMCAP_ue=$(printf "\e[0m");
-export LESS_TERMCAP_us=$(printf "\e[1;32m");
-export LESS_TERMCAP_mb=$(printf "\e[1;38;5;74m");
-
 if [ -d "$HOME/.zsh" ]; then
     if [ -d "$HOME/.zsh/zsh-syntax-highlighting" ]; then
         source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -172,6 +163,10 @@ fi
 
 if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
+fi
+
+if [ -f "$HOME/.less_colors" ]; then
+    . "$HOME/.less_colors"
 fi
 
 cd () { builtin cd "$@" && ls; }

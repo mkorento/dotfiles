@@ -86,6 +86,10 @@ if [ -f "$HOME/.aliases" ]; then
     . "$HOME/.aliases"
 fi
 
+if [ -f "$HOME/.less_colors" ]; then
+    . "$HOME/.less_colors"
+fi
+
 cd () { builtin cd "$@" && ls; }
 
 if [ -n "$TMUX" ]; then
