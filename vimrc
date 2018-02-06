@@ -138,11 +138,6 @@ xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 " disable some commands to learn better alternatives
 cabbrev qa call Flash()
 cabbrev wqa call Flash()
-cabbrev sp call Flash()<CR>
-
-cabbrev spl echo('use vs')
-cabbrev spli echo('use vs')
-cabbrev split echo('use vs')
 
 cabbrev new echo('use vne')
 
