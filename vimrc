@@ -139,8 +139,6 @@ xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 cabbrev qa call Flash()
 cabbrev wqa call Flash()
 
-cabbrev new echo('use vne')
-
 let g:CSApprox_verbose_level = 0
 let g:EasyMotion_leader_key = '<nop>'
 let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlvz'
