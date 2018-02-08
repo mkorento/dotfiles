@@ -1,13 +1,12 @@
+[user]
+	email = korento.mika@gmail.com
+	name = Mika Korento
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
 	pager = less -S
 [rerere]
 	enabled = true
-[status]
-	submoduleSummary = true
-[diff]
-	submodule = log
 [fetch]
 	recurseSubmodules = on-demand
 [color]
