@@ -72,5 +72,5 @@ keycode 135 = Mode_switch Mode_switch Mode_switch Mode_switch
 !Right win -> alt gr
 keycode 134 = Alt_R Alt_R Alt_R Alt_R
 
-! clear mod1
-! add mod1 = Alt_L Meta_L
+clear mod4
+add mod4 = Alt_R Super_L Hyper_L
