@@ -83,7 +83,7 @@ call s:highlight( 'Visual'      , 'none'   , 'gray'     , 'darkgray'   )
 call s:highlight( 'VisualNOS'   , 'none'   , 'none'     , 'darkgray'   )
 call s:highlight( 'WarningMsg'  , 'bold'   , 'gray'     , 'none'       )
 
-call s:highlight( 'WildMenu'    , 'none'   , 'green'      , 'cyan'        )
+call s:highlight( 'WildMenu'    , 'none'   , 'black'      , 'gray'        )
 call s:highlight( 'Error'       , 'none'   , 'background' , 'red'         )
 call s:highlight( 'Ignore'      , 'none'   , 'darkblue'   , 'none'        )
 call s:highlight( 'Underlined'  , 'none'   , 'darkblue'   , 'none'        )
