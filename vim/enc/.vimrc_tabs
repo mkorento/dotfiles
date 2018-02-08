@@ -1,0 +1,6 @@
+source ~/.vimrc
+set autoindent
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+exec "set listchars=tab:  ,trail:·,nbsp:~"
