@@ -51,14 +51,11 @@ keycode 59 = w            W           ubreve               Ubreve
 keycode 60 = v            V           Adiaeresis           rightarrow
 keycode 61 = z            Z           Greek_sigma          Greek_SIGMA
 keycode 64 = Alt_L        Meta_L      Alt_L                Meta_L
-! fix: tmux
-! keycode 64 =
 keycode 65 = space        space       nobreakspace         enspace
 keycode 91 = KP_Delete    KP_Decimal  KP_Delete            KP_Decimal
 keycode 94 = adiaeresis   odiaeresis  aring                Aring
-! keycode 133 = Super_L NoSymbol Super_L
+keycode 108 = Alt_R Alt_R Alt_R Alt_R
 keycode 133 =
-keycode 134 = Super_R NoSymbol Super_R
 
 !switch control and caps lock
 keycode 37 = Caps_Lock
@@ -72,10 +69,8 @@ add Control = Control_L Control_R
 
 !Menu -> modeswitch
 keycode 135 = Mode_switch Mode_switch Mode_switch Mode_switch
-keycode 108 = Alt_R Alt_R Alt_R Alt_R
+!Right win -> alt gr
+keycode 134 = Alt_R Alt_R Alt_R Alt_R
 
 ! clear mod1
 ! add mod1 = Alt_L Meta_L
-
-! ! clear Mod4
-! ! add Mod4    = Control_L
