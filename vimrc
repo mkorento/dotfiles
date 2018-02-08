@@ -135,10 +135,6 @@ xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
 onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
-" disable some commands to learn better alternatives
-cabbrev qa call Flash()
-cabbrev wqa call Flash()
-
 let g:CSApprox_verbose_level = 0
 let g:EasyMotion_leader_key = '<nop>'
 let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlvz'
@@ -264,6 +260,7 @@ function! NumList()
   exe "normal 0i".pad.i.". \<Esc>0"
 endf
 
+" for notification purposes
 function! Flash()
     highlight CursorLine ctermfg=white ctermbg=darkred
     highlight CursorColumn ctermfg=white ctermbg=darkred
