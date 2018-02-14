@@ -35,7 +35,7 @@ set cryptmethod=blowfish2
 set modifiable
 set backspace=0
 set hidden
-set viminfo^=h
+set viminfo^=%,'100,h
 set ttimeoutlen=10
 set modeline
 set nojoinspaces
