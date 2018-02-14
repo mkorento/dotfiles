@@ -26,13 +26,13 @@ echo "xfonts-terminus" >&2 && sudo apt-get install --assume-yes xfonts-terminus
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
 
-test ! -e $HOME/sources && mkdir $HOME/sources
-if [ ! -e $HOME/sources/vim ]; then
-    git clone https://github.com/vim/vim.git $HOME/sources/vim
-fi
-
 command -v vim
 if [ ! $? -eq 0 ]; then
+    test ! -e $HOME/sources && mkdir $HOME/sources
+    if [ ! -e $HOME/sources/vim ]; then
+        git clone https://github.com/vim/vim.git $HOME/sources/vim
+    fi
+
     cd $HOME/sources/vim
     rm -f src/auto/config.cache
 
