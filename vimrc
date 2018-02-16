@@ -56,8 +56,8 @@ filetype plugin indent on
 " change leader key
 map <space> <leader>
 
-" quick shortcut for removing highlighting
-map <silent><leader>, :noh<CR>
+" toggle highlighting off like like Less
+map <silent><C-[>u :nohl<CR>
 
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
