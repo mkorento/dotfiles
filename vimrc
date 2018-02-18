@@ -135,6 +135,7 @@ xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
 onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
+let $VIMHOME = $HOME."/.vim"
 let g:CSApprox_verbose_level = 0
 let g:EasyMotion_leader_key = '<nop>'
 let g:EasyMotion_keys = 'uhetonasidbkmjxgycpfrlvz'
@@ -145,7 +146,7 @@ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let NERDTreeShowLineNumbers=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeHijackNetrw=0
-let g:netrw_browsex_viewer= $BROWSER
+let g:netrw_browsex_viewer=$VIMHOME."/bin/vim-browser"
 let g:netrw_dirhistmax = 0
 
 " Use whole "words" when opening URLs.
