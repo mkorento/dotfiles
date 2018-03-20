@@ -73,4 +73,6 @@ keycode 135 = Mode_switch Mode_switch Mode_switch Mode_switch
 keycode 134 = Alt_R Alt_R Alt_R Alt_R
 
 clear mod4
-add mod4 = Alt_R Super_L Hyper_L
+add mod4 = Super_L Hyper_L
+clear mod1
+add mod1 = Alt_L Alt_R
