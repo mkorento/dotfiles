@@ -37,17 +37,10 @@ fi
 
 branch () {
     if [ -d .git ]; then
-        BRANCH_COLOUR=""
-        git diff-index --quiet HEAD 2> /dev/null
-        if [ "$?" -ne 0 ]; then
-            BRANCH_COLOUR="\033[31m"
-        else
-            BRANCH_COLOUR="\033[32m"
-        fi
 
         BRANCH=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/ ' | cut -c-10)
 
-        echo -ne "$BRANCH_COLOUR$BRANCH\033[00m"
+        echo -ne "$BRANCH"
     fi
 }
 
@@ -55,7 +48,7 @@ if [ "$color_prompt" = yes ]; then
     if [ "$(id -u)" == "0" ]; then
         PS1='\[\033[01;07;31m\]\u@\h\[\033[0;1;31m\] \w \$(branch)\$ \[\033[00m\]'
     else
-        PS1="\[\033[36m\]\u@\h \[\033[36m\]\w \$(branch)\033[36m\$ \[\033[00m\]"
+        PS1="\[\033[36m\]\u@\h \[\033[36m\]\w \$(branch)\[\033[36m\]\$ \[\033[00m\]"
     fi
 else
     PS1='\u@\h:\w$ '
