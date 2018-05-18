@@ -12,6 +12,9 @@ for file in $files; do
     ln -s ./config/$file $HOME/.$file 2>/dev/null
 done
 
+mkdir -p $HOME/.config/zathura
+ln -fs $HOME/config/zathurarc $HOME/.config/zathura/zathurarc
+
 git update-index --skip-worktree theme
 
 test ! -e $HOME/scripts && mkdir $HOME/scripts
