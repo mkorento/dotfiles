@@ -23,6 +23,9 @@
 (use-package evil-surround
   :ensure evil-surround)
 
+(use-package undo-tree
+  :ensure undo-tree)
+
 ; (use-package ace-jump-mode
 ;   :ensure ace-jump-mode)
 
