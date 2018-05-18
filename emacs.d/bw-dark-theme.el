@@ -13,6 +13,7 @@
 (defconst *brightblue* "brightblue")
 (defconst *brightmagenta* "brightmagenta")
 (defconst *brightcyan* "brightcyan")
+(defconst *brightwhite* "brightwhite")
 
 (deftheme bw-dark
   "Created 2018-05-17.")
@@ -23,11 +24,11 @@
  `(secondary-selection ((t (:background ,*brightmagenta* :foreground ,*brightgreen*))))
  `(trailing-whitespace ((t (:foreground ,*brightblack* :underline (:color foreground-color :style wave)))))
  `(header-line ((t (:inherit default :inverse-video nil :underline t))))
- `(mode-line-inactive ((t (:background "brightwhite" :foreground "brightwhite"))))
- `(isearch ((t (:background ,*brightblack* :foreground "brightwhite"))))
- `(lazy-highlight ((t (:background ,*white* :foreground "brightwhite"))))
+ `(lazy-highlight ((t (:background ,*white* :foreground ,*black*))))
+ `(isearch ((t (:background ,*brightblack* :foreground ,*black*))))
+ `(mode-line ((t (:background ,*white* :foreground ,*black*))))
+ `(mode-line-inactive ((t (:background ,*black* :foreground ,*black*))))
  `(query-replace ((t (:inherit (isearch)))))
- `(mode-line ((t (:background ,*white* :foreground "brightwhite"))))
  `(font-lock-comment-face ((t (:foreground ,*white*))))
  `(font-lock-string-face ((t (:foreground ,*white*))))
  `(fringe ((t (:background ,*white* :foreground ,*blue*))))
