@@ -1,4 +1,17 @@
 savefile/*
+!savefile/.gitkeep
+
 auto-save-list/*
+!auto-save-list/.gitkeep
+
+autosaves/*
+!autosaves/.gitkeep
+
 backups/*
+!backups/.gitkeep
+
 elpa/*
+!elpa/.gitkeep
+
+savehist/*
+!savehist/.gitkeep

@@ -1,0 +1,20 @@
+set recolor-darkcolor "#839496"
+set recolor-lightcolor "#002B36"
+
+# colors
+set statusbar-bg "#000000"
+set statusbar-fg "#FFFFFF"
+set inputbar-fg "#000000"
+set inputbar-bg "#CC0000"
+set default-fg "#FFFFFF"
+set default-bg "#000000"
+
+# keybindings
+map [fullscreen] a adjust_window best-fit
+map [fullscreen] s adjust_window width
+map [fullscreen] f follow
+map [fullscreen] <Tab> toggle_index
+map [fullscreen] j scroll down
+map [fullscreen] k scroll up
+
+set recolor false
