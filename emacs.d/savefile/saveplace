@@ -1,0 +1,8 @@
+;;; -*- coding: utf-8 -*-
+(("/home/mika/.emacs.d/bw-light-theme.el" . 75)
+ ("/home/mika/.emacs.d/elpa/evil-surround-20180102.601/evil-surround-autoloads.el" . 2193)
+ ("/home/mika/.emacs.d/elpa/slime-20180413.1720/slime-autoloads.el" . 1408)
+ ("/home/mika/.emacs.d/elpa/macrostep-20161120.1306/macrostep-autoloads.el" . 1711)
+ ("/home/mika/.emacs.d/elpa/evil-20180506.1341/evil-autoloads.el" . 716)
+ ("/home/mika/.emacs.d/elpa/undo-tree-0.6.5/undo-tree-autoloads.el" . 1650)
+ ("/home/mika/.emacs.d/elpa/goto-chg-20180105.1033/goto-chg-autoloads.el" . 1874))
