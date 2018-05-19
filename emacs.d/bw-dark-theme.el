@@ -28,7 +28,7 @@
  `(avy-lead-face-1 ((t (:foreground ,*brightred* :background ,*background*))))
  `(avy-lead-face-2 ((t (:foreground ,*brightred* :background ,*background*))))
  `(avy-background-face ((t (:foreground ,*brightblack*))))
-
+ `(whitespace-line ((t (:background ,*background* :foreground ,*red*))))
  `(region ((t (:background ,*background* :foreground ,*blue*))))
  `(secondary-selection ((t (:background ,*brightyellow* :foreground ,*background*))))
  `(trailing-whitespace ((t (:foreground ,*brightblack* :underline (:color foreground-color :style wave)))))
