@@ -47,21 +47,17 @@
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
 (setq savehist-file "~/.emacs.d/savehist/savehistory")
 
+(defconst emacs-tmp-dir (concat user-emacs-directory "tmp/"))
 (setq backup-directory-alist
-      `(("." . ,(concat user-emacs-directory "backups"))))
+    `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+    `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+    emacs-tmp-dir)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("5a9e0f208177b85047c9e8e961ce0f646d7d23264af0afe0699ac5899fbf57f6" "c1e49adde93f347b35ebd8df82ae7f09f0f2d0a2395613e78d4468d1b1c6a4e0" default))))
-
-(add-hook 'text-mode-hook 'evil-local-mode)
-(add-hook 'prog-mode-hook 'evil-local-mode)
-(add-hook 'undo-tree-mode-hook 'evil-local-mode)
+; (add-hook 'text-mode-hook 'evil-local-mode)
+; (add-hook 'prog-mode-hook 'evil-local-mode)
+; (add-hook 'undo-tree-mode-hook 'evil-local-mode)
 
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 (define-key minibuffer-local-map (kbd "C-u") 'kill-whole-line)
@@ -73,51 +69,51 @@
 (defalias 'vs 'split-window-horizontally)
 (defalias 'clo 'delete-window)
 
-; evil
-(defun evil-local-mode-fixed-escape ()
-  "Turn on Evil in the current buffer AND `evil-esc-mode'. This makes C-[ work
-   like <escape> when using `evil-local-mode'."
-  (interactive)
-  (progn
-    (turn-on-evil-mode)
-    (evil-esc-mode 1)))
+; ; evil
+; (defun evil-local-mode-fixed-escape ()
+;   "Turn on Evil in the current buffer AND `evil-esc-mode'. This makes C-[ work
+;    like <escape> when using `evil-local-mode'."
+;   (interactive)
+;   (progn
+;     (turn-on-evil-mode)
+;     (evil-esc-mode 1)))
+; 
+; (defun evil-local-mode-fixed-escape-toggle ()
+;   "Toggle Evil on/off in the current buffer AND `evil-esc-mode'. This makes C-[
+;    work like <escape> when using `evil-local-mode'."
+;   (interactive)
+;   (if evil-local-mode
+;     (progn
+;       (message "evil-mode off")
+;       (turn-off-evil-mode)
+;       (evil-esc-mode 0))
+;     (progn
+;       (turn-on-evil-mode)
+;       (evil-esc-mode 1))))
+; 
+; ; (setq evil-insert-state-message nil)
+; 
+; (define-key evil-insert-state-map (kbd "C-a") 'confirm-quit)
+; (define-key evil-normal-state-map (kbd "C-a") 'confirm-quit)
+; 
+; (define-key evil-insert-state-map (kbd "<ESC>") 'evil-normal-state)
+; (define-key evil-insert-state-map (kbd "<DEL>") 'backward-delete-char-untabify)
+; 
+; (define-key evil-normal-state-map (kbd "C-l") 'windmove-right)
+; (define-key evil-normal-state-map (kbd "<DEL>") 'windmove-left)
+; 
+; (define-key evil-normal-state-map (kbd "Q") (kbd "@@"))
+; 
+; (define-key evil-normal-state-map (kbd "C-]") 'my-jump-to-tag)
+; 
+; (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+; (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
 
-(defun evil-local-mode-fixed-escape-toggle ()
-  "Toggle Evil on/off in the current buffer AND `evil-esc-mode'. This makes C-[
-   work like <escape> when using `evil-local-mode'."
-  (interactive)
-  (if evil-local-mode
-    (progn
-      (message "evil-mode off")
-      (turn-off-evil-mode)
-      (evil-esc-mode 0))
-    (progn
-      (turn-on-evil-mode)
-      (evil-esc-mode 1))))
 
-; (setq evil-insert-state-message nil)
-
-(define-key evil-insert-state-map (kbd "C-a") 'confirm-quit)
-(define-key evil-normal-state-map (kbd "C-a") 'confirm-quit)
-
-(define-key evil-insert-state-map (kbd "<ESC>") 'evil-normal-state)
-(define-key evil-insert-state-map (kbd "<DEL>") 'backward-delete-char-untabify)
-
-(define-key evil-normal-state-map (kbd "C-l") 'windmove-right)
-(define-key evil-normal-state-map (kbd "<DEL>") 'windmove-left)
-
-(define-key evil-normal-state-map (kbd "Q") (kbd "@@"))
-
-(define-key evil-normal-state-map (kbd "C-]") 'my-jump-to-tag)
-
-(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-(define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
-
-
-(define-key evil-insert-state-map (kbd "C-u")
-  (lambda ()
-    (interactive)
-    (evil-delete (point-at-bol) (point))))
+; (define-key evil-insert-state-map (kbd "C-u")
+;   (lambda ()
+;     (interactive)
+;     (evil-delete (point-at-bol) (point))))
 
 ; (evil-define-key 'normal slime-repl-mode-map (kbd "j")
             ; 'slime-repl-forward-input)
@@ -128,9 +124,24 @@
 
 (setq inferior-lisp-program "sbcl")
 
-; (setq slime-contribs '(slime-fancy))
-; (add-to-list 'slime-contribs 'slime-trace-dialog)
-; (slime-setup '(slime-repl))
+(setq slime-contribs '(slime-fancy))
+(add-to-list 'slime-contribs 'slime-trace-dialog)
+(slime-setup '(slime-repl))
+
+(setq avy-background t)
+
+(global-set-key (kbd "C-,") 'avy-goto-word-0-above)
+(global-set-key (kbd "M-[ ,") 'avy-goto-word-0-above)
+(global-set-key (kbd "C-.") 'avy-goto-word-0-below)
+(global-set-key (kbd "M-[ .") 'avy-goto-word-0-below)
+
+(global-set-key (kbd "C-,") 'avy-goto-word-0-above)
+(global-set-key (kbd "M-[ ,") 'avy-goto-word-0-above)
+(global-set-key (kbd "<ESC> ,") 'avy-goto-word-0-above)
+(global-set-key (kbd "C-.") 'avy-goto-word-0-below)
+(global-set-key (kbd "M-[ .") 'avy-goto-word-0-below)
+(global-set-key (kbd "<ESC> .") 'avy-goto-word-0-below)
+
 
 ;;;###autoload
 (define-minor-mode my-mode
@@ -141,22 +152,54 @@
   :init-value t
   :lighter " my-mode"
   :keymap (let ((map (make-sparse-keymap)))
-            (define-key map (kbd "C-l") 'windmove-right)
-            (define-key map (kbd "<DEL>") 'windmove-left)
-            (define-key map (kbd "<f12>") 'evil-local-mode)
-            (define-key map (kbd "C-a") 'confirm-quit)
+            ; (define-key map (kbd "C-l") 'windmove-right)
+            ; (define-key map (kbd "<DEL>") 'windmove-left)
+            ; (define-key map (kbd "<f12>") 'evil-local-mode)
+            ; (define-key map (kbd "C-a") 'confirm-quit)
             map))
 
-(defun confirm-quit ()
-  (interactive)
-  (catch 'outer
-    (progn
-      (defun recurr ()
-        (let ((chr (read-char ":CQuit")))
-          (cond ((char-equal chr ?y) (kill-emacs))
-                ((char-equal chr ?n) (throw 'outer nil))
-                (t (recurr)))))
-      (recurr))))
+(setq mode-line-format
+      (list
+        "%e"
+        ; mode-line-front-space
+        ; mode-line-mule-info
+        ; mode-line-client
+        ; mode-line-modified
+        ; mode-line-remote
+        ; mode-line-frame-identification
+        ; mode-line-buffer-identification
+        ; "   "
+        ; mode-line-position
+        ; (vc-mode vc-mode)
+        ; "  "
+        ; mode-line-modes
+        ; mode-line-misc-info
+        mode-line-end-spaces))
+
+(global-set-key (kbd "<ESC> 1") (lambda() (interactive) (window-number-select 1)))
+(global-set-key (kbd "<ESC> 2") (lambda() (interactive) (window-number-select 2)))
+(global-set-key (kbd "<ESC> 3") (lambda() (interactive) (window-number-select 3)))
+(global-set-key (kbd "<ESC> 4") (lambda() (interactive) (window-number-select 4)))
+(global-set-key (kbd "<ESC> 5") (lambda() (interactive) (window-number-select 5)))
+(global-set-key (kbd "<ESC> 6") (lambda() (interactive) (window-number-select 6)))
+(global-set-key (kbd "<ESC> 7") (lambda() (interactive) (window-number-select 7)))
+(global-set-key (kbd "<ESC> 8") (lambda() (interactive) (window-number-select 8)))
+(global-set-key (kbd "<ESC> 9") (lambda() (interactive) (window-number-select 9)))
+(global-set-key (kbd "<ESC> 0") (lambda() (interactive) (window-number-select 10)))
+
+(require 'window-number)
+(window-number-mode)
+
+; (defun confirm-quit ()
+;   (interactive)
+;   (catch 'outer
+;     (progn
+;       (defun recurr ()
+;         (let ((chr (read-char ":CQuit")))
+;           (cond ((char-equal chr ?y) (kill-emacs))
+;                 ((char-equal chr ?n) (throw 'outer nil))
+;                 (t (recurr)))))
+;       (recurr))))
 
 ;;;###autoload
 (define-globalized-minor-mode global-my-mode my-mode my-mode)
@@ -174,5 +217,20 @@
 
 (provide 'my-mode)
 
-(load-theme 'bw-light)
+(load-theme 'bw-light t)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("e1d1b3d3f86bd255899cf93ebc8a9d80574b8a06b48043e9f0276ae57171d49f" "282f749ebbcb089b0b067b40c456e2b240deabcf9ae476572ebd9c8ae8f58149" default))))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
