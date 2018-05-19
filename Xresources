@@ -19,6 +19,11 @@
 #define gray        #839496
 #define white       #FDF6E3
 
+URxvt.keysym.C-comma:   \033[,
+URxvt.keysym.C-period:   \033[.
+URxvt.keysym.C-minus:   \033[-
+URxvt.keysym.C-question:   \033[\077
+
 URxvt*foreground: fg_dark
 URxvt*background: bg_dark
 
@@ -80,8 +85,12 @@ URxvt*iso14755_52: False
 
 URxvt*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
 URxvt*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+URxvt*italicFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+URxvt*boldItalicFont: -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
 
 xterm*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
 xterm*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+xterm*italicFont: -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+xterm*boldItalicFont: -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
 
 ! vim: ft=xdefaults
