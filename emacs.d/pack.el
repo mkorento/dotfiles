@@ -14,20 +14,19 @@
   ;; activate it for all buffers
   (setq-default save-place t))
 
-(use-package evil
-  :ensure evil)
-
 (use-package slime
   :ensure slime)
-
-(use-package evil-surround
-  :ensure evil-surround)
 
 (use-package undo-tree
   :ensure undo-tree)
 
-; (use-package ace-jump-mode
-;   :ensure ace-jump-mode)
+(use-package window-number
+  :ensure window-number)
 
-; (use-package evil-easymotion
-;   :ensure evil-easymotion)
+(use-package avy
+  :ensure avy
+  :commands avy-goto-char avy-goto-word-0-above avy-goto-word-0-below
+  :init
+  (setq
+   avy-keys
+   '(?h ?u ?t ?e ?n ?o ?s ?a ?d ?i ?b ?k ?g ?p ?c ?. ?r ?, ?f ?x ?w ?v ?; ?l ?')))
