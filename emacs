@@ -39,13 +39,16 @@
 (setq-default tab-width 8)
 (setq inhibit-splash-screen t)
 (setq echo-keystrokes 0.01)
-(switch-to-buffer "*scratch*")
 (menu-bar-mode -1)
-(setq auto-save-default nil)
+(setq auto-save-default t)
+(setq ring-bell-function 'ignore)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 8)
+(setq create-lockfiles nil)
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
-(setq savehist-file "~/.emacs.d/savehist/savehistory")
+(setq savehist-file "~/.emacs.d/tmp/savehistory")
 
 (defconst emacs-tmp-dir (concat user-emacs-directory "tmp/"))
 (setq backup-directory-alist
@@ -55,12 +58,19 @@
 (setq auto-save-list-file-prefix
     emacs-tmp-dir)
 
+(add-hook 'post-command-hook 'balance-windows)
+
 ; (add-hook 'text-mode-hook 'evil-local-mode)
 ; (add-hook 'prog-mode-hook 'evil-local-mode)
 ; (add-hook 'undo-tree-mode-hook 'evil-local-mode)
 
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 (define-key minibuffer-local-map (kbd "C-u") 'kill-whole-line)
+
+(setq require-final-newline t)
+(global-set-key (kbd "C-x C-b") #'ibuffer)
+
+
 
 ; (define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
 ; (define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
@@ -129,19 +139,25 @@
 (slime-setup '(slime-repl))
 
 (setq avy-background t)
+(setq undo-tree-auto-save-history t)
 
-(global-set-key (kbd "C-,") 'avy-goto-word-0-above)
-(global-set-key (kbd "M-[ ,") 'avy-goto-word-0-above)
-(global-set-key (kbd "C-.") 'avy-goto-word-0-below)
-(global-set-key (kbd "M-[ .") 'avy-goto-word-0-below)
+(setq lazy-highlight-initial-delay 0)
+(setq tab-always-indent 'complete)
 
-(global-set-key (kbd "C-,") 'avy-goto-word-0-above)
-(global-set-key (kbd "M-[ ,") 'avy-goto-word-0-above)
+(define-key key-translation-map (kbd "M-[ -") (kbd "C--"))
+
 (global-set-key (kbd "<ESC> ,") 'avy-goto-word-0-above)
-(global-set-key (kbd "C-.") 'avy-goto-word-0-below)
-(global-set-key (kbd "M-[ .") 'avy-goto-word-0-below)
 (global-set-key (kbd "<ESC> .") 'avy-goto-word-0-below)
 
+; X11
+(global-set-key (kbd "C-,") 'avy-goto-word-0-above)
+(global-set-key (kbd "C-.") 'avy-goto-word-0-below)
+(global-set-key (kbd "C-?") 'undo-tree-redo)
+
+; terminal
+(global-set-key (kbd "M-[ ,") 'avy-goto-word-0-above)
+(global-set-key (kbd "M-[ .") 'avy-goto-word-0-below)
+(global-set-key (kbd "M-[ ?") 'undo-tree-redo)
 
 ;;;###autoload
 (define-minor-mode my-mode
@@ -157,6 +173,8 @@
             ; (define-key map (kbd "<f12>") 'evil-local-mode)
             ; (define-key map (kbd "C-a") 'confirm-quit)
             map))
+
+(define-key 'help-command (kbd "C-i") #'info-display-manual)
 
 (setq mode-line-format
       (list
@@ -186,9 +204,6 @@
 (global-set-key (kbd "<ESC> 8") (lambda() (interactive) (window-number-select 8)))
 (global-set-key (kbd "<ESC> 9") (lambda() (interactive) (window-number-select 9)))
 (global-set-key (kbd "<ESC> 0") (lambda() (interactive) (window-number-select 10)))
-
-(require 'window-number)
-(window-number-mode)
 
 ; (defun confirm-quit ()
 ;   (interactive)
@@ -224,13 +239,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("e1d1b3d3f86bd255899cf93ebc8a9d80574b8a06b48043e9f0276ae57171d49f" "282f749ebbcb089b0b067b40c456e2b240deabcf9ae476572ebd9c8ae8f58149" default))))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+ '(window-number-mode nil))
