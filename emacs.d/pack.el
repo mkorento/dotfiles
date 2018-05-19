@@ -18,7 +18,8 @@
   :ensure slime)
 
 (use-package undo-tree
-  :ensure undo-tree)
+  :ensure undo-tree
+  :config (global-undo-tree-mode))
 
 (use-package window-number
   :ensure window-number)
