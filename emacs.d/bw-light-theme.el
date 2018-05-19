@@ -31,7 +31,7 @@
  `(whitespace-line ((t (:background ,*background* :foreground ,*red*))))
  `(region ((t (:background ,*background* :foreground ,*blue*))))
  `(secondary-selection ((t (:background ,*brightyellow* :foreground ,*background*))))
- `(trailing-whitespace ((t (:foreground ,*brightblack* :underline (:color foreground-color :style wave)))))
+ `(trailing-whitespace ((t (:foreground ,*red* :underline t))))
  `(header-line ((t (:inherit default :inverse-video nil :underline t))))
  `(lazy-highlight ((t (:background ,*white* :foreground ,*background*))))
  `(isearch ((t (:background ,*brightblack* :foreground ,*background*))))
