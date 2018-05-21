@@ -24,11 +24,18 @@
 ; wrapping pois
 (set-default 'truncate-lines t)
 (setq-default show-trailing-whitespace t)
+
 ; rivinumerot
 (global-linum-mode 1)
 
-; pieni padding numeroiden ja tekstin väliin
-(setq linum-format "%d ")
+(setq linum-format
+      (lambda (line)
+        (propertize
+          (format
+            (let ((w (length (number-to-string (count-lines (point-min)
+                                                            (point-max))))))
+              (concat "%" (number-to-string w) "d ")) line) 'face
+          'linum)))
 
 (setq-default major-mode 'text-mode)
 (setq split-height-threshold nil)
@@ -66,6 +73,8 @@
 
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 (define-key minibuffer-local-map (kbd "C-u") 'kill-whole-line)
+
+
 
 (setq require-final-newline t)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
@@ -159,22 +168,41 @@
 (global-set-key (kbd "M-[ .") 'avy-goto-word-0-below)
 (global-set-key (kbd "M-[ ?") 'undo-tree-redo)
 
+(defun reload-config ()
+  (interactive)
+  (load-file "~/.emacs"))
+
 ;;;###autoload
-(define-minor-mode my-mode
+(define-minor-mode mikan-mode
   "A minor mode so that my key settings override annoying major modes."
   ;; If init-value is not set to t, this mode does not get enabled in
-  ;; `fundamental-mode' buffers even after doing \"(global-my-mode 1)\".
+  ;; `fundamental-mode' buffers even after doing \"(global-mikan-mode 1)\".
   ;; More info: http://emacs.stackexchange.com/q/16693/115
   :init-value t
-  :lighter " my-mode"
+  :lighter " mikan-mode"
   :keymap (let ((map (make-sparse-keymap)))
             ; (define-key map (kbd "C-l") 'windmove-right)
             ; (define-key map (kbd "<DEL>") 'windmove-left)
             ; (define-key map (kbd "<f12>") 'evil-local-mode)
             ; (define-key map (kbd "C-a") 'confirm-quit)
+            ;
+            ; TODO: keksi jotain käyttöä C-/
+            ; TODO: eli tämä (normaalissa .emacs toplevelissä)
+            ; (global-set-key (kbd "C-/") 'avy-goto-word-0-above)
+            ; ei toimi mutta tämä
+            (define-key map (kbd "C-/") 'do-nothing)
+            ; toimii?
             map))
 
+(defun do-nothing ()
+  (interactive)
+  nil)
+
 (define-key 'help-command (kbd "C-i") #'info-display-manual)
+(global-set-key (kbd "M-[ <DEL>") 'kill-whole-line)
+
+; TODO: keksi jotain käyttöä C-/
+(global-set-key (kbd "M-[ /") nil)
 
 (setq mode-line-format
       (list
@@ -217,20 +245,20 @@
 ;       (recurr))))
 
 ;;;###autoload
-(define-globalized-minor-mode global-my-mode my-mode my-mode)
+(define-globalized-minor-mode global-mikan-mode mikan-mode mikan-mode)
 
 ;; https://github.com/jwiegley/use-package/blob/master/bind-key.el
 ;; The keymaps in `emulation-mode-map-alists' take precedence over
 ;; `minor-mode-map-alist'
-(add-to-list 'emulation-mode-map-alists `((my-mode . ,my-mode-map)))
+(add-to-list 'emulation-mode-map-alists `((mikan-mode . ,mikan-mode-map)))
 
 ;; Turn off the minor mode in the minibuffer
-(defun turn-off-my-mode ()
-  "Turn off my-mode."
-  (my-mode -1))
-(add-hook 'minibuffer-setup-hook #'turn-off-my-mode)
+(defun turn-off-mikan-mode ()
+  "Turn off mikan-mode."
+  (mikan-mode -1))
+(add-hook 'minibuffer-setup-hook #'turn-off-mikan-mode)
 
-(provide 'my-mode)
+(provide 'mikan-mode)
 
 (load-theme 'bw-light t)
 
@@ -239,4 +267,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("20cbcb52e124480d194ed223b353988d7e6c3fb5ea9d805462919482f4f4db33" "6c5b472857ef213f813e0e044b8de1d935f877d8f69df3d950aa3a11fa5c2d7a" "c524396cf54e7a308ab36b1fda3950960145cb5a2eb05d8ff6537e5e6cbac257" "638ef265a6d0b3ca46aef981a4ad6daf1936875dfe56e212f8289865046fbc99" default)))
  '(window-number-mode nil))
