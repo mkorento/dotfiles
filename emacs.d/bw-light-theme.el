@@ -29,7 +29,7 @@
  `(avy-lead-face-2 ((t (:foreground ,*brightred* :background ,*background*))))
  `(avy-background-face ((t (:foreground ,*brightblack*))))
  `(whitespace-line ((t (:background ,*background* :foreground ,*red*))))
- `(region ((t (:background ,*background* :foreground ,*blue*))))
+ `(region ((t (:background ,*foreground* :foreground ,*background*))))
  `(secondary-selection ((t (:background ,*brightyellow* :foreground ,*background*))))
  `(trailing-whitespace ((t (:foreground ,*red* :underline t))))
  `(header-line ((t (:inherit default :inverse-video nil :underline t))))
