@@ -159,7 +159,10 @@
 
 (global-set-key (kbd "C-,") 'avy-goto-word-0-above)
 (global-set-key (kbd "C-.") 'avy-goto-word-0-below)
+(global-set-key (kbd "C-_") 'undo-tree-undo)
 (global-set-key (kbd "C-?") 'undo-tree-redo)
+
+(global-set-key (kbd "C-x u") 'undo-tree-visualize)
 (global-set-key (kbd "C-/") nil) ; TODO: keksi jotain käyttöä C-/
 
 ; terminal ctrl+key translations:
