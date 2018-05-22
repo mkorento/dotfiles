@@ -71,11 +71,6 @@
 ; (add-hook 'prog-mode-hook 'evil-local-mode)
 ; (add-hook 'undo-tree-mode-hook 'evil-local-mode)
 
-(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
-(define-key minibuffer-local-map (kbd "C-u") 'kill-whole-line)
-
-
-
 (setq require-final-newline t)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
 
@@ -153,20 +148,31 @@
 (setq lazy-highlight-initial-delay 0)
 (setq tab-always-indent 'complete)
 
-(define-key key-translation-map (kbd "M-[ -") (kbd "C--"))
+; X11 keybindings
+(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
+(define-key minibuffer-local-map (kbd "C-u") 'kill-whole-line)
+
+(global-set-key (kbd "C-H") 'kill-whole-line)
 
 (global-set-key (kbd "<ESC> ,") 'avy-goto-word-0-above)
 (global-set-key (kbd "<ESC> .") 'avy-goto-word-0-below)
 
-; X11
 (global-set-key (kbd "C-,") 'avy-goto-word-0-above)
 (global-set-key (kbd "C-.") 'avy-goto-word-0-below)
 (global-set-key (kbd "C-?") 'undo-tree-redo)
+(global-set-key (kbd "C-/") nil) ; TODO: keksi jotain käyttöä C-/
 
-; terminal
-(global-set-key (kbd "M-[ ,") 'avy-goto-word-0-above)
-(global-set-key (kbd "M-[ .") 'avy-goto-word-0-below)
-(global-set-key (kbd "M-[ ?") 'undo-tree-redo)
+; terminal ctrl+key translations:
+(define-key key-translation-map (kbd "M-[ ,") (kbd "C-,"))
+(define-key key-translation-map (kbd "M-[ .") (kbd "C-."))
+(define-key key-translation-map (kbd "M-[ ?") (kbd "C-?"))
+
+(define-key key-translation-map (kbd "M-[ /") (kbd "C-/"))
+(define-key key-translation-map (kbd "M-[ -") (kbd "C--"))
+(define-key key-translation-map (kbd "M-[ ;") (kbd "C-;"))
+
+(define-key key-translation-map (kbd "M-[ H") (kbd "C-H"))
+(define-key key-translation-map (kbd "M-[ <DEL>") (kbd "<DEL>"))
 
 (defun reload-config ()
   (interactive)
@@ -197,12 +203,6 @@
 (defun do-nothing ()
   (interactive)
   nil)
-
-(define-key 'help-command (kbd "C-i") #'info-display-manual)
-(global-set-key (kbd "M-[ <DEL>") 'kill-whole-line)
-
-; TODO: keksi jotain käyttöä C-/
-(global-set-key (kbd "M-[ /") nil)
 
 (setq mode-line-format
       (list

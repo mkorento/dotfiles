@@ -19,13 +19,32 @@
 #define gray        #839496
 #define white       #FDF6E3
 
-URxvt.keysym.C-comma:   \033[,
-URxvt.keysym.C-period:   \033[.
-URxvt.keysym.C-minus:   \033[-
-URxvt.keysym.C-question:   \033[\077
+! C-, -> ESC-[ ,
+URxvt.keysym.C-comma:       \033[,
 
-URxvt*foreground: fg_dark
-URxvt*background: bg_dark
+! C-. -> ESC-[ .
+URxvt.keysym.C-period:      \033[.
+
+! C-? -> ESC-[ ?
+URxvt.keysym.C-question:    \033[\077
+
+! C-/ -> ESC-/
+URxvt.keysym.C-slash: \033[\057
+
+! C-- -> ESC-[ -
+URxvt.keysym.C-minus:       \033[-
+
+! C-; -> ESC-[ ;
+URxvt.keysym.C-semicolon:       \033[\073
+
+! C-H -> ESC-[ H
+URxvt.keysym.C-S-h: \033[\110
+
+! C-<backspace> -> ESC-[ <DEL>
+URxvt.keysym.C-BackSpace: \033[\177
+
+URxvt*foreground: fg_light
+URxvt*background: bg_light
 
 xterm*foreground: fg_dark
 xterm*background: bg_dark
