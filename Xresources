@@ -43,6 +43,9 @@ URxvt.keysym.C-S-h: \033[\110
 ! C-<backspace> -> ESC-[ <DEL>
 URxvt.keysym.C-BackSpace: \033[\177
 
+! C-S-v -> ESC-[ V
+URxvt.keysym.C-V: \033[\126
+
 URxvt*foreground: fg_light
 URxvt*background: bg_light
 

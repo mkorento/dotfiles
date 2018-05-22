@@ -17,6 +17,7 @@
 (global-font-lock-mode 1)
 ; paskat vittuun
 (blink-cursor-mode 0)
+(setq column-number-mode t)
 (setq history-length 500)
 (setq visible-cursor nil)
 (setq ring-bell-function 'ignore)
@@ -147,6 +148,9 @@
 
 (setq lazy-highlight-initial-delay 0)
 (setq tab-always-indent 'complete)
+(setq read-file-name-completion-ignore-case t)
+(setq read-buffer-completion-ignore-case t)
+(setq isearch-resume-in-command-history t)
 
 ; X11 keybindings
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
@@ -165,6 +169,8 @@
 (global-set-key (kbd "C-x u") 'undo-tree-visualize)
 (global-set-key (kbd "C-/") nil) ; TODO: keksi jotain käyttöä C-/
 
+(global-set-key (kbd "C-S-v") 'scroll-down-command)
+
 ; terminal ctrl+key translations:
 (define-key key-translation-map (kbd "M-[ ,") (kbd "C-,"))
 (define-key key-translation-map (kbd "M-[ .") (kbd "C-."))
@@ -176,6 +182,7 @@
 
 (define-key key-translation-map (kbd "M-[ H") (kbd "C-H"))
 (define-key key-translation-map (kbd "M-[ <DEL>") (kbd "<DEL>"))
+(define-key key-translation-map (kbd "M-[ V") (kbd "C-S-v"))
 
 (defun reload-config ()
   (interactive)
@@ -206,24 +213,6 @@
 (defun do-nothing ()
   (interactive)
   nil)
-
-(setq mode-line-format
-      (list
-        "%e"
-        ; mode-line-front-space
-        ; mode-line-mule-info
-        ; mode-line-client
-        ; mode-line-modified
-        ; mode-line-remote
-        ; mode-line-frame-identification
-        ; mode-line-buffer-identification
-        ; "   "
-        ; mode-line-position
-        ; (vc-mode vc-mode)
-        ; "  "
-        ; mode-line-modes
-        ; mode-line-misc-info
-        mode-line-end-spaces))
 
 (global-set-key (kbd "<ESC> 1") (lambda() (interactive) (window-number-select 1)))
 (global-set-key (kbd "<ESC> 2") (lambda() (interactive) (window-number-select 2)))
