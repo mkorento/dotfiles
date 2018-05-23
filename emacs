@@ -56,15 +56,16 @@
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
-(setq savehist-file "~/.emacs.d/tmp/savehistory")
+(setq savehist-file "~/.emacs.d/savehistory/savehistory")
 
-(defconst emacs-tmp-dir (concat user-emacs-directory "tmp/"))
 (setq backup-directory-alist
-    `((".*" . ,emacs-tmp-dir)))
+    `((".*" . ,(concat user-emacs-directory "backups/"))))
 (setq auto-save-file-name-transforms
-    `((".*" ,emacs-tmp-dir t)))
+    `((".*" ,(concat user-emacs-directory "auto-saves/") t)))
 (setq auto-save-list-file-prefix
-    emacs-tmp-dir)
+    (concat user-emacs-directory "auto-saves/.saves-"))'
+(setq undo-tree-history-directory-alist
+  `((".*" . ,(concat emacs-user-directory "undo-tree-history/"))))
 
 (add-hook 'post-command-hook 'balance-windows)
 
@@ -252,7 +253,7 @@
 
 (provide 'mikan-mode)
 
-(load-theme 'bw-light t)
+(load-theme 'bw-dark t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

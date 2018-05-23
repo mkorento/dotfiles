@@ -4,5 +4,16 @@ elpa/*
 savefile/*
 !savefile/.gitkeep
 
-tmp/*
-!tmp/.gitkeep
+backups/*
+!backups/.gitkeep
+
+auto-saves/*
+!auto-saves/.gitkeep
+
+savehistory/*
+!savehistory/.gitkeep
+
+undo-tree-history/*
+!undo-tree-history/.gitkeep
+
+session.*
