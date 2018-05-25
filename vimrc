@@ -43,6 +43,7 @@ set wildignore+=venv/*,**/venv/**,*.pyc
 set textwidth=80
 set ruler
 set t_Co=256
+set so=999
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
