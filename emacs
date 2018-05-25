@@ -57,6 +57,11 @@
 (setq create-lockfiles nil)
 (setq set-mark-command-repeat-pop t)
 (setq read-quoted-char-radix 16)
+(setq select-enable-clipboard nil)
+(setq select-enable-primary t)
+(setq mouse-drag-copy-region t)
+(setq select-active-regions nil)
+(setq register-preview-delay 0)
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
