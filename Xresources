@@ -49,6 +49,9 @@ URxvt.keysym.C-V: \033[\126
 ! C-S-d -> ESC-[ #
 URxvt.keysym.C-D: \033[\043
 
+! C-S-w -> ESC-[ W
+URxvt.keysym.C-W: \033[\127
+
 URxvt*foreground: fg_light
 URxvt*background: bg_light
 

@@ -26,7 +26,8 @@
 (set-default 'truncate-lines t)
 (setq-default show-trailing-whitespace t)
 (setq mark-even-if-inactive nil)
-
+(setq bookmark-save-flag 1)
+(setq scroll-error-top-bottom t)
 (delete-selection-mode)
 
 ; rivinumerot
@@ -62,6 +63,7 @@
 (setq mouse-drag-copy-region t)
 (setq select-active-regions nil)
 (setq register-preview-delay 0)
+(setq size-indication-mode 1)
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
@@ -160,6 +162,7 @@
 (setq isearch-resume-in-command-history t)
 (setq shift-select-mode nil)
 (setq electric-indent-mode t)
+(setq scroll-preserve-screen-position 3)
 
 ; X11 keybindings
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
@@ -182,6 +185,7 @@
 (global-set-key (kbd "C-S-d") 'kill-line)
 
 (global-set-key (kbd "C-S-w") 'kill-ring-save)
+(global-set-key (kbd "C-l") 'recenter)
 
 ; terminal ctrl+key translations:
 (define-key key-translation-map (kbd "M-[ ,") (kbd "C-,"))
