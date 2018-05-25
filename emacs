@@ -25,6 +25,9 @@
 ; wrapping pois
 (set-default 'truncate-lines t)
 (setq-default show-trailing-whitespace t)
+(setq mark-even-if-inactive nil)
+
+(delete-selection-mode)
 
 ; rivinumerot
 (global-linum-mode 1)
@@ -38,7 +41,6 @@
               (concat "%" (number-to-string w) "d ")) line) 'face
           'linum)))
 
-(setq-default major-mode 'text-mode)
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -53,6 +55,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 8)
 (setq create-lockfiles nil)
+(setq set-mark-command-repeat-pop t)
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
@@ -146,12 +149,13 @@
 
 (setq avy-background t)
 (setq undo-tree-auto-save-history t)
-
 (setq lazy-highlight-initial-delay 0)
 (setq tab-always-indent 'complete)
 (setq read-file-name-completion-ignore-case t)
 (setq read-buffer-completion-ignore-case t)
 (setq isearch-resume-in-command-history t)
+(setq shift-select-mode nil)
+(setq electric-indent-mode t)
 
 ; X11 keybindings
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
@@ -171,6 +175,7 @@
 (global-set-key (kbd "C-/") nil) ; TODO: keksi jotain käyttöä C-/
 
 (global-set-key (kbd "C-S-v") 'scroll-down-command)
+(global-set-key (kbd "C-S-d") 'kill-line)
 
 ; terminal ctrl+key translations:
 (define-key key-translation-map (kbd "M-[ ,") (kbd "C-,"))
@@ -184,6 +189,7 @@
 (define-key key-translation-map (kbd "M-[ H") (kbd "C-H"))
 (define-key key-translation-map (kbd "M-[ <DEL>") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "M-[ V") (kbd "C-S-v"))
+(define-key key-translation-map (kbd "M-[ #") (kbd "C-S-d"))
 
 (defun reload-config ()
   (interactive)
