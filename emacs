@@ -80,8 +80,6 @@
 (setq require-final-newline t)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
 
-
-
 ; (define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
 ; (define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
 
@@ -193,8 +191,7 @@
 (define-key key-translation-map (kbd "M-[ <DEL>") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "M-[ V") (kbd "C-S-v"))
 (define-key key-translation-map (kbd "M-[ #") (kbd "C-S-d"))
-
-;(define-key key-translation-map (kbd "M-[ W") (kbd "C-S-w"))
+(define-key key-translation-map (kbd "M-[ W") (kbd "C-S-w"))
 
 (defun reload-config ()
   (interactive)
