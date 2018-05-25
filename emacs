@@ -56,6 +56,7 @@
 (setq-default tab-width 8)
 (setq create-lockfiles nil)
 (setq set-mark-command-repeat-pop t)
+(setq read-quoted-char-radix 16)
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
@@ -68,7 +69,7 @@
 (setq auto-save-list-file-prefix
     (concat user-emacs-directory "auto-saves/.saves-"))'
 (setq undo-tree-history-directory-alist
-  `((".*" . ,(concat emacs-user-directory "undo-tree-history/"))))
+ `((".*" . ,(concat emacs-user-directory "undo-tree-history/"))))
 
 (add-hook 'post-command-hook 'balance-windows)
 
@@ -177,6 +178,8 @@
 (global-set-key (kbd "C-S-v") 'scroll-down-command)
 (global-set-key (kbd "C-S-d") 'kill-line)
 
+(global-set-key (kbd "C-S-w") 'kill-ring-save)
+
 ; terminal ctrl+key translations:
 (define-key key-translation-map (kbd "M-[ ,") (kbd "C-,"))
 (define-key key-translation-map (kbd "M-[ .") (kbd "C-."))
@@ -190,6 +193,8 @@
 (define-key key-translation-map (kbd "M-[ <DEL>") (kbd "<DEL>"))
 (define-key key-translation-map (kbd "M-[ V") (kbd "C-S-v"))
 (define-key key-translation-map (kbd "M-[ #") (kbd "C-S-d"))
+
+;(define-key key-translation-map (kbd "M-[ W") (kbd "C-S-w"))
 
 (defun reload-config ()
   (interactive)
