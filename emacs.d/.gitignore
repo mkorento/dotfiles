@@ -10,10 +10,12 @@ backups/*
 auto-saves/*
 !auto-saves/.gitkeep
 
-savehistory/*
-!savehistory/.gitkeep
+savehist/*
+!savehist/.gitkeep
 
 undo-tree-history/*
 !undo-tree-history/.gitkeep
+
+bookmarks
 
 session.*
