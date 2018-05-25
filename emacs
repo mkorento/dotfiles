@@ -60,16 +60,16 @@
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
-(setq savehist-file "~/.emacs.d/savehistory/savehistory")
+(setq savehist-file (concat user-emacs-directory "savehist/savehist"))
 
 (setq backup-directory-alist
-    `((".*" . ,(concat user-emacs-directory "backups/"))))
+  `((".*" . ,(concat user-emacs-directory "backups/"))))
 (setq auto-save-file-name-transforms
-    `((".*" ,(concat user-emacs-directory "auto-saves/") t)))
+  `((".*" ,(concat user-emacs-directory "auto-saves/") t)))
 (setq auto-save-list-file-prefix
-    (concat user-emacs-directory "auto-saves/.saves-"))'
+  (concat user-emacs-directory "auto-saves/.saves-"))'
 (setq undo-tree-history-directory-alist
- `((".*" . ,(concat emacs-user-directory "undo-tree-history/"))))
+ `((".*" . ,(concat user-emacs-directory "undo-tree-history/"))))
 
 (add-hook 'post-command-hook 'balance-windows)
 
