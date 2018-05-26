@@ -21,6 +21,7 @@
 (setq history-length 500)
 (setq visible-cursor nil)
 (setq ring-bell-function 'ignore)
+(setq visible-bell nil)
 (setq inhibit-startup-screen t)
 ; wrapping pois
 (set-default 'truncate-lines t)
@@ -64,6 +65,7 @@
 (setq select-active-regions nil)
 (setq register-preview-delay 0)
 (setq size-indication-mode 1)
+(setq search-upper-case t)
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
@@ -162,7 +164,6 @@
 (setq isearch-resume-in-command-history t)
 (setq shift-select-mode nil)
 (setq electric-indent-mode t)
-(setq scroll-preserve-screen-position 3)
 
 ; X11 keybindings
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)

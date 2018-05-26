@@ -55,3 +55,8 @@
   (setq which-key-idle-delay 0.01)
   (which-key-mode +1))
 
+(use-package centered-cursor-mode
+  :ensure t
+  :config
+  (centered-cursor-mode)
+  (global-centered-cursor-mode +1))
