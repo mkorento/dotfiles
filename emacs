@@ -203,6 +203,26 @@
 (define-key key-translation-map (kbd "M-[ #") (kbd "C-S-d"))
 (define-key key-translation-map (kbd "M-[ W") (kbd "C-S-w"))
 
+;; copy the original query-replace-function
+(fset 'query-replace-wrap-around 'query-replace)
+(advice-add 'query-replace-wrap-around
+             :around
+             #'(lambda (oldfun &rest args)
+                   (let ((region-active (region-active-p))
+                         (start (point)))
+                   (apply oldfun args)
+                   (if (not region-active)
+                       (progn
+                         (beginning-of-buffer)
+                         (setf (nth 3 args)
+                               (point-min))
+                         (setf (nth 4 args)
+                               start)
+                         (apply oldfun args))))))
+
+;; Remap the M-% key
+(global-set-key (kbd "M-%") 'query-replace-wrap-around)
+
 (defun reload-config ()
   (interactive)
   (load-file "~/.emacs"))
