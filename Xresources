@@ -108,6 +108,8 @@ Xft*dpi:                96
 Xft*antialias:          true
 Xft*hinting:            full
 
+URxvt.perl-ext-common: "default, -searchable-scrollback"
+
 URxvt*iso14755: False
 URxvt*iso14755_52: False
 
