@@ -165,6 +165,7 @@
 (setq shift-select-mode nil)
 (setq electric-indent-mode t)
 (setq search-default-mode t)
+(setq replace-char-fold t)
 
 ; X11 keybindings
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
