@@ -76,8 +76,6 @@
   `((".*" ,(concat user-emacs-directory "auto-saves/") t)))
 (setq auto-save-list-file-prefix
   (concat user-emacs-directory "auto-saves/.saves-"))'
-(setq undo-tree-history-directory-alist
- `((".*" . ,(concat user-emacs-directory "undo-tree-history/"))))
 
 (add-hook 'post-command-hook 'balance-windows)
 

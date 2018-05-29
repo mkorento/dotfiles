@@ -20,6 +20,8 @@
 (use-package undo-tree
   :ensure undo-tree
   :config
+   (setq undo-tree-history-directory-alist
+    `((".*" . ,(concat user-emacs-directory "undo-tree-history/"))))
   (global-undo-tree-mode))
 
 (use-package window-number
