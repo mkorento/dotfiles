@@ -56,7 +56,6 @@
 (setq ring-bell-function 'ignore)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 8)
-(setq create-lockfiles nil)
 (setq set-mark-command-repeat-pop t)
 (setq read-quoted-char-radix 16)
 (setq select-enable-clipboard nil)
