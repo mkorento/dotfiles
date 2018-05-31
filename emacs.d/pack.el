@@ -12,7 +12,8 @@
   :config
   (setq save-place-file (expand-file-name "saveplace" savefile-dir))
   ;; activate it for all buffers
-  (setq-default save-place t))
+  (setq-default save-place t)
+  (save-place-mode 1))
 
 (use-package slime
   :ensure slime)
