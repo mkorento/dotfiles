@@ -65,6 +65,8 @@
 (setq register-preview-delay 0)
 (setq size-indication-mode 1)
 (setq search-upper-case t)
+(setq delete-by-moving-to-trash t)
+(setq trash-directory "~/.del/")
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
