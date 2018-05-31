@@ -79,7 +79,12 @@
 (setq auto-save-list-file-prefix
   (concat user-emacs-directory "auto-saves/.saves-"))'
 
-(add-hook 'post-command-hook 'balance-windows)
+(defadvice delete-window (after restore-balance activate)
+  (balance-windows))
+
+(defadvice select-window (after restore-balance-select activate)
+  (balance-windows))
+
 
 ; (add-hook 'text-mode-hook 'evil-local-mode)
 ; (add-hook 'prog-mode-hook 'evil-local-mode)
