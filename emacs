@@ -186,7 +186,9 @@
 
 (global-set-key (kbd "<DEL>") 'xah-delete-backward-char-or-bracket-text)
 (global-set-key (kbd "M-m") 'xah-forward-right-bracket)
-(global-set-key (kbd "M-.") 'xah-backward-left-bracket)
+
+(global-set-key (kbd "M-,") 'xah-backward-left-bracket)
+(global-set-key (kbd "M-.") 'xah-forward-right-bracket)
 
 (defvar xah-brackets nil "string of left/right brackets pairs.")
 (setq xah-brackets "()[]{}<>（）［］｛｝⦅⦆〚〛⦃⦄“”‘’‹›«»「」〈〉《》【】〔〕⦗⦘『』〖〗〘〙｢｣⟦⟧⟨⟩⟪⟫⟮⟯⟬⟭⌈⌉⌊⌋⦇⦈⦉⦊❛❜❝❞❨❩❪❫❴❵❬❭❮❯❰❱❲❳〈〉⦑⦒⧼⧽﹙﹚﹛﹜﹝﹞⁽⁾₍₎⦋⦌⦍⦎⦏⦐⁅⁆⸢⸣⸤⸥⟅⟆⦓⦔⦕⦖⸦⸧⸨⸩｟｠⧘⧙⧚⧛⸜⸝⸌⸍⸂⸃⸄⸅⸉⸊᚛᚜༺༻༼༽⏜⏝⎴⎵⏞⏟⏠⏡﹁﹂﹃﹄︹︺︻︼︗︘︿﹀︽︾﹇﹈︷︸")
@@ -376,19 +378,30 @@ Version 2017-07-02"
 
 ;; Remap the M-% key
 (global-set-key (kbd "M-%") 'query-replace-wrap-around)
-(global-set-key (kbd "M-\\") 'goto-match-paren)
-
-(defun goto-match-paren (arg)
-  "Go to the matching parenthesis if on parenthesis, otherwise insert %.
-vi style of % jumping to matching brace."
-  (interactive "p")
-  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-        (t (self-insert-command (or arg 1)))))
 
 (defun reload-config ()
   (interactive)
   (load-file "~/.emacs"))
+
+(global-set-key (kbd "C-[ TAB") 'xah-goto-matching-bracket)
+
+(defun xah-goto-matching-bracket ()
+  "Move cursor to the matching bracket.
+If cursor is not on a bracket, call `backward-up-list'.
+The list of brackets to jump to is defined by `xah-left-brackets' and `xah-right-brackets'.
+URL `http://ergoemacs.org/emacs/emacs_navigating_keys_for_brackets.html'
+Version 2016-11-22"
+  (interactive)
+  (if (nth 3 (syntax-ppss))
+      (backward-up-list 1 'ESCAPE-STRINGS 'NO-SYNTAX-CROSSING)
+    (cond
+     ((eq (char-after) ?\") (forward-sexp))
+     ((eq (char-before) ?\") (backward-sexp ))
+     ((looking-at (regexp-opt xah-left-brackets))
+      (forward-sexp))
+     ((looking-back (regexp-opt xah-right-brackets) (max (- (point) 1) 1))
+      (backward-sexp))
+     (t (backward-up-list 1 'ESCAPE-STRINGS 'NO-SYNTAX-CROSSING)))))
 
 ;;;###autoload
 (define-minor-mode mikan-mode
