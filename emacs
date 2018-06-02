@@ -177,7 +177,6 @@
 (setq replace-char-fold t)
 (setq view-read-only t)
 (setq load-prefer-newer t)
-(set-scroll-bar-mode nil)
 
 ; X11 keybindings
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
