@@ -95,7 +95,7 @@
  '(nobreak-space ((t nil)))
  '(scroll-bar ((t nil)))
  '(shadow ((t nil)))
- '(show-paren-match ((t (:background "#839496" :foreground "#FDF6E3"))))
+ '(show-paren-match ((t (:background "#839496" :foreground "red1"))))
  '(show-paren-mismatch ((t nil)))
  '(success ((t (:background "forest green" :foreground "pale green"))))
  '(tool-bar ((t nil)))
