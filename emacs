@@ -43,7 +43,7 @@
             (let ((w (length (number-to-string (count-lines (point-min)
                                                             (point-max))))))
               (concat "%" (number-to-string w) "d ")) line) 'face
-          'linum)))
+          'linum)))-
 
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
@@ -266,7 +266,7 @@ Version 2017-07-02"
       (delete-char -1)))))
 
 (defun xah-delete-backward-bracket-text ()
-  "Delete the matching brackets/quotes to the left of cursor, including the inner text.
+  "Delete the matching brackets/quotes to the left of cursor, incvluding the inner text.
 
 This command assumes the left of point is a right bracket, and there's a matching one before it.
 
@@ -325,6 +325,65 @@ Version 2017-07-02"
       (push-mark (point) t)
       (goto-char $pt)
       (delete-char 1))))
+
+(defun xah-select-text-in-quote ()
+  "Select text between the nearest left and right delimiters.
+Delimiters here includes the following chars: \"<>(){}[]“”‘’‹›«»「」『』【】〖〗《》〈〉〔〕（）
+This command select between any bracket chars, not the inner text of a bracket. For example, if text is
+
+ (a(b)c▮)
+
+ the selected char is “c”, not “a(b)c”.
+
+URL `http://ergoemacs.org/emacs/modernization_mark-word.html'
+Version 2016-12-18"
+  (interactive)
+  (let (
+        ($skipChars
+         (if (boundp 'xah-brackets)
+             (concat "^\"" xah-brackets)
+           "^\"<>(){}[]“”‘’‹›«»「」『』【】〖〗《》〈〉〔〕（）"))
+        $pos
+        )
+    (skip-chars-backward $skipChars)
+    (setq $pos (point))
+    (skip-chars-forward $skipChars)
+    (set-mark $pos)))
+
+; (global-set-key (kbd "M-\\") 'select-text-in-quote)
+
+(defun xah-select-line ()
+  "Select current line. If region is active, extend selection downward by line.
+URL `http://ergoemacs.org/emacs/modernization_mark-word.html'
+Version 2017-11-01"
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (forward-line 1)
+        (end-of-line))
+    (progn
+      (end-of-line)
+      (set-mark (line-beginning-position)))))
+
+(global-set-key (kbd "M-\\") 'xah-select-line)
+
+(defun xah-select-block ()
+  "Select the current/next block of text between blank lines.
+If region is active, extend selection downward by block.
+
+URL `http://ergoemacs.org/emacs/modernization_mark-word.html'
+Version 2017-11-01"
+  (interactive)
+  (if (region-active-p)
+      (re-search-forward "\n[ \t]*\n" nil "move")
+    (progn
+      (skip-chars-forward " \n\t")
+      (when (re-search-backward "\n[ \t]*\n" nil "move")
+        (re-search-forward "\n[ \t]*\n"))
+      (push-mark (point) t t)
+      (re-search-forward "\n[ \t]*\n" nil "move"))))
+
+(global-set-key (kbd "M-h") 'xah-select-block)
 
 (global-set-key (kbd "C-H") 'kill-whole-line)
 
