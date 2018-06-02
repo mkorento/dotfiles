@@ -123,4 +123,6 @@ xterm*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
 xterm*italicFont: -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
 xterm*boldItalicFont: -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
 
+emacs.font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+
 ! vim: ft=xdefaults

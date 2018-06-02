@@ -54,6 +54,7 @@
 (setq inhibit-splash-screen t)
 (setq echo-keystrokes 0.01)
 (menu-bar-mode -1)
+(tool-bar-mode -1)
 (setq auto-save-default t)
 (setq ring-bell-function 'ignore)
 (setq-default indent-tabs-mode nil)
@@ -69,6 +70,8 @@
 (setq search-upper-case t)
 (setq delete-by-moving-to-trash t)
 (setq trash-directory "~/.del/")
+
+(set-default-font "-*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*")
 
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
