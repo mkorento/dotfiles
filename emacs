@@ -182,10 +182,149 @@
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 (define-key minibuffer-local-map (kbd "C-u") 'kill-whole-line)
 
-(global-set-key (kbd "C-H") 'kill-whole-line)
+(electric-pair-mode 1)
 
-(global-set-key (kbd "<ESC> ,") 'avy-goto-word-0-above)
-(global-set-key (kbd "<ESC> .") 'avy-goto-word-0-below)
+(global-set-key (kbd "<DEL>") 'xah-delete-backward-char-or-bracket-text)
+(global-set-key (kbd "M-m") 'xah-forward-right-bracket)
+(global-set-key (kbd "M-.") 'xah-backward-left-bracket)
+
+(defvar xah-brackets nil "string of left/right brackets pairs.")
+(setq xah-brackets "()[]{}<>（）［］｛｝⦅⦆〚〛⦃⦄“”‘’‹›«»「」〈〉《》【】〔〕⦗⦘『』〖〗〘〙｢｣⟦⟧⟨⟩⟪⟫⟮⟯⟬⟭⌈⌉⌊⌋⦇⦈⦉⦊❛❜❝❞❨❩❪❫❴❵❬❭❮❯❰❱❲❳〈〉⦑⦒⧼⧽﹙﹚﹛﹜﹝﹞⁽⁾₍₎⦋⦌⦍⦎⦏⦐⁅⁆⸢⸣⸤⸥⟅⟆⦓⦔⦕⦖⸦⸧⸨⸩｟｠⧘⧙⧚⧛⸜⸝⸌⸍⸂⸃⸄⸅⸉⸊᚛᚜༺༻༼༽⏜⏝⎴⎵⏞⏟⏠⏡﹁﹂﹃﹄︹︺︻︼︗︘︿﹀︽︾﹇﹈︷︸")
+
+(defvar xah-left-brackets '("(" "{" "[" "<" "〔" "【" "〖" "〈" "《" "「" "『" "“" "‘" "‹" "«" )
+  "List of left bracket chars.")
+(progn
+;; make xah-left-brackets based on xah-brackets
+  (setq xah-left-brackets '())
+  (dotimes ($x (- (length xah-brackets) 1))
+    (when (= (% $x 2) 0)
+      (push (char-to-string (elt xah-brackets $x))
+            xah-left-brackets)))
+  (setq xah-left-brackets (reverse xah-left-brackets)))
+
+(defvar xah-right-brackets '(")" "]" "}" ">" "〕" "】" "〗" "〉" "》" "」" "』" "”" "’" "›" "»")
+  "list of right bracket chars.")
+(progn
+  (setq xah-right-brackets '())
+  (dotimes ($x (- (length xah-brackets) 1))
+    (when (= (% $x 2) 1)
+      (push (char-to-string (elt xah-brackets $x))
+            xah-right-brackets)))
+  (setq xah-right-brackets (reverse xah-right-brackets)))
+
+(defun xah-backward-left-bracket ()
+  "Move cursor to the previous occurrence of left bracket.
+The list of brackets to jump to is defined by `xah-left-brackets'.
+URL `http://ergoemacs.org/emacs/emacs_navigating_keys_for_brackets.html'
+Version 2015-10-01"
+  (interactive)
+  (re-search-backward (regexp-opt xah-left-brackets) nil t))
+
+(defun xah-forward-right-bracket ()
+  "Move cursor to the next occurrence of right bracket.
+The list of brackets to jump to is defined by `xah-right-brackets'.
+URL `http://ergoemacs.org/emacs/emacs_navigating_keys_for_brackets.html'
+Version 2015-10-01"
+  (interactive)
+  (re-search-forward (regexp-opt xah-right-brackets) nil t))
+
+(defun xah-delete-backward-char-or-bracket-text ()
+  "Delete backward 1 character, but if it's a \"quote\" or bracket ()[]{}【】「」 etc, delete bracket and the inner text, push the deleted text to `kill-ring'.
+
+What char is considered bracket or quote is determined by current syntax table.
+
+If `universal-argument' is called first, do not delete inner text.
+
+URL `http://ergoemacs.org/emacs/emacs_delete_backward_char_or_bracket_text.html'
+Version 2017-07-02"
+  (interactive)
+  (if (and delete-selection-mode (region-active-p))
+      (delete-region (region-beginning) (region-end))
+    (cond
+     ((looking-back "\\s)" 1)
+      (if current-prefix-arg
+          (xah-delete-backward-bracket-pair)
+        (xah-delete-backward-bracket-text)))
+     ((looking-back "\\s(" 1)
+      (progn
+        (backward-char)
+        (forward-sexp)
+        (if current-prefix-arg
+            (xah-delete-backward-bracket-pair)
+          (xah-delete-backward-bracket-text))))
+     ((looking-back "\\s\"" 1)
+      (if (nth 3 (syntax-ppss))
+          (progn
+            (backward-char )
+            (xah-delete-forward-bracket-pairs (not current-prefix-arg)))
+        (if current-prefix-arg
+            (xah-delete-backward-bracket-pair)
+          (xah-delete-backward-bracket-text))))
+     (t
+      (delete-char -1)))))
+
+(defun xah-delete-backward-bracket-text ()
+  "Delete the matching brackets/quotes to the left of cursor, including the inner text.
+
+This command assumes the left of point is a right bracket, and there's a matching one before it.
+
+What char is considered bracket or quote is determined by current syntax table.
+
+URL `http://ergoemacs.org/emacs/emacs_delete_backward_char_or_bracket_text.html'
+Version 2017-07-02"
+  (interactive)
+  (progn
+    (forward-sexp -1)
+    (mark-sexp)
+    (kill-region (region-beginning) (region-end))))
+
+(defun xah-delete-backward-bracket-pair ()
+  "Delete the matching brackets/quotes to the left of cursor.
+
+After the command, mark is set at the left matching bracket position, so you can `exchange-point-and-mark' to select it.
+
+This command assumes the left of point is a right bracket, and there's a matching one before it.
+
+What char is considered bracket or quote is determined by current syntax table.
+
+URL `http://ergoemacs.org/emacs/emacs_delete_backward_char_or_bracket_text.html'
+Version 2017-07-02"
+  (interactive)
+  (let (( $p0 (point)) $p1)
+    (forward-sexp -1)
+    (setq $p1 (point))
+    (goto-char $p0)
+    (delete-char -1)
+    (goto-char $p1)
+    (delete-char 1)
+    (push-mark (point) t)
+    (goto-char (- $p0 2))))
+
+(defun xah-delete-forward-bracket-pairs ( &optional @delete-inner-text-p)
+  "Delete the matching brackets/quotes to the right of cursor.
+If *delete-inner-text-p is true, also delete the inner text.
+
+After the command, mark is set at the left matching bracket position, so you can `exchange-point-and-mark' to select it.
+
+This command assumes the char to the right of point is a left bracket or quote, and have a matching one after.
+
+What char is considered bracket or quote is determined by current syntax table.
+
+URL `http://ergoemacs.org/emacs/emacs_delete_backward_char_or_bracket_text.html'
+Version 2017-07-02"
+  (interactive)
+  (if @delete-inner-text-p
+      (progn
+        (mark-sexp)
+        (kill-region (region-beginning) (region-end)))
+    (let (($pt (point)))
+      (forward-sexp)
+      (delete-char -1)
+      (push-mark (point) t)
+      (goto-char $pt)
+      (delete-char 1))))
+
+(global-set-key (kbd "C-H") 'kill-whole-line)
 
 (global-set-key (kbd "C-,") 'avy-goto-word-0-above)
 (global-set-key (kbd "C-.") 'avy-goto-word-0-below)
@@ -318,7 +457,7 @@ vi style of % jumping to matching brace."
 
 (provide 'mikan-mode)
 
-(load-theme 'bw-dark t)
+(load-theme 'bw-light t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
