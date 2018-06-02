@@ -15,6 +15,8 @@
 
 ; syntax highlighting
 (global-font-lock-mode 1)
+(show-paren-mode 1)
+
 ; paskat vittuun
 (blink-cursor-mode 0)
 (setq column-number-mode t)
@@ -170,6 +172,9 @@
 (setq electric-indent-mode t)
 (setq search-default-mode t)
 (setq replace-char-fold t)
+(setq view-read-only t)
+(setq load-prefer-newer t)
+(set-scroll-bar-mode nil)
 
 ; X11 keybindings
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
@@ -193,6 +198,8 @@
 
 (global-set-key (kbd "C-S-w") 'kill-ring-save)
 (global-set-key (kbd "C-l") 'recenter)
+
+(global-set-key (kbd "C-x 2") 'do-nothing)
 
 ; terminal ctrl+key translations:
 (define-key key-translation-map (kbd "M-[ ,") (kbd "C-,"))
