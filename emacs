@@ -280,6 +280,9 @@
 (global-set-key (kbd "<ESC> 9") (lambda() (interactive) (window-number-select 9)))
 (global-set-key (kbd "<ESC> 0") (lambda() (interactive) (window-number-select 10)))
 
+(global-set-key (kbd "C-v") 'ccm-scroll-up)
+(global-set-key (kbd "C-S-v") 'ccm-scroll-down)
+
 ; (defun confirm-quit ()
 ;   (interactive)
 ;   (catch 'outer
