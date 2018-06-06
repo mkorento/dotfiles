@@ -43,7 +43,7 @@
             (let ((w (length (number-to-string (count-lines (point-min)
                                                             (point-max))))))
               (concat "%" (number-to-string w) "d ")) line) 'face
-          'linum)))-
+          'linum)))
 
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
