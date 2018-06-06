@@ -1,5 +1,4 @@
 #!/bin/bash
-sed --in-place -e 's/colorscheme mellowy/colorscheme solarized/' vimrc
 sed --in-place -e 's/colorscheme bw_light/colorscheme bw_dark/' vimrc
 sed --in-place -e "s/(load-theme 'bw-light t)/(load-theme 'bw-dark t)/" emacs
 sed --in-place -e 's/URxvt\*foreground: fg_light/URxvt\*foreground: fg_dark/' Xresources
