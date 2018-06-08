@@ -8,7 +8,7 @@
 (custom-theme-set-faces
  'bw-dark
  '(cursor ((t (:background "#aaaaaa"))))
- '(region ((t (:background "#586E75" :foreground "#586E75"))))
+ '(region ((t (:background "#000000" :foreground "#586E75"))))
  '(secondary-selection ((((class color) (min-colors 89)) (:background "#333366" :foreground "#f6f3e8"))))
  '(isearch ((t (:background "#839496" :foreground "#002B36"))))
  '(lazy-highlight ((t (:background "#586E75" :foreground "#002B36"))))
