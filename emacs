@@ -185,10 +185,14 @@
 (electric-pair-mode 1)
 
 (global-set-key (kbd "<DEL>") 'xah-delete-backward-char-or-bracket-text)
-(global-set-key (kbd "M-m") 'xah-forward-right-bracket)
+(global-set-key (kbd "<backspace>") 'xah-delete-backward-char-or-bracket-text)
 
 (global-set-key (kbd "M-,") 'xah-backward-left-bracket)
 (global-set-key (kbd "M-.") 'xah-forward-right-bracket)
+
+(global-set-key (kbd "M-h") 'xah-select-block)
+(global-set-key (kbd "M-\\") 'xah-select-line)
+(global-set-key (kbd "M-p") 'xah-select-text-in-quote)
 
 (defvar xah-brackets nil "string of left/right brackets pairs.")
 (setq xah-brackets "()[]{}<>（）［］｛｝⦅⦆〚〛⦃⦄“”‘’‹›«»「」〈〉《》【】〔〕⦗⦘『』〖〗〘〙｢｣⟦⟧⟨⟩⟪⟫⟮⟯⟬⟭⌈⌉⌊⌋⦇⦈⦉⦊❛❜❝❞❨❩❪❫❴❵❬❭❮❯❰❱❲❳〈〉⦑⦒⧼⧽﹙﹚﹛﹜﹝﹞⁽⁾₍₎⦋⦌⦍⦎⦏⦐⁅⁆⸢⸣⸤⸥⟅⟆⦓⦔⦕⦖⸦⸧⸨⸩｟｠⧘⧙⧚⧛⸜⸝⸌⸍⸂⸃⸄⸅⸉⸊᚛᚜༺༻༼༽⏜⏝⎴⎵⏞⏟⏠⏡﹁﹂﹃﹄︹︺︻︼︗︘︿﹀︽︾﹇﹈︷︸")
@@ -245,27 +249,27 @@ Version 2017-07-02"
     (cond
      ((looking-back "\\s)" 1)
       (if current-prefix-arg
-          (xah-delete-backward-bracket-pair)
-        (xah-delete-backward-bracket-text)))
+          (_xah-delete-backward-bracket-pair)
+        (_xah-delete-backward-bracket-text)))
      ((looking-back "\\s(" 1)
       (progn
         (backward-char)
         (forward-sexp)
         (if current-prefix-arg
-            (xah-delete-backward-bracket-pair)
-          (xah-delete-backward-bracket-text))))
+            (_xah-delete-backward-bracket-pair)
+          (_xah-delete-backward-bracket-text))))
      ((looking-back "\\s\"" 1)
       (if (nth 3 (syntax-ppss))
           (progn
             (backward-char )
-            (xah-delete-forward-bracket-pairs (not current-prefix-arg)))
+            (_xah-delete-forward-bracket-pairs (not current-prefix-arg)))
         (if current-prefix-arg
-            (xah-delete-backward-bracket-pair)
-          (xah-delete-backward-bracket-text))))
+            (_xah-delete-backward-bracket-pair)
+          (_xah-delete-backward-bracket-text))))
      (t
       (delete-char -1)))))
 
-(defun xah-delete-backward-bracket-text ()
+(defun _xah-delete-backward-bracket-text ()
   "Delete the matching brackets/quotes to the left of cursor, incvluding the inner text.
 
 This command assumes the left of point is a right bracket, and there's a matching one before it.
@@ -280,7 +284,7 @@ Version 2017-07-02"
     (mark-sexp)
     (kill-region (region-beginning) (region-end))))
 
-(defun xah-delete-backward-bracket-pair ()
+(defun _xah-delete-backward-bracket-pair ()
   "Delete the matching brackets/quotes to the left of cursor.
 
 After the command, mark is set at the left matching bracket position, so you can `exchange-point-and-mark' to select it.
@@ -302,7 +306,7 @@ Version 2017-07-02"
     (push-mark (point) t)
     (goto-char (- $p0 2))))
 
-(defun xah-delete-forward-bracket-pairs ( &optional @delete-inner-text-p)
+(defun _xah-delete-forward-bracket-pairs ( &optional @delete-inner-text-p)
   "Delete the matching brackets/quotes to the right of cursor.
 If *delete-inner-text-p is true, also delete the inner text.
 
@@ -350,7 +354,6 @@ Version 2016-12-18"
     (skip-chars-forward $skipChars)
     (set-mark $pos)))
 
-; (global-set-key (kbd "M-\\") 'select-text-in-quote)
 
 (defun xah-select-line ()
   "Select current line. If region is active, extend selection downward by line.
@@ -365,7 +368,6 @@ Version 2017-11-01"
       (end-of-line)
       (set-mark (line-beginning-position)))))
 
-(global-set-key (kbd "M-\\") 'xah-select-line)
 
 (defun xah-select-block ()
   "Select the current/next block of text between blank lines.
@@ -383,7 +385,6 @@ Version 2017-11-01"
       (push-mark (point) t t)
       (re-search-forward "\n[ \t]*\n" nil "move"))))
 
-(global-set-key (kbd "M-h") 'xah-select-block)
 
 (global-set-key (kbd "C-H") 'kill-whole-line)
 
@@ -442,6 +443,7 @@ Version 2017-11-01"
   (interactive)
   (load-file "~/.emacs"))
 
+(global-set-key (kbd "<M-tab>") 'xah-goto-matching-bracket)
 (global-set-key (kbd "C-[ TAB") 'xah-goto-matching-bracket)
 
 (defun xah-goto-matching-bracket ()
@@ -501,17 +503,6 @@ Version 2016-11-22"
 
 (global-set-key (kbd "C-v") 'ccm-scroll-up)
 (global-set-key (kbd "C-S-v") 'ccm-scroll-down)
-
-; (defun confirm-quit ()
-;   (interactive)
-;   (catch 'outer
-;     (progn
-;       (defun recurr ()
-;         (let ((chr (read-char ":CQuit")))
-;           (cond ((char-equal chr ?y) (kill-emacs))
-;                 ((char-equal chr ?n) (throw 'outer nil))
-;                 (t (recurr)))))
-;       (recurr))))
 
 ;;;###autoload
 (define-globalized-minor-mode global-mikan-mode mikan-mode mikan-mode)
