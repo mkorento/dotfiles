@@ -23,7 +23,7 @@
  '(whitespace-line ((t (:background "#FDF6E3" :foreground "#DC322F"))))
  '(fringe ((t (:background "#FDF6E3" :foreground "#586E75"))))
  '(window-divider ((t (:background "#FDF6E3" :foreground "#586E75"))))
- '(avy-background-face ((t (:foreground "#FDF6E3"))))
+ '(avy-background-face ((t (:foreground "#839496"))))
  '(border ((t (:background "#839496" :foreground "#FDF6E3"))))
  '(vertical-border ((t (:background "#839496" :foreground "#FDF6E3"))))
  '(trailing-whitespace ((t (:foreground "#DC322F" :underline t))))
