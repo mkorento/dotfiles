@@ -63,3 +63,9 @@
   :config
   (centered-cursor-mode)
   (global-centered-cursor-mode +1))
+
+(use-package xah-elisp-mode
+  :ensure t
+  :config
+  (ido-mode -1)
+  (define-key xah-elisp-mode-map (kbd "TAB") 'xah-elisp-prettify-root-sexp))
