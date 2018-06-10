@@ -1,7 +1,7 @@
 ;; Copyright (C) 2005--2017 Taylor R. Campbell
 
 ;; Author: Taylor R. Campbell <campbell+paredit@mumble.net>
-;; Version: 25beta
+ 3;; Version: 25beta
 ;; Package-Version: 20171126.1805
 ;; Created: 2005-07-31
 ;; Keywords: lisp
@@ -567,3 +567,64 @@ If point was on indentation, it stays in indentation."
   (save-excursion
     (back-to-indentation)
     (current-column)))
+
+  ; ------
+
+(defun paredit-wrap-sexp (&optional argument open close)
+  "Wrap the following S-expression.
+If a `C-u' prefix argument is given, wrap all S-expressions following
+  the point until the end of the buffer or of the enclosing list.
+If a numeric prefix argument N is given, wrap N S-expressions.
+Automatically indent the newly wrapped S-expression.
+As a special case, if the point is at the end of a list, simply insert
+  a parenthesis pair, rather than inserting a lone opening delimiter
+  and then signalling an error, in the interest of preserving
+  structure.
+By default OPEN and CLOSE are round delimiters."
+  (interactive "P")
+  (paredit-lose-if-not-in-sexp 'paredit-wrap-sexp)
+  (let ((open (or open ?\( ))
+        (close (or close ?\) )))
+    (paredit-handle-sexp-errors
+        ((lambda (n) (paredit-insert-pair n open close 'goto-char))
+         (cond ((integerp argument) argument)
+               ((consp argument) (paredit-count-sexps-forward))
+               ((paredit-region-active-p) nil)
+               (t 1)))
+      (insert close)
+      (backward-char)))
+  (save-excursion (backward-up-list) (indent-sexp)))
+
+(defvar paredit-space-for-delimiter-predicates nil
+  "List of predicates for whether to put space by delimiter at point.
+Each predicate is a function that is is applied to two arguments, ENDP
+  and DELIMITER, and that returns a boolean saying whether to put a
+  space next to the delimiter -- before/after the delimiter if ENDP is
+  false/true, respectively.
+If any predicate returns false, no space is inserted: every predicate
+  has veto power.
+Each predicate may assume that the point is not at the beginning/end of
+  the buffer, and that the point is preceded/followed by a word
+  constituent, symbol constituent, string quote, or delimiter matching
+  DELIMITER, if ENDP is false/true, respectively.
+Each predicate should examine only text before/after the point if ENDP is
+  false/true, respectively.")
+
+(defun paredit-space-for-delimiter-p (endp delimiter)
+  ;; If at the buffer limit, don't insert a space.  If there is a word,
+  ;; symbol, other quote, or non-matching parenthesis delimiter (i.e. a
+  ;; close when want an open the string or an open when we want to
+  ;; close the string), do insert a space.
+  (and (not (if endp (eobp) (bobp)))
+       (memq (char-syntax (if endp (char-after) (char-before)))
+             (list ?w ?_ ?\"
+                   (let ((matching (matching-paren delimiter)))
+                     (and matching (char-syntax matching)))
+                   (and (not endp)
+                        (eq ?\" (char-syntax delimiter))
+                        ?\) )))
+       (catch 'exit
+         (dolist (predicate paredit-space-for-delimiter-predicates)
+           (if (not (funcall predicate endp delimiter))
+               (throw 'exit nil)))
+         t)))
