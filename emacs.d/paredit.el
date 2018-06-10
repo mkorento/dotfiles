@@ -525,3 +525,45 @@ If TRAILING-P is nil, skip leading whitespace; otherwise, skip trailing
              (car condition)))))
 
 (defalias 'paredit-warn (if (fboundp 'warn) 'warn 'message))
+
+(defun paredit-enclosing-list-start ()
+  (save-excursion
+    (backward-up-list)
+    (point)))
+
+(defun paredit-enclosing-list-end ()
+  (save-excursion
+    (up-list)
+    (point)))
+
+(defmacro paredit-preserving-column (&rest body)
+  "Evaluate BODY and restore point to former column, relative to code.
+Assumes BODY will change only indentation.
+If point was on code, it moves with the code.
+If point was on indentation, it stays in indentation."
+  (let ((column (make-symbol "column"))
+        (indentation (make-symbol "indentation")))
+    `(let ((,column (current-column))
+           (,indentation (paredit-current-indentation)))
+       (let ((value (progn ,@body)))
+         (paredit-restore-column ,column ,indentation)
+         value))))
+
+(defun paredit-restore-column (column indentation)
+  ;; Preserve the point's position either in the indentation or in the
+  ;; code: if on code, move with the code; if in indentation, leave it
+  ;; in the indentation, either where it was (if still on indentation)
+  ;; or at the end of the indentation (if the code moved far enough
+  ;; left).
+  (let ((indentation* (paredit-current-indentation)))
+    (goto-char
+     (+ (point-at-bol)
+        (cond ((not (< column indentation))
+               (+ column (- indentation* indentation)))
+              ((<= indentation* column) indentation*)
+              (t column))))))
+
+(defun paredit-current-indentation ()
+  (save-excursion
+    (back-to-indentation)
+    (current-column)))
