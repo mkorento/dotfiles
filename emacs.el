@@ -206,10 +206,10 @@
 (global-set-key (kbd "C-?") 'undo-tree-redo)
 
 (global-set-key (kbd "C-x u") 'undo-tree-visualize)
-(global-set-key (kbd "C-/") nil) ; TODO: keksi jotain käyttöä C-/
 
 (global-set-key (kbd "C-S-v") 'scroll-down-command)
-(global-set-key (kbd "C-S-d") 'kill-line)
+(global-set-key (kbd "C-S-d") 'paredit-kill)
+; (global-set-key (kbd "C-S-d") 'kill-line)
 
 (global-set-key (kbd "C-S-w") 'kill-ring-save)
 (global-set-key (kbd "C-l") 'recenter)
@@ -268,6 +268,10 @@
             (define-key map (kbd "C-M->") 'paredit-backward-barf-sexp)
             (define-key map (kbd "C-M-,") 'paredit-forward-barf-sexp)
             (define-key map (kbd "C-M-.") 'paredit-forward-slurp-sexp)
+            (define-key map (kbd "C-(") 'do-nothing)
+            (define-key map (kbd "C-)") 'do-nothing)
+            (define-key map (kbd "C-{") 'do-nothing)
+            (define-key map (kbd "C-}") 'do-nothing)
             map))
 
 (defun do-nothing ()
