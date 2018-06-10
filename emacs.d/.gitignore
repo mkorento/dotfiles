@@ -19,3 +19,5 @@ undo-tree-history/*
 bookmarks
 
 session.*
+
+abbrev_defs
