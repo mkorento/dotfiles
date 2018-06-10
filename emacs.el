@@ -7,8 +7,8 @@
   (package-refresh-contents))
 
 (load "~/.emacs.d/pack")
-(load "~/.emacs.d/paredit.el")
-(load "~/.emacs.d/xah-lisp-editing-functions.el")
+; (load "~/.emacs.d/paredit.el")
+; (load "~/.emacs.d/xah-lisp-editing-functions.el")
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -33,6 +33,7 @@
 (setq mark-even-if-inactive nil)
 (setq bookmark-save-flag 1)
 (setq scroll-error-top-bottom t)
+(setq vc-follow-symlinks t)
 (delete-selection-mode)
 
 ; rivinumerot
@@ -184,24 +185,18 @@
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 (define-key minibuffer-local-map (kbd "C-u") 'kill-whole-line)
 
-(electric-pair-mode 1)
-
 ; keybindings for lisp-editing
-(global-set-key (kbd "<DEL>") 'xah-delete-backward-char-or-bracket-text)
-(global-set-key (kbd "<backspace>") 'xah-delete-backward-char-or-bracket-text)
-(global-set-key (kbd "M-,") 'xah-backward-left-bracket)
-(global-set-key (kbd "M-.") 'xah-forward-right-bracket)
-(global-set-key (kbd "M-h") 'xah-select-block)
-(global-set-key (kbd "M-\\") 'xah-select-line)
-(global-set-key (kbd "M-i") 'xah-select-text-in-quote)
-(global-set-key (kbd "M-p") 'xah-extend-selection)
-(global-set-key (kbd "<M-tab>") 'xah-goto-matching-bracket)
-(global-set-key (kbd "C-[ TAB") 'xah-goto-matching-bracket)
+; (global-set-key (kbd "<DEL>") 'xah-delete-backward-char-or-bracket-text)
+; (global-set-key (kbd "<backspace>") 'xah-delete-backward-char-or-bracket-text)
+; (global-set-key (kbd "M-,") 'xah-backward-left-bracket)
+; (global-set-key (kbd "M-.") 'xah-forward-right-bracket)
+; (global-set-key (kbd "M-h") 'xah-select-block)
+; (global-set-key (kbd "M-\\") 'xah-select-line)
+; (global-set-key (kbd "M-i") 'xah-select-text-in-quote)
+; (global-set-key (kbd "M-p") 'xah-extend-selection)
+; (global-set-key (kbd "<M-tab>") 'xah-goto-matching-bracket)
+; (global-set-key (kbd "C-[ TAB") 'xah-goto-matching-bracket)
 
-(define-key override-global-map (kbd "C-M-<") 'paredit-backward-slurp-sexp)
-(define-key override-global-map (kbd "C-M->") 'paredit-backward-barf-sexp)
-(define-key override-global-map (kbd "C-M-,") 'paredit-forward-barf-sexp)
-(define-key override-global-map (kbd "C-M-.") 'paredit-forward-slurp-sexp)
 
 (global-set-key (kbd "C-H") 'kill-whole-line)
 
@@ -261,25 +256,18 @@
   (load-file "~/.emacs.el"))
 
 ;;;###autoload
-(define-minor-mode mikan-mode
+(define-minor-mode my-overriding-global-keybindings
   "A minor mode so that my key settings override annoying major modes."
   ;; If init-value is not set to t, this mode does not get enabled in
-  ;; `fundamental-mode' buffers even after doing \"(global-mikan-mode 1)\".
+  ;; `fundamental-mode' buffers even after doing \"(global-my-overriding-global-keybindings 1)\".
   ;; More info: http://emacs.stackexchange.com/q/16693/115
   :init-value t
-  :lighter " mikan-mode"
+  :lighter " my-overriding-global-keybindings"
   :keymap (let ((map (make-sparse-keymap)))
-  ; (define-key map (kbd "C-l") 'windmove-right)
-  ; (define-key map (kbd "<DEL>") 'windmove-left)
-  ; (define-key map (kbd "<f12>") 'evil-local-mode)
-  ; (define-key map (kbd "C-a") 'confirm-quit)
-  ;
-  ; TODO: keksi jotain käyttöä C-/
-  ; TODO: eli tämä (normaalissa .emacs toplevelissä)
-  ; (global-set-key (kbd "C-/") 'avy-goto-word-0-above)
-  ; ei toimi mutta tämä
-            (define-key map (kbd "C-/") 'do-nothing)
-  ; toimii?
+            (define-key map (kbd "C-M-<") 'paredit-backward-slurp-sexp)
+            (define-key map (kbd "C-M->") 'paredit-backward-barf-sexp)
+            (define-key map (kbd "C-M-,") 'paredit-forward-barf-sexp)
+            (define-key map (kbd "C-M-.") 'paredit-forward-slurp-sexp)
             map))
 
 (defun do-nothing ()
@@ -301,20 +289,20 @@
 (global-set-key (kbd "C-S-v") 'ccm-scroll-down)
 
 ;;;###autoload
-(define-globalized-minor-mode global-mikan-mode mikan-mode mikan-mode)
+(define-globalized-minor-mode global-my-overriding-global-keybindings my-overriding-global-keybindings my-overriding-global-keybindings)
 
 ;; https://github.com/jwiegley/use-package/blob/master/bind-key.el
 ;; The keymaps in `emulation-mode-map-alists' take precedence over
 ;; `minor-mode-map-alist'
-(add-to-list 'emulation-mode-map-alists `((mikan-mode . ,mikan-mode-map)))
+(add-to-list 'emulation-mode-map-alists `((my-overriding-global-keybindings . ,my-overriding-global-keybindings-map)))
 
 ;; Turn off the minor mode in the minibuffer
-(defun turn-off-mikan-mode ()
-  "Turn off mikan-mode."
-  (mikan-mode -1))
-(add-hook 'minibuffer-setup-hook #'turn-off-mikan-mode)
+(defun turn-off-my-overriding-global-keybindings ()
+  "Turn off my-overriding-global-keybindings."
+  (my-overriding-global-keybindings -1))
+(add-hook 'minibuffer-setup-hook #'turn-off-my-overriding-global-keybindings)
 
-(provide 'mikan-mode)
+(provide 'my-overriding-global-keybindings)
 
 (load-theme 'bw-light t)
 
@@ -328,7 +316,7 @@
     ("20cbcb52e124480d194ed223b353988d7e6c3fb5ea9d805462919482f4f4db33" "6c5b472857ef213f813e0e044b8de1d935f877d8f69df3d950aa3a11fa5c2d7a" "c524396cf54e7a308ab36b1fda3950960145cb5a2eb05d8ff6537e5e6cbac257" "638ef265a6d0b3ca46aef981a4ad6daf1936875dfe56e212f8289865046fbc99" default)))
  '(package-selected-packages
    (quote
-    (paredit adjust-parens zop-to-char xah-elisp-mode window-number which-key use-package slime evil change-inner centered-cursor-mode avy)))
+    (adjust-parens zop-to-char xah-elisp-mode window-number which-key use-package slime evil change-inner centered-cursor-mode avy)))
  '(window-number-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
