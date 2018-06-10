@@ -1,6 +1,6 @@
 #!/bin/bash
 sed --in-place -e 's/colorscheme bw_light/colorscheme bw_dark/' vimrc
-sed --in-place -e "s/(load-theme 'bw-light t)/(load-theme 'bw-dark t)/" emacs
+sed --in-place -e "s/(load-theme 'bw-light t)/(load-theme 'bw-dark t)/" emacs.el
 sed --in-place -e 's/URxvt\*foreground: fg_light/URxvt\*foreground: fg_dark/' Xresources
 sed --in-place -e 's/URxvt\*background: bg_light/URxvt\*background: bg_dark/' Xresources
 sed --in-place -e 's/export LESS_TERMCAP_us=$(printf "\\e\[33m\")/export LESS_TERMCAP_us=$(printf "\\e\[1;33m\")/' less_colors
