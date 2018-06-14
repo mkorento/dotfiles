@@ -211,16 +211,33 @@
 (global-set-key (kbd "M-,") 'xah-backward-left-bracket)
 (global-set-key (kbd "M-.") 'xah-forward-right-bracket)
 (global-set-key (kbd "M-h") 'xah-select-block)
-(global-set-key (kbd "M-\\") 'xah-select-line)
+(global-set-key (kbd "M-j") 'xah-select-line)
 (global-set-key (kbd "M-i") 'xah-select-text-in-quote)
 (global-set-key (kbd "M-p") 'xah-extend-selection)
 (global-set-key (kbd "<M-tab>") 'xah-goto-matching-bracket)
 (global-set-key (kbd "C-[ TAB") 'xah-goto-matching-bracket)
+(global-set-key (kbd "C-M-i") 'completion-at-point)
 (global-set-key (kbd "TAB") 'xah-elisp-prettify-root-sexp)
 
 (global-set-key (kbd "C-H") 'kill-region-or-kill-whole-line)
-
 (global-set-key (kbd "C-w") 'kill-word-or-region)
+
+(global-set-key (kbd "M-k") 'kill-sentence-and-newline)
+
+(defun kill-sentence-and-newline ()
+  (interactive)
+  (progn
+    (kill-sentence)
+    (delete-forward-char 2 nil)))
+
+(defun comment-line-or-region ()
+  (interactive)
+  (progn
+    (if (not (region-active-p))
+        (progn
+          (beginning-of-line)
+          (set-mark (line-end-position))))
+    (paredit-comment-dwim)))
 
 (defun kill-word-or-region ()
   (interactive)
