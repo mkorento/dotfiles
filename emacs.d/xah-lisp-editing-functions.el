@@ -274,10 +274,11 @@ Version 2017-11-01"
   (if (region-active-p)
       (progn
         (forward-line 1)
-        (end-of-line))
+        (beginning-of-line))
     (progn
-      (end-of-line)
-      (set-mark (line-beginning-position)))))
+      (beginning-of-line)
+      (set-mark (line-beginning-position))
+      (next-line))))
 
 
 (defun xah-select-block ()
