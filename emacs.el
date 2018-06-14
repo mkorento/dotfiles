@@ -216,6 +216,7 @@
 
 (add-to-list 'same-window-buffer-names "*info*")
 (add-to-list 'same-window-buffer-names "*Help*")
+(add-to-list 'same-window-buffer-names "*Disabled Command*")
 
 (defun kill-region-or-kill-whole-line ()
   (interactive)
