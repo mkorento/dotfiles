@@ -6,7 +6,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(load "~/.emacs.d/pack")
+(load "~/.emacs.d/pack.el")
 (load "~/.emacs.d/xah-lisp-editing-functions.el")
 
 (prefer-coding-system 'utf-8)
@@ -185,9 +185,29 @@
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 (define-key minibuffer-local-map (kbd "C-u") 'kill-whole-line)
 
+(global-set-key (kbd "M-f") 'vim-forward-word)
+
+(defun vim-forward-word ()
+  (interactive)
+  (forward-word)
+  (forward-word)
+  (backward-word))
+
+(global-set-key (kbd "C-o") 'open-line-above)
+(global-set-key (kbd "<C-S-return>") 'open-line-below)
+(global-set-key (kbd "S-RET") 'open-line-below)
+
+(defun open-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (open-line 1))
+
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (execute-kbd-macro (kbd "\r")))
+
 ; keybindings for lisp-editing
-; (global-set-key (kbd "<DEL>") 'xah-delete-backward-char-or-bracket-text)
-; (global-set-key (kbd "<backspace>") 'xah-delete-backward-char-or-bracket-text)
 (global-set-key (kbd "M-,") 'xah-backward-left-bracket)
 (global-set-key (kbd "M-.") 'xah-forward-right-bracket)
 (global-set-key (kbd "M-h") 'xah-select-block)
