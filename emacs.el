@@ -7,8 +7,7 @@
   (package-refresh-contents))
 
 (load "~/.emacs.d/pack")
-; (load "~/.emacs.d/paredit.el")
-; (load "~/.emacs.d/xah-lisp-editing-functions.el")
+(load "~/.emacs.d/xah-lisp-editing-functions.el")
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -188,17 +187,42 @@
 ; keybindings for lisp-editing
 ; (global-set-key (kbd "<DEL>") 'xah-delete-backward-char-or-bracket-text)
 ; (global-set-key (kbd "<backspace>") 'xah-delete-backward-char-or-bracket-text)
-; (global-set-key (kbd "M-,") 'xah-backward-left-bracket)
-; (global-set-key (kbd "M-.") 'xah-forward-right-bracket)
-; (global-set-key (kbd "M-h") 'xah-select-block)
-; (global-set-key (kbd "M-\\") 'xah-select-line)
-; (global-set-key (kbd "M-i") 'xah-select-text-in-quote)
-; (global-set-key (kbd "M-p") 'xah-extend-selection)
-; (global-set-key (kbd "<M-tab>") 'xah-goto-matching-bracket)
-; (global-set-key (kbd "C-[ TAB") 'xah-goto-matching-bracket)
+(global-set-key (kbd "M-,") 'xah-backward-left-bracket)
+(global-set-key (kbd "M-.") 'xah-forward-right-bracket)
+(global-set-key (kbd "M-h") 'xah-select-block)
+(global-set-key (kbd "M-\\") 'xah-select-line)
+(global-set-key (kbd "M-i") 'xah-select-text-in-quote)
+(global-set-key (kbd "M-p") 'xah-extend-selection)
+(global-set-key (kbd "<M-tab>") 'xah-goto-matching-bracket)
+(global-set-key (kbd "C-[ TAB") 'xah-goto-matching-bracket)
+(global-set-key (kbd "TAB") 'xah-elisp-prettify-root-sexp)
 
+(global-set-key (kbd "C-H") 'kill-region-or-kill-whole-line)
 
-(global-set-key (kbd "C-H") 'kill-whole-line)
+(global-set-key (kbd "C-w") 'kill-word-or-region)
+
+(defun kill-word-or-region ()
+  (interactive)
+  (if (region-active-p)
+      (kill-region (mark) (point))
+    (backward-kill-word 1)))
+
+(global-set-key (kbd "C-x C-+") 'do-nothing)
+(global-set-key (kbd "C-x C--") 'do-nothing)
+
+(add-to-list 'display-buffer-alist
+             '("*Help*" display-buffer-same-window))
+
+(add-to-list 'same-window-buffer-names "*info*")
+(add-to-list 'same-window-buffer-names "*Help*")
+
+(defun kill-region-or-kill-whole-line ()
+  (interactive)
+  (if (region-active-p)
+      (if (eolp)
+          (kill-region (mark) (+ 1 (point)))
+        (kill-region (mark) (point)))
+    (kill-whole-line)))
 
 (global-set-key (kbd "C-,") 'avy-goto-word-0-above)
 (global-set-key (kbd "C-.") 'avy-goto-word-0-below)
@@ -208,6 +232,8 @@
 (global-set-key (kbd "C-x u") 'undo-tree-visualize)
 
 (global-set-key (kbd "C-S-v") 'scroll-down-command)
+(global-set-key (kbd "C-M-(") 'paredit-splice-sexp)
+(global-set-key (kbd "C-M-9") 'paredit-wrap-round)
 (global-set-key (kbd "C-S-d") 'paredit-kill)
 ; (global-set-key (kbd "C-S-d") 'kill-line)
 

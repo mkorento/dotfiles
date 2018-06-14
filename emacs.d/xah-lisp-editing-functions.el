@@ -314,3 +314,86 @@ Version 2016-11-22"
       (backward-sexp))
      (t (backward-up-list 1 'ESCAPE-STRINGS 'NO-SYNTAX-CROSSING)))))
 
+(defun xah-elisp-prettify-root-sexp ()
+  "Prettify format current root sexp group.
+Root sexp group is the outmost sexp unit.
+
+Version 2016-10-13"
+  (interactive)
+  (save-excursion
+    (let ($p1 $p2)
+      (xah-elisp-goto-outmost-bracket)
+      (setq $p1 (point))
+      (setq $p2 (scan-sexps (point) 1))
+      (save-excursion
+        (save-restriction
+          (narrow-to-region $p1 $p2)
+          (progn
+            (goto-char (point-min))
+            (indent-sexp)
+            (xah-elisp-compact-parens-region (point-min) (point-max))
+            (xah-elisp-compact-blank-lines (point-min) (point-max))
+            (delete-trailing-whitespace (point-min) (point-max))))))))
+
+(defun xah-elisp-goto-outmost-bracket (&optional @pos)
+  "Move cursor to the beginning of outer-most bracket, with respect to @pos.
+Returns true if point is moved, else false."
+  (interactive)
+  (let (($i 0)
+        ($p0 (if (number-or-marker-p @pos)
+                 @pos
+               (point))))
+    (goto-char $p0)
+    (while
+        (and (< (setq $i (1+ $i)) 20)
+             (not (eq (nth 0 (syntax-ppss (point))) 0)))
+      (xah-elisp-up-list -1 "ESCAPE-STRINGS" "NO-SYNTAX-CROSSING"))
+    (if (equal $p0 (point))
+        nil
+      t
+      )))
+
+(defun xah-elisp-up-list (arg1 &optional arg2 arg3)
+  "Backward compatibility fix for emacs 24.4's `up-list'.
+emacs 25.x changed `up-list' to take up to 3 args. Before, only 1."
+  (interactive)
+  (if (>= emacs-major-version 25)
+      (up-list arg1 arg2 arg3)
+    (up-list arg1)))
+
+(defun xah-elisp-compact-parens-region (@begin @end)
+  "Remove whitespaces in ending repetition of parenthesises in region."
+  (interactive "r")
+  (let ($syntax-state)
+    (save-restriction
+      (narrow-to-region @begin @end)
+      (goto-char (point-min))
+      (while (search-forward-regexp ")[ \t\n]+)" nil t)
+        (setq $syntax-state (syntax-ppss (match-beginning 0)))
+        (if (or (nth 3 $syntax-state ) (nth 4 $syntax-state))
+            (progn (search-forward ")"))
+          (progn (replace-match "))")
+                 (search-backward ")")))))))
+
+(defun xah-elisp-compact-blank-lines (&optional @begin @end @n)
+  "Replace repeated blank lines to just 1.
+Works on whole buffer or text selection, respects `narrow-to-region'.
+
+@N is the number of newline chars to use in replacement.
+If 0, it means lines will be joined.
+By befault, @N is 2. It means, 1 visible blank line.
+
+Version 2017-01-27"
+  (interactive
+   (if (region-active-p)
+       (list (region-beginning) (region-end))
+     (list (point-min) (point-max))))
+  (when (not @begin)
+    (setq @begin (point-min) @end (point-max)))
+  (save-excursion
+    (save-restriction
+      (narrow-to-region @begin @end)
+      (progn
+        (goto-char (point-min))
+        (while (search-forward-regexp "\n\n\n+" nil "noerror")
+          (replace-match (make-string (if @n @n 2) 10)))))))
