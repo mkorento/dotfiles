@@ -337,6 +337,8 @@
             (define-key map (kbd "C-)") 'do-nothing)
             (define-key map (kbd "C-{") 'do-nothing)
             (define-key map (kbd "C-}") 'do-nothing)
+            (define-key map (kbd "C-z") 'do-nothing)
+            (define-key map (kbd "C-S-z") 'do-nothing)
             (define-key map (kbd "M-;") 'comment-line-or-region)
             map))
 
