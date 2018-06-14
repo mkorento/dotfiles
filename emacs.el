@@ -179,7 +179,7 @@
 (setq replace-char-fold t)
 (setq view-read-only t)
 (setq load-prefer-newer t)
-(setq initial-scratch-message ";; LISP CODE\n\n")
+(setq initial-scratch-message ";; ELISP CODE\n\n")
 
 ; X11 keybindings
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
