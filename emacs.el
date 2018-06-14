@@ -222,13 +222,9 @@
 (global-set-key (kbd "C-H") 'kill-region-or-kill-whole-line)
 (global-set-key (kbd "C-w") 'kill-word-or-region)
 
-(global-set-key (kbd "M-k") 'kill-sentence-and-newline)
-
-(defun kill-sentence-and-newline ()
-  (interactive)
-  (progn
-    (kill-sentence)
-    (delete-forward-char 2 nil)))
+(global-set-key (kbd "M-a") 'backward-paragraph)
+(global-set-key (kbd "M-e") 'forward-paragraph)
+(global-set-key (kbd "M-k") 'kill-paragraph)
 
 (defun comment-line-or-region ()
   (interactive)
