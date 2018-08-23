@@ -59,7 +59,6 @@
 (tool-bar-mode -1)
 (setq auto-save-default t)
 (setq ring-bell-function 'ignore)
-(setq-default indent-tabs-mode nil)
 (setq-default tab-width 8)
 (setq set-mark-command-repeat-pop t)
 (setq read-quoted-char-radix 16)
@@ -92,73 +91,16 @@
 (defadvice select-window (after restore-balance-select activate)
   (balance-windows))
 
-
-; (add-hook 'text-mode-hook 'evil-local-mode)
-; (add-hook 'prog-mode-hook 'evil-local-mode)
-; (add-hook 'undo-tree-mode-hook 'evil-local-mode)
-
 (setq require-final-newline t)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
-
-; (define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
-; (define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
 
 ; for vim users
 (defalias 'vs 'split-window-horizontally)
 (defalias 'clo 'delete-window)
 
-; ; evil
-; (defun evil-local-mode-fixed-escape ()
-;   "Turn on Evil in the current buffer AND `evil-esc-mode'. This makes C-[ work
-;    like <escape> when using `evil-local-mode'."
-;   (interactive)
-;   (progn
-;     (turn-on-evil-mode)
-;     (evil-esc-mode 1)))
-; 
-; (defun evil-local-mode-fixed-escape-toggle ()
-;   "Toggle Evil on/off in the current buffer AND `evil-esc-mode'. This makes C-[
-;    work like <escape> when using `evil-local-mode'."
-;   (interactive)
-;   (if evil-local-mode
-;     (progn
-;       (message "evil-mode off")
-;       (turn-off-evil-mode)
-;       (evil-esc-mode 0))
-;     (progn
-;       (turn-on-evil-mode)
-;       (evil-esc-mode 1))))
-; 
-; ; (setq evil-insert-state-message nil)
-; 
-; (define-key evil-insert-state-map (kbd "C-a") 'confirm-quit)
-; (define-key evil-normal-state-map (kbd "C-a") 'confirm-quit)
-; 
-; (define-key evil-insert-state-map (kbd "<ESC>") 'evil-normal-state)
-; (define-key evil-insert-state-map (kbd "<DEL>") 'backward-delete-char-untabify)
-; 
-; (define-key evil-normal-state-map (kbd "C-l") 'windmove-right)
-; (define-key evil-normal-state-map (kbd "<DEL>") 'windmove-left)
-; 
-; (define-key evil-normal-state-map (kbd "Q") (kbd "@@"))
-; 
-; (define-key evil-normal-state-map (kbd "C-]") 'my-jump-to-tag)
-; 
-; (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-; (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
-
-
-; (define-key evil-insert-state-map (kbd "C-u")
-;   (lambda ()
-;     (interactive)
-;     (evil-delete (point-at-bol) (point))))
-
-; (evil-define-key 'normal slime-repl-mode-map (kbd "j")
-            ; 'slime-repl-forward-input)
-; (evil-define-key 'normal slime-repl-mode-map (kbd "k")
-;             'slime-repl-backward-input)
-; (evil-define-key 'normal slime-repl-mode-map (kbd "RET")
-;             'slime-repl-return)
+; (add-hook 'text-mode-hook 'evil-local-mode)
+; (add-hook 'prog-mode-hook 'evil-local-mode)
+; (add-hook 'undo-tree-mode-hook 'evil-local-mode)
 
 (setq inferior-lisp-program "sbcl")
 
@@ -400,7 +342,7 @@
     ("20cbcb52e124480d194ed223b353988d7e6c3fb5ea9d805462919482f4f4db33" "6c5b472857ef213f813e0e044b8de1d935f877d8f69df3d950aa3a11fa5c2d7a" "c524396cf54e7a308ab36b1fda3950960145cb5a2eb05d8ff6537e5e6cbac257" "638ef265a6d0b3ca46aef981a4ad6daf1936875dfe56e212f8289865046fbc99" default)))
  '(package-selected-packages
    (quote
-    (adjust-parens zop-to-char xah-elisp-mode window-number which-key use-package slime evil change-inner centered-cursor-mode avy)))
+    (slime- adjust-parens zop-to-char xah-elisp-mode window-number which-key use-package slime evil change-inner centered-cursor-mode avy)))
  '(window-number-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
