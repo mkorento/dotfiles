@@ -207,9 +207,25 @@
   (end-of-line)
   (execute-kbd-macro (kbd "\r")))
 
+(defun mika-forward-right-bracket ()
+  (interactive)
+  (cond ((= (point) (- (line-end-position) 1))
+         (goto-char (re-search-forward (regexp-opt xah-left-right-brackets) nil t)))
+        ((and (member (string (char-after)) '("(" ")")))
+         (progn
+           (goto-char (re-search-forward (regexp-opt xah-left-right-brackets) nil t 2))
+           (backward-char)))
+        (t (progn
+             (goto-char (re-search-forward (regexp-opt xah-left-right-brackets) nil t))
+             (backward-char)))))
+
+(defun mika-backward-left-bracket ()
+  (interactive)
+  (goto-char (re-search-backward (regexp-opt xah-left-right-brackets) nil t)))
+
 ; keybindings for lisp-editing
-(global-set-key (kbd "M-,") 'xah-backward-left-bracket)
-(global-set-key (kbd "M-.") 'xah-forward-right-bracket)
+(global-set-key (kbd "M-,") 'mika-backward-left-bracket)
+(global-set-key (kbd "M-.") 'mika-forward-right-bracket)
 (global-set-key (kbd "M-h") 'xah-select-block)
 (global-set-key (kbd "M-j") 'xah-select-line)
 (global-set-key (kbd "M-i") 'xah-select-text-in-quote)

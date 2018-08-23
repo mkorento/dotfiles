@@ -129,6 +129,8 @@ Version 2017-01-15"
             xah-right-brackets)))
   (setq xah-right-brackets (reverse xah-right-brackets)))
 
+(defvar xah-left-right-brackets (append xah-left-brackets xah-right-brackets))
+
 (defun xah-backward-left-bracket ()
   "Move cursor to the previous occurrence of left bracket.
 The list of brackets to jump to is defined by `xah-left-brackets'.
