@@ -153,7 +153,7 @@
   (interactive)
   (cond ((= (point) (- (line-end-position) 1))
          (goto-char (re-search-forward (regexp-opt xah-left-right-brackets) nil t)))
-        ((and (member (string (char-after)) '("(" ")")))
+        ((and (member (string (char-after)) xah-left-right-brackets))
          (progn
            (goto-char (re-search-forward (regexp-opt xah-left-right-brackets) nil t 2))
            (backward-char)))
