@@ -35,6 +35,8 @@
 (setq vc-follow-symlinks t)
 (delete-selection-mode)
 
+(set-scroll-bar-mode 'right)
+
 ; rivinumerot
 (global-linum-mode 1)
 
@@ -71,6 +73,7 @@
 (setq search-upper-case t)
 (setq delete-by-moving-to-trash t)
 (setq trash-directory "~/.del/")
+(mouse-avoidance-mode 'banish)
 
 (set-default-font "-*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*")
 
