@@ -14,6 +14,47 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+;; (defvar last-post-command-position 0
+;;   "Holds the cursor position from the last run of post-command-hooks.")
+
+;; TODO1: tämä ei jostain syystä tule asetetuksi jos vaan käynnistän emacsin.
+;; Pitää tehdä reload-config: (load-file "~/.emacs.el") niin sitten toimii?
+;; TODO2: emacsin symlinkki vaihtuu tiedostoksi? Mitä vittua?
+(defvar V (list 1))
+(make-variable-buffer-local 'V)
+(defvar jumping-around nil)
+
+(defun post-command-fn ()
+  (if (not (or (equal (point) (car V))
+               jumping-around))
+      (progn (setq V (cons (point) V))
+             (if (> (length V) 10)
+                 (setq V (butlast V)))))
+  (setq jumping-around nil))
+
+(add-to-list 'post-command-hook #'post-command-fn)
+
+(defun right-rotate (que)
+  (append (cdr que) (cons (car que) ())))
+
+(defun left-rotate (que)
+  (nconc (last que) (butlast que)))
+
+(defun jump-to-prev-char ()
+  (interactive)
+  (setq jumping-around t)
+  (setq V (right-rotate V))
+  (goto-char (car V)))
+
+(defun jump-to-next-char ()
+  (interactive)
+  (setq jumping-around t)
+  (setq V (left-rotate V))
+  (goto-char (car V)))
+
+(global-set-key (kbd "C-S-o") 'jump-to-prev-char)
+(global-set-key (kbd "S-TAB") 'jump-to-next-char)
+
 ; syntax highlighting
 (global-font-lock-mode 1)
 (show-paren-mode 1)
