@@ -32,6 +32,7 @@ echo "libtiff5-dev" >&2 && sudo apt-get install --assume-yes libtiff5-dev
 echo "libjpeg-dev" >&2 && sudo apt-get install --assume-yes libjpeg-dev
 echo "libgif-dev" >&2 && sudo apt-get install --assume-yes libgif-dev
 echo "libgnutls-dev" >&2 && sudo apt-get install --assume-yes libgnutls-dev
+echo "rlwrap" >&2 && sudo apt-get install --assume-yes rlwrap
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
