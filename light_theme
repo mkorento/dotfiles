@@ -4,5 +4,5 @@ sed --in-place -e "s/(load-theme 'bw-dark t)/(load-theme 'bw-light t)/" $HOME/.e
 sed --in-place -e 's/URxvt\*foreground: fg_dark/URxvt\*foreground: fg_light/' $HOME/.Xresources
 sed --in-place -e 's/URxvt\*background: bg_dark/URxvt\*background: bg_light/' $HOME/.Xresources
 sed --in-place -e 's/export LESS_TERMCAP_us=$(printf "\\e\[1;33m\")/export LESS_TERMCAP_us=$(printf "\\e\[33m\")/' $HOME/.less_colors
-sed --in-place -e 's/set recolor true/set recolor false/' $HOME/.config/zathura/zathurarc
+# sed --in-place -e 's/set recolor true/set recolor false/' $HOME/.config/zathura/zathurarc
 xrdb -merge $HOME/.Xresources
