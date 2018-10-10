@@ -8,6 +8,7 @@ set inputbar-fg "#000000"
 set inputbar-bg "#CC0000"
 set default-fg "#FFFFFF"
 set default-bg "#000000"
+set guioptions ''
 
 # keybindings
 map a adjust_window best-fit
