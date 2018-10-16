@@ -55,6 +55,25 @@
 (global-set-key (kbd "C-S-o") 'jump-to-prev-char)
 (global-set-key (kbd "S-TAB") 'jump-to-next-char)
 
+(global-set-key (kbd "M-F") 'skip-to-next-whitespace)
+(global-set-key (kbd "M-B") 'skip-to-prev-whitespace)
+
+(defun skip-to-next-whitespace ()
+  "move point forward to next whitespace character."
+  (interactive)
+
+  (if (= (char-after) 32)
+      (forward-char))
+
+  (re-search-forward "\s")
+  (backward-char))
+
+(defun skip-to-prev-whitespace ()
+  "move point backward to next whitespace character."
+  (interactive)
+
+  (re-search-backward "\s"))
+
 ; syntax highlighting
 (global-font-lock-mode 1)
 (show-paren-mode 1)
