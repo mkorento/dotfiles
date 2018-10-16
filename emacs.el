@@ -20,7 +20,7 @@
 ;; TODO1: tämä ei jostain syystä tule asetetuksi jos vaan käynnistän emacsin.
 ;; Pitää tehdä reload-config: (load-file "~/.emacs.el") niin sitten toimii?
 ;; TODO2: emacsin symlinkki vaihtuu tiedostoksi? Mitä vittua?
-(defvar V (list 1))
+(defvar V nil)
 (make-variable-buffer-local 'V)
 (defvar jumping-around nil)
 
@@ -32,7 +32,7 @@
                  (setq V (butlast V)))))
   (setq jumping-around nil))
 
-(add-to-list 'post-command-hook #'post-command-fn)
+(add-hook 'post-command-hook #'post-command-fn)
 
 (defun right-rotate (que)
   (append (cdr que) (cons (car que) ())))
