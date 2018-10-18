@@ -62,7 +62,7 @@ zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*:default' menu 'select=0'
 
 # color code completion
-zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
+zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=1;34=31"
 
 # Don't complete stuff already on the line
 zstyle ':completion::*:(rm|vi|vim):*' ignore-line true
