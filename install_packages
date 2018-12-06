@@ -51,7 +51,9 @@ if [ ! $? -eq 0 ]; then
     --with-x \
     --with-features=big \
     --enable-rubyinterp \
+    --with-ruby-command=/usr/bin/ruby \
     --enable-pythoninterp \
+    --with-python-command=/usr/bin/python \
     --enable-gui=athena \
     --enable-fail-if-missing \
     --disable-darwin \
