@@ -3,6 +3,10 @@
 exec 4<&1
 exec 1>/dev/null
 
+echo "build-essential" >&2 && sudo apt-get install --assume-yes build-essential
+echo "autoconf" >&2 && sudo apt-get install --assume-yes autoconf
+echo "xorg-dev" >&2 && sudo apt-get install --assume-yes xorg-dev
+echo "git" >&2 && sudo apt-get install --assume-yes git
 echo "i3" >&2 && sudo apt-get install --assume-yes i3
 echo "i3status" >&2 && sudo apt-get install --assume-yes i3status
 echo "rxvt-unicode-256color" >&2 && sudo apt-get install --assume-yes rxvt-unicode-256color
@@ -33,6 +37,10 @@ echo "libjpeg-dev" >&2 && sudo apt-get install --assume-yes libjpeg-dev
 echo "libgif-dev" >&2 && sudo apt-get install --assume-yes libgif-dev
 echo "libgnutls-dev" >&2 && sudo apt-get install --assume-yes libgnutls-dev
 echo "rlwrap" >&2 && sudo apt-get install --assume-yes rlwrap
+echo "redshift" >&2 && sudo apt-get install --assume-yes redshift
+echo "texinfo" >&2 && sudo apt-get install --assume-yes texinfo
+echo "fftw-dev" >&2 && sudo apt-get install --assume-yes fftw-dev
+echo "swh-plugins" >&2 && sudo apt-get install --assume-yes swh-plugins
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
@@ -86,7 +94,7 @@ if [ ! $? -eq 0 ]; then
 
     cd $HOME/sources/emacs
 
-    ./configure && make && sudo make install
+    ./autogen.sh && ./configure --with-gnutls=no && make && sudo make install
 fi
 
 for f in /etc/fonts/conf.d/10*; do
