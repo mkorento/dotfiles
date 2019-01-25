@@ -68,7 +68,6 @@ if [ -e "$TMUX" ]; then
     ls --color=auto
 fi
 
-alias vime="/usr/bin/vim -u ~/.vim/enc/.vimenc"
 alias tmux="tmux -2"
 
 if [ -n "$BASH_VERSION" ]; then

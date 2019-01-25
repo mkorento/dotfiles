@@ -36,11 +36,14 @@ echo "libtiff5-dev" >&2 && sudo apt-get install --assume-yes libtiff5-dev
 echo "libjpeg-dev" >&2 && sudo apt-get install --assume-yes libjpeg-dev
 echo "libgif-dev" >&2 && sudo apt-get install --assume-yes libgif-dev
 echo "libgnutls-dev" >&2 && sudo apt-get install --assume-yes libgnutls-dev
+echo "readline-common" >&2 && sudo apt-get install --assume-yes readline-common
+echo "libreadline-dev" >&2 && sudo apt-get install --assume-yes libreadline-dev
 echo "rlwrap" >&2 && sudo apt-get install --assume-yes rlwrap
 echo "redshift" >&2 && sudo apt-get install --assume-yes redshift
 echo "texinfo" >&2 && sudo apt-get install --assume-yes texinfo
 echo "fftw-dev" >&2 && sudo apt-get install --assume-yes fftw-dev
 echo "swh-plugins" >&2 && sudo apt-get install --assume-yes swh-plugins
+echo "xdotool" >&2 && sudo apt-get install --assume-yes xdotool
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
@@ -56,22 +59,22 @@ if [ ! $? -eq 0 ]; then
     rm -f src/auto/config.cache
 
     ./configure --prefix=/usr \
-    --with-x \
     --with-features=big \
     --enable-rubyinterp \
     --with-ruby-command=/usr/bin/ruby \
     --enable-pythoninterp \
     --with-python-command=/usr/bin/python \
-    --enable-gui=athena \
     --enable-fail-if-missing \
     --disable-darwin \
+    --with-x=no \
+    --enable-gui=no \
     --disable-netbeans \
     --enable-cscope \
     --enable-xim \
     --enable-xsmp_interact \
-    --disable-sniff \
     --mandir=/usr/share/man \
     > compile_output && make && sudo make install
+
 fi
 
 for f in /etc/fonts/conf.d/10*; do

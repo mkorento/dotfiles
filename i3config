@@ -111,8 +111,8 @@ bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move right
 
 bindcode $mod+87 exec /home/mika/tmpscripts/timetable
-bindcode $mod+88 exec /home/mika/tmpscripts/harjoitus
-bindcode $mod+89 exec /home/mika/tmpscripts/emacsrc
+bindcode $mod+88 exec /home/mika/tmpscripts/sicp
+bindcode $mod+89 exec /home/mika/tmpscripts/ulf
 
 bindcode $mod+83 exec /home/mika/tmpscripts/emacs_muistiinpanot
 bindcode $mod+84 exec /home/mika/tmpscripts/ostoslista
@@ -121,10 +121,6 @@ bindcode $mod+85 exec /home/mika/tmpscripts/nappainkomennot
 bindcode $mod+79 exec /home/mika/tmpscripts/kuvat
 bindcode $mod+80 exec /home/mika/tmpscripts/notes
 bindcode $mod+81 exec /home/mika/sbin/off
-
-bindcode 73 exec /home/mika/tmpscripts/save_picture
-bindcode 75 exec /home/mika/tmpscripts/previous_picture
-bindcode 76 exec /home/mika/tmpscripts/next_picture
 
 bindcode Mod1+84 exec vaihda-keymap
 
@@ -157,11 +153,16 @@ exec xmodmap /home/mika/.Xmodmap
 exec mpd
 exec /home/mika/scripts/redshift
 exec /home/mika/scripts/esta-powersaving
-exec ~/.fehbg
-exec "hhpc -i 10"
+exec "piilota_hiiri"
 exec xbindkeys
 exec 'nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"'
 exec "/usr/bin/dropbox start"
+exec ~/.fehbg # / exec "vaihda_taustakuva"
+exec "kaynnistys_theme"
+
+# application rules
+        # chromium
+                # assign [class="Opiskelu"] → 2
 
 # päivitä taustakuvat kerran päivässä
 # exec /home/mika/tmpscripts/login_download_wallpapers &
