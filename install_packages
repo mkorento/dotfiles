@@ -3,6 +3,7 @@
 exec 4<&1
 exec 1>/dev/null
 
+echo "coreutils" >&2 && sudo apt-get install --assume-yes coreutils
 echo "build-essential" >&2 && sudo apt-get install --assume-yes build-essential
 echo "autoconf" >&2 && sudo apt-get install --assume-yes autoconf
 echo "xorg-dev" >&2 && sudo apt-get install --assume-yes xorg-dev
@@ -43,6 +44,7 @@ echo "redshift" >&2 && sudo apt-get install --assume-yes redshift
 echo "texinfo" >&2 && sudo apt-get install --assume-yes texinfo
 echo "fftw-dev" >&2 && sudo apt-get install --assume-yes fftw-dev
 echo "swh-plugins" >&2 && sudo apt-get install --assume-yes swh-plugins
+echo "libasound2-plugin-equal" >&2 && sudo apt-get install --assume-yes libasound2-plugin-equal
 echo "xdotool" >&2 && sudo apt-get install --assume-yes xdotool
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
