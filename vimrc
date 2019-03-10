@@ -219,6 +219,27 @@ function! GenerateReference()
 endf
 command Ref call GenerateReference()
 
+function! FixQuotation()
+    silent! %s/‘/'/gei
+    silent! %s/’/'/gei
+    silent! %s/“/"/gei
+    silent! %s/”/"/gei
+    silent! %s/’/'/gei
+    silent! %s/،/,/gei
+    silent! %s/、/,/gei
+    silent! %s/‒/-/gei
+    silent! %s/–/-/gei
+    silent! %s/—/-/gei
+    silent! %s/―/-/gei
+    silent! %s/-/-/gei
+    silent! %s/⁄/\//gei
+    silent! %s/〃/,,/gei
+    silent! %s/′/'/gei
+    silent! %s/″/''/gei
+    silent! %s/‴/"'/gei
+endf
+command FixQuotation call FixQuotation()
+
 function! ClearRegisters()
     let regs='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-="*+'
     let i=0
