@@ -1,5 +1,5 @@
-defaults.ctl.card 2
-defaults.pcm.card 2
+defaults.ctl.card 1
+defaults.pcm.card 1
 defaults.pcm.device 0
 defaults.pcm.subdevice 0
 
@@ -12,7 +12,7 @@ pcm.master {
     type softvol
     slave.pcm "normal" ###
     control.name "MasterVol"
-    control.card 2 # gentoossa tämä oli 0, debianissa nyt 1
+    control.card 1 # gentoossa tämä oli 0, debianissa nyt 1
     min_dB -30.0;
     max_dB 0.0;
 }
@@ -22,7 +22,7 @@ pcm.normal {
     type softvol
     slave.pcm "output"
     control.name "NormalVol"
-#   control.card 2
+#   control.card 1
     min_dB -30.0;
     max_dB 0.0;
 }
@@ -32,7 +32,7 @@ pcm.meq {
   type softvol
   slave.pcm "equal"
   control.name "EqualizedVol"
-# control.card 2
+# control.card 1
   min_dB -30.0
   max_dB 0.0
   #resolution 6
