@@ -1,2 +1,2 @@
 #!/bin/bash
-$BROWSER "$@" >/dev/null 2>&1 &
+setsid $BROWSER "$@" >/dev/null 2>&1 &
