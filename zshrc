@@ -169,7 +169,7 @@ if [ -f "$HOME/.less_colors" ]; then
     . "$HOME/.less_colors"
 fi
 
-cd () { builtin cd "$@" && ls; }
+cd () { builtin cd "$@" && ls -latr; }
 
 if [ -n "$TMUX" ]; then
     ls --color=auto
