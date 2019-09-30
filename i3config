@@ -136,9 +136,11 @@ bar {
 for_window [class="^Animate$"] fullscreen; floating enable
 for_window [class="^Zenity$"] focus parent; fullscreen; focus child;
 
-# start programs
-exec xmodmap /home/mika/.Xmodmap
+# 1.store DISPLAY in /tmp for use in startup programs
+exec "echo $DISPLAY > /tmp/x_display_number"
 
+# 2.startup programs
+exec xmodmap /home/mika/.Xmodmap
 exec "/mnt/levy/Webcam/siivoa.py > /tmp/siivous_log 2>&1"
 exec mpd
 exec /home/mika/scripts/redshift
