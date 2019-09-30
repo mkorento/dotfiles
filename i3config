@@ -110,18 +110,6 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move right
 
-bindcode $mod+87 exec /home/mika/tmpscripts/timetable
-bindcode $mod+88 exec /home/mika/tmpscripts/sicp
-bindcode $mod+89 exec /home/mika/tmpscripts/ulf
-
-bindcode $mod+83 exec /home/mika/tmpscripts/emacs_muistiinpanot
-bindcode $mod+84 exec /home/mika/tmpscripts/ostoslista
-bindcode $mod+85 exec /home/mika/tmpscripts/nappainkomennot
-
-bindcode $mod+79 exec /home/mika/tmpscripts/jazz
-bindcode $mod+80 exec /home/mika/tmpscripts/paino
-bindcode $mod+81 exec /home/mika/sbin/off
-
 bindcode Mod1+84 exec vaihda-keymap
 bindcode Mod1+38 exec vaihda-keymap
 
@@ -151,15 +139,15 @@ for_window [class="^Zenity$"] focus parent; fullscreen; focus child;
 # start programs
 exec xmodmap /home/mika/.Xmodmap
 
+exec "/mnt/levy/Webcam/siivoa.py > /tmp/siivous_log 2>&1"
 exec mpd
 exec /home/mika/scripts/redshift
 exec /home/mika/scripts/esta-powersaving
 exec xbindkeys
-exec 'nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"'
 exec "dropbox start"
 exec ~/.fehbg # / exec "vaihda_taustakuva"
-exec "kaynnistys_theme"
-exec cheese
+exec "set_theme"
+exec /home/mika/tmpscripts/tearing_pois_nvidia
 
 # application rules
         # chromium
