@@ -100,5 +100,7 @@ stty -ixon
 stty -ixoff
 
 if [ -f "/var/log/notifications/error" ]; then
-    echo -e '\033[00;41mERRORS!\033[00m'
+    echo -n '\033[1;37;41m'
+    cat "/var/log/notifications/error"
+    echo -n '\033[00m'
 fi

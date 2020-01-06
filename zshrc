@@ -619,5 +619,7 @@ compdef _ag ag
 GPG_TTY=$(tty); export GPG_TTY
 
 if [ -f "/var/log/notifications/error" ]; then
-    echo '\033[00;41mERRORS!\033[00m'
+    echo -n '\033[1;37;41m'
+    cat "/var/log/notifications/error"
+    echo -n '\033[00m'
 fi
