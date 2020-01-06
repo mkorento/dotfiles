@@ -618,8 +618,10 @@ compdef _ag ag
 
 GPG_TTY=$(tty); export GPG_TTY
 
-if [ -f "/var/log/notifications/error" ]; then
+check_disk_usage
+
+if [ -f "/var/log/notifications/errors" ]; then
     echo -n '\033[1;37;41m'
-    cat "/var/log/notifications/error"
+    cat "/var/log/notifications/errors"
     echo -n '\033[00m'
 fi
