@@ -45,6 +45,7 @@ echo "libasound2-plugin-equal" >&2 && sudo apt-get install --assume-yes libasoun
 echo "xdotool" >&2 && sudo apt-get install --assume-yes xdotool
 echo "mplayer" >&2 && sudo apt-get install --assume-yes mplayer
 echo "vlc" >&2 && sudo apt-get install --assume-yes vlc
+echo "curl" >&2 && sudo apt-get install --assume-yes curl
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
