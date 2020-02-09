@@ -144,10 +144,9 @@ exec xmodmap /home/mika/.Xmodmap
 exec "/mnt/levy/Webcam/siivoa.py > /tmp/siivous_log 2>&1"
 exec mpd
 exec /home/mika/scripts/redshift
-exec /home/mika/scripts/esta-powersaving
 exec xbindkeys
 exec "dropbox start"
-exec ~/.fehbg # / exec "vaihda_taustakuva"
+exec ~/.fehbg
 exec "set_theme"
 exec /home/mika/tmpscripts/tearing_pois_nvidia
 
