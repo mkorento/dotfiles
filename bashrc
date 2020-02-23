@@ -86,7 +86,7 @@ fi
 cd () { builtin cd "$@" && ls -latru; }
 
 if [ -n "$TMUX" ]; then
-    ls --color=auto
+    ls --color=auto -latru
 fi
 
 # enable programmable completion features (you don't need to enable

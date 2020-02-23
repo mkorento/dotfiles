@@ -172,7 +172,7 @@ fi
 cd () { builtin cd "$@" && ls -latru; }
 
 if [ -n "$TMUX" ]; then
-    ls --color=auto
+    ls --color=auto -latru
 fi
 
 for c in cp rm chmod chown rename; do
