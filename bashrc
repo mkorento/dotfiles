@@ -61,8 +61,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias r="ls -latr"
-alias o="ls -latr"
+alias r="ls -latru"
+alias o="ls -latru"
 alias cdr="cd"
 
 alias dir='dir --color=auto'
@@ -83,7 +83,7 @@ if [ -f "$HOME/.less_colors" ]; then
     . "$HOME/.less_colors"
 fi
 
-cd () { builtin cd "$@" && ls; }
+cd () { builtin cd "$@" && ls -latru; }
 
 if [ -n "$TMUX" ]; then
     ls --color=auto
@@ -106,3 +106,5 @@ if [ -f "/var/log/notifications/errors" ]; then
     cat "/var/log/notifications/errors"
     echo -n '\033[00m'
 fi
+
+/home/mika/tmpscripts/set_wide_resolution
