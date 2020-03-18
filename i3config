@@ -47,6 +47,9 @@ focus_follows_mouse no
 
 focus_on_window_activation none
 
+# Disable focus wrapping (requires i3 version >1.15
+# focus_wrapping no
+
 show_marks no
 
 # change focus
@@ -151,8 +154,10 @@ exec "set_theme"
 exec /home/mika/tmpscripts/tearing_pois_nvidia
 
 # application rules
-        # chromium
 assign [class="Cheese"] → 9
+
+assign [class="DrRacket"] → 2
+assign [class="Chromium-browser"] → 1
 
 # päivitä taustakuvat kerran päivässä
 # exec /home/mika/tmpscripts/login_download_wallpapers &
