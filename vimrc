@@ -284,6 +284,17 @@ function! NumList()
   exe "normal 0i".pad.i.". \<Esc>0"
 endf
 
+fun! Todovarmistus()
+    exe "normal o\<Esc>"
+    .!cp /home/mika/luettavaa/todo /home/mika/Dropbox/Public/todo
+
+    exe "normal o\<Esc>"
+    .!cp /home/mika/luettavaa/todo /home/mika/Dropbox/Public/settingsit/todo
+
+    exec "quitall!"
+endf
+command! Todovarmistus call Todovarmistus()
+
 " for notification purposes
 function! Flash()
     highlight CursorLine ctermfg=white ctermbg=darkred
