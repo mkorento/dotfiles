@@ -220,6 +220,7 @@ endf
 command Ref call GenerateReference()
 
 function! FixQuotation()
+    mark r
     silent! %s/‘/'/gei
     silent! %s/’/'/gei
     silent! %s/“/"/gei
@@ -237,6 +238,7 @@ function! FixQuotation()
     silent! %s/′/'/gei
     silent! %s/″/''/gei
     silent! %s/‴/"'/gei
+    'r
 endf
 command FixQuotation call FixQuotation()
 
