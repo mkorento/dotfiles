@@ -25,7 +25,6 @@ set nowrap
 set shortmess=a
 set pastetoggle=<F11>
 set omnifunc=syntaxcomplete#Complete
-set smartindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
