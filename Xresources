@@ -113,10 +113,10 @@ URxvt.perl-ext-common: "default, -searchable-scrollback"
 URxvt*iso14755: False
 URxvt*iso14755_52: False
 
-URxvt*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
-URxvt*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
-URxvt*italicFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
-URxvt*boldItalicFont: -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+URxvt*font: xft:Terminus_nybergh:pixelsize=18:Italic
+URxvt*boldFont: xft:Terminus_nybergh:pixelsize=18:Italic
+URxvt*italicFont: xft:Terminus_nybergh:pixelsize=18:Italic
+URxvt*boldItalicFont: xft:Terminus_nybergh:pixelsize=18:Italic
 
 xterm*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
 xterm*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
