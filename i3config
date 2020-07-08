@@ -152,6 +152,7 @@ exec "dropbox start"
 exec ~/.fehbg
 exec "set_theme"
 exec /home/mika/tmpscripts/tearing_pois_nvidia
+exec "hexchat --minimize=2"
 
 # application rules
 assign [class="Cheese"] → 9
