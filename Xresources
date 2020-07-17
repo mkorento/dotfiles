@@ -113,10 +113,10 @@ URxvt.perl-ext-common: "default, -searchable-scrollback"
 URxvt*iso14755: False
 URxvt*iso14755_52: False
 
-URxvt*font: xft:Mx437 IBM VGA 9x16:pixelsize=16
-URxvt*boldFont: xft:Mx437 IBM VGA 9x16:pixelsize=16:style=Bold
-URxvt*italicFont: xft:Mx437 IBM VGA 9x16:pixelsize=16:Italic
-URxvt*boldItalicFont: xft:Mx437 IBM VGA 9x16:pixelsize=16:Italic
+URxvt*font: xft:Mx437 IBM VGA 8x16:pixelsize=18
+URxvt*boldFont: xft:Mx437 IBM VGA 8x16:pixelsize=18:style=Bold
+URxvt*italicFont: xft:Mx437 IBM VGA 8x16:pixelsize=18:Italic
+URxvt*boldItalicFont: xft:Mx437 IBM VGA 8x16:pixelsize=18:Italic
 
 xterm*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
 xterm*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
