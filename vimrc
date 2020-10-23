@@ -315,7 +315,7 @@ endf
 command! CleanSubFile call CleanSubFile()
 
 " todo: does not work on unicode
-function! Rivita()
+function! BreakLongLine()
     let line=getline('.')
 
     if strlen(line) < 1
@@ -323,36 +323,34 @@ function! Rivita()
     endif
 
     " strip leading/trailing whitespace, add trailing quotes
-    let text = '"' . substitute(line, '^\s*\(.\{-}\)\s*$', '\1', '') . '"'
+    let long_line = '"' . substitute(line, '^\s*\(.\{-}\)\s*$', '\1', '') . '"'
 
     let i=0
     let last_whitespace=0
-    let final_text=[]
+    let paragraph=[]
 
     while 1
-        if strlen(text) < 80
-            call add(final_text, text)
+        if strlen(long_line) < 80
+            call add(paragraph, long_line)
             break
         else
             while i < 80
-                if text[i] == ' '
+                if long_line[i] == ' '
                     let last_whitespace=i
                 endif
                 let i += 1
             endw
 
-            if text[80] != ' '
+            if long_line[80] != ' '
+                let next_row = long_line[0:last_whitespace-1]
 
-                let seuraava_rivi = text[0:last_whitespace-1]
-
-                call add(final_text, seuraava_rivi)
-                let text = ' ' . text[last_whitespace+1:]
+                call add(paragraph, next_row)
+                let long_line = ' ' . long_line[last_whitespace+1:]
             else
+                let next_row = long_line[0:79]
 
-                let seuraava_rivi = text[0:79]
-
-                call add(final_text, seuraava_rivi)
-                let text = ' ' . text[81:]
+                call add(paragraph, next_row)
+                let long_line = ' ' . long_line[81:]
             endif
 
             let i = 0
@@ -366,17 +364,16 @@ function! Rivita()
         delete
     endif
 
-    for line in reverse(final_text)
+    for line in reverse(paragraph)
         exec ':normal O' . line
     endfor
+
     exec ':normal 0'
 
 endfunction
 
-command! Rivita call Rivita()
-
-" quote and indentate a long line nicely
-noremap <leader>; :call Rivita()<CR>
+" quote, break and indent a long line nicely
+noremap <leader>; :call BreakLongLine()<CR>
 
 " for notification purposes
 function! Flash()
