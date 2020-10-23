@@ -314,6 +314,7 @@ endf
 
 command! CleanSubFile call CleanSubFile()
 
+" todo: does not work on unicode
 function! Rivita()
     let line=getline('.')
 
@@ -321,7 +322,7 @@ function! Rivita()
         return
     endif
 
-    " strip leading/trailing whitespace, add leading quotes, add trailing quotes
+    " strip leading/trailing whitespace, add trailing quotes
     let text = substitute(line, '^\s*\(.\{-}\)\s*$', '\1', '') . '"'
 
     let i=0
