@@ -123,9 +123,6 @@ map H <Plug>(easymotion-B)
 imap <Tab> <Plug>snipMateNextOrTrigger
 nmap Z <Plug>VinegarUp
 
-" quote and intendate a line nicely
-noremap <leader>; "0I <Esc>gqgqA"<Esc>{jr""
-
 onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
 xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
 onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
@@ -286,14 +283,101 @@ endf
 
 fun! Todovarmistus()
     exe "normal o\<Esc>"
-    .!cp /home/mika/luettavaa/todo /home/mika/Dropbox/Public/todo
-
-    exe "normal o\<Esc>"
-    .!cp /home/mika/luettavaa/todo /home/mika/Dropbox/Public/settingsit/todo
+    .!cp /home/mika/luettavaa/todo /home/mika/luettavaa/todo_varmuus
 
     exec "quitall!"
 endf
 command! Todovarmistus call Todovarmistus()
+
+fun! CleanSubFile()
+    silent! normal gg
+    silent! g/^ $/d
+
+    silent! normal gg
+    silent! normal d}
+
+    while line(".") < line("$")
+        silent! normal d}
+        silent! normal }
+    endwhile
+
+    silent! normal gg
+    silent! g/-->.*align:start/d
+
+    silent! g/^$/d
+
+    silent! normal gg
+    silent! normal gq}
+    silent! normal gg
+
+endf
+
+command! CleanSubFile call CleanSubFile()
+
+function! Rivita()
+    let line=getline('.')
+
+    if strlen(line) < 1
+        return
+    endif
+
+    " strip leading/trailing whitespace, add leading quotes, add trailing quotes
+    let text = substitute(line, '^\s*\(.\{-}\)\s*$', '\1', '') . '"'
+
+    let i=0
+    let last_whitespace=0
+    let final_text=[]
+
+    while 1
+        if strlen(text) < 80
+            call add(final_text, text)
+            break
+        else
+            while i < 80
+                if text[i] == ' '
+                    let last_whitespace=i
+                endif
+                let i += 1
+            endw
+
+            if text[80] != ' '
+
+                let seuraava_rivi = text[0:last_whitespace-1]
+
+                call add(final_text, seuraava_rivi)
+                let text = ' ' . text[last_whitespace+1:]
+            else
+
+                let seuraava_rivi = text[0:79]
+
+                call add(final_text, seuraava_rivi)
+                let text = ' ' . text[81:]
+            endif
+
+            let i = 0
+
+        endif
+    endw
+
+    let final_text[0] = '"' . final_text[0]
+
+    if line('.') == line('$')
+        exec ':normal S'
+    else
+        delete
+    endif
+
+    for line in reverse(final_text)
+        exec ':normal O' . line
+    endfor
+    exec ':normal 0'
+
+endfunction
+
+command! Rivita call Rivita()
+
+" quote and indentate a long line nicely
+noremap <leader>; :call Rivita()<CR>
 
 " for notification purposes
 function! Flash()
