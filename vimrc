@@ -323,7 +323,7 @@ function! Rivita()
     endif
 
     " strip leading/trailing whitespace, add trailing quotes
-    let text = substitute(line, '^\s*\(.\{-}\)\s*$', '\1', '') . '"'
+    let text = '"' . substitute(line, '^\s*\(.\{-}\)\s*$', '\1', '') . '"'
 
     let i=0
     let last_whitespace=0
@@ -359,8 +359,6 @@ function! Rivita()
 
         endif
     endw
-
-    let final_text[0] = '"' . final_text[0]
 
     if line('.') == line('$')
         exec ':normal S'
