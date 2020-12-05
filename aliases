@@ -1,0 +1,27 @@
+alias diff=colordiff
+
+alias vimk="vim -u ~/.vim/enc/.vimrc_tabs"
+alias ssh=TERM="xterm ssh"
+alias scheme="rlwrap scheme"
+alias racket="rlwrap racket"
+alias scala="rlwrap scala"
+alias python="rlwrap -i python"
+alias irb="irb --readline"
+alias feh="feh --fullscreen"
+
+alias sudo="sudo "
+alias smv="/bin/mv -v --no-clobber"
+alias mv="echo '$red''KÄYTÄ smv !!! $reset';mv -v"
+alias rm="echo '$red''KÄYTÄ srm !!! $reset';rm -v"
+
+alias ez='$EDITOR ~/.zshrc'
+alias ev='$EDITOR ~/.vimrc'
+alias ei='$EDITOR ~/.i3/config'
+alias sz=". ~/.zshrc"
+alias tmux="tmux -2"
+alias mit-scheme="rlwrap mit-scheme"
+alias elk="rlwrap elk"
+
+# alias pi="ssh pi"
+
+# vim: ft=conf
