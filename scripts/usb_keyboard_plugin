@@ -1,0 +1,12 @@
+#! /bin/sh
+
+echo >&2 "$@"
+event=$1 id=$2 type=$3
+
+case "$event $type" in
+'XIDeviceEnabled XISlaveKeyboard')
+        # xkbcomp -i "$id" "$keymap" "$DISPLAY"
+        xmodmap /home/mika/.Xmodmap
+        echo "dvorak" > /home/mika/.leiska
+        # teksti "dvorak" 1
+esac

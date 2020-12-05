@@ -12,6 +12,9 @@ for file in $files; do
     ln -s ./config/$file $HOME/.$file 2>/dev/null
 done
 
+mkdir -p $HOME/scripts
+cp "$confdir/scripts/usb_keyboard_plugin" "$HOME/scripts/"
+
 mkdir -p $HOME/.config/zathura
 ln -fs $HOME/config/zathurarc $HOME/.config/zathura/zathurarc
 
