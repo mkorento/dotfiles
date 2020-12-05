@@ -175,7 +175,7 @@ if [ -n "$TMUX" ]; then
     ls --color=auto -latru
 fi
 
-for c in cp rm chmod chown rename; do
+for c in cp chmod chown rename; do
     alias $c="$c -v"
 done
 
