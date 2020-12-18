@@ -1,4 +1,8 @@
 #!/bin/bash
+# redirect stdout for the time being
+exec 4<&1
+exec 1>/dev/null
+
 echo "coreutils" >&2 && sudo apt-get install --assume-yes coreutils
 echo "build-essential" >&2 && sudo apt-get install --assume-yes build-essential
 echo "autoconf" >&2 && sudo apt-get install --assume-yes autoconf
@@ -121,3 +125,6 @@ if [ ! -e /etc/fonts/conf.d/70-yes-bitmaps.conf ]; then
     cd /etc/fonts/conf.d
     sudo ln -s ../conf.avail/70-yes-bitmaps.conf .
 fi
+
+# restore stdout
+exec 1<&4
