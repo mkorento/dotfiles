@@ -76,9 +76,8 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-if [ "$(tty)" = /dev/tty1 ] && [ "$(id -u)" -ne 0 ]; then
-    startx &
-    exit
+if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] && [ "$(id -u)" -ne 0 ]; then
+    startx && exit
 fi
 
 # vim: ft=sh
