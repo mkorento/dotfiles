@@ -76,8 +76,8 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ] && [ "$(id -u)" -ne 0 ]; then
-    (startx &)
+if [ "$(tty)" = /dev/tty1 ] && [ "$(id -u)" -ne 0 ]; then
+    startx &
     exit
 fi
 
