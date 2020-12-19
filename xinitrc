@@ -3,4 +3,4 @@
 # xrandr --addmode VGA1 1920x1080_60.00
 xcompmgr &
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-exec i3 -V >> /tmp/i3log-$(date +'%F-%k-%M-%S') 2>&1
+exec i3 -c /home/mika/.i3/config -V >> /tmp/i3log-$(date +'%F-%k-%M-%S') 2>&1
