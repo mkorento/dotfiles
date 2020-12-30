@@ -229,6 +229,7 @@ function! FixQuotation()
     silent! %s/—/-/gei
     silent! %s/―/-/gei
     silent! %s/-/-/gei
+    silent! %s/­/-/gei
     silent! %s/⁄/\//gei
     silent! %s/〃/,,/gei
     silent! %s/′/'/gei
