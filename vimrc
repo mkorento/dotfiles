@@ -235,6 +235,7 @@ function! FixQuotation()
     silent! %s/′/'/gei
     silent! %s/″/''/gei
     silent! %s/‴/"'/gei
+    silent! %s/…/.../gei
     'r
 endf
 command FixQuotation call FixQuotation()
