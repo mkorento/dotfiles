@@ -283,13 +283,13 @@ function! NumList()
   exe "normal 0i".pad.i.". \<Esc>0"
 endf
 
-fun! Todovarmistus()
+fun! TodoStage()
     exe "normal o\<Esc>"
-    .!cp /home/mika/luettavaa/todo /home/mika/luettavaa/todo_varmuus
+    .!cp /home/mika/luettavaa/todo /home/mika/luettavaa/todo_staged
 
     exec "quitall!"
 endf
-command! Todovarmistus call Todovarmistus()
+command! TodoStage call TodoStage()
 
 fun! CleanSubFile()
     silent! normal gg
