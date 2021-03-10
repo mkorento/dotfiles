@@ -126,7 +126,7 @@ setopt HIST_NO_STORE
 setopt HIST_VERIFY
 disable r
 
-export HISTSIZE=10000
+export HISTSIZE=20000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 export KEYTIMEOUT=10
