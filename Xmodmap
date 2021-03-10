@@ -27,7 +27,7 @@ keycode 33 = l            L           Greek_lambda         Greek_LAMBDA
 keycode 34 = slash        question    dead_acute           questiondown
 keycode 35 = equal        plus        dead_grave           plusminus
 keycode 36 = Return       Return      Return               Return
-keycode 38 = a            A           Greek_alpha          acircumflex
+keycode 38 = a            A           Greek_alpha          Greek_ALPHA
 keycode 39 = o            O           Odiaeresis           oslash
 keycode 40 = e            E           egrave               eacute
 keycode 41 = u            U           udiaeresis           Udiaeresis
@@ -72,6 +72,9 @@ add Control = Control_L Control_R
 keycode 135 = Mode_switch Mode_switch Mode_switch Mode_switch
 !Right win -> alt gr
 keycode 134 = Alt_R Alt_R Alt_R Alt_R
+
+!left alt -> modeswitch
+keycode 64 = Mode_switch Mode_switch Mode_switch Mode_switch
 
 clear mod4
 add mod4 = Super_L Hyper_L
