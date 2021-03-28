@@ -32,6 +32,7 @@ set showcmd
 set showmatch
 set cryptmethod=blowfish2
 set modifiable
+set clipboard=unnamedplus " Use system clipboard.
 set backspace=0
 set hidden
 set viminfo^=%,'100,h
