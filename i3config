@@ -160,7 +160,9 @@ assign [class="Cheese"] → 9
 
 assign [class="DrRacket"] → 2
 assign [class="Chromium-browser"] → 1
+assign [class="Brave-browser"] → 1
 
 # päivitä taustakuvat kerran päivässä
 # exec /home/mika/tmpscripts/login_download_wallpapers &
 # muista myös: systemctl enable/disable download_wallpapers.service
+
