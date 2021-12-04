@@ -2,7 +2,7 @@
 export LESS_TERMCAP_md=$(printf "\e[1;34m");
 
 # start underline (man arguments)
-export LESS_TERMCAP_us=$(printf "\e[1;33m");
+export LESS_TERMCAP_us=$(printf "\e[33m");
 
 # start so (reverse video, less END)
 export LESS_TERMCAP_so=$(printf "\e[38;5;0;48;5;11m");
