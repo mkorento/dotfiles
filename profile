@@ -5,6 +5,11 @@ if [ -d "$HOME/bin" ] ; then
         PATH=$PATH:$HOME/bin/bin
         MANPATH=$MANPATH:$HOME/bin/share/man
     fi
+
+fi
+
+if [[ -d "$HOME/.local/bin" ]]; then
+    PATH=$PATH:$HOME/.local/bin
 fi
 
 if [ "$TERM" = "xterm" ]; then
@@ -17,6 +22,10 @@ fi
 
 if [ -d "$HOME/tmpscripts" ]; then
     PATH=$PATH:$HOME/tmpscripts
+fi
+
+if [ -d "$HOME/clips" ]; then
+    PATH=$PATH:$HOME/clips
 fi
 
 unset RUBYOPT
@@ -41,7 +50,7 @@ LESS="--RAW-CONTROL-CHARS"; export LESS
 LC_ALL=en_US.utf8; export LC_ALL
 LANG=en_US.utf8; export LANG
 
-BROWSER='/usr/bin/chromium-browser'; export BROWSER
+BROWSER='/usr/bin/brave-browser'; export BROWSER
 
 export PATH
 export MANPATH
