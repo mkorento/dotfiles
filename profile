@@ -55,6 +55,13 @@ BROWSER='/usr/bin/brave-browser'; export BROWSER
 export PATH
 export MANPATH
 
+ANDROID_HOME='/mnt/levy/Android'
+ANDROID_USER_HOME='/mnt/levy/Android/.android'
+ANDROID_SDK_HOME='/mnt/levy/Android'
+export ANDROID_HOME
+export ANDROID_USER_HOME
+export ANDROID_SDK_HOME
+
 black="\033[30m"; export black
 darkred="\033[31m"; export darkred
 darkgreen="\033[32m"; export darkgreen
