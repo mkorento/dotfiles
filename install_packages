@@ -11,12 +11,12 @@ echo "openssh-server" >&2 && sudo apt-get install --assume-yes openssh-server
 echo "git" >&2 && sudo apt-get install --assume-yes git
 echo "i3" >&2 && sudo apt-get install --assume-yes i3
 echo "i3status" >&2 && sudo apt-get install --assume-yes i3status
-echo "rxvt-unicode-256color" >&2 && sudo apt-get install --assume-yes rxvt-unicode-256color
+echo "rxvt-unicode" >&2 && sudo apt-get install --assume-yes rxvt-unicode
 echo "zsh" >&2 && sudo apt-get install --assume-yes zsh
 echo "tmux" >&2 && sudo apt-get install --assume-yes tmux
 echo "ruby" >&2 && sudo apt-get install --assume-yes ruby
 echo "ruby-dev" >&2 && sudo apt-get install --assume-yes ruby-dev
-echo "python-dev" >&2 && sudo apt-get install --assume-yes python-dev
+echo "python2-dev" >&2 && sudo apt-get install --assume-yes python2-dev
 echo "exuberant-ctags" >&2 && sudo apt-get install --assume-yes exuberant-ctags
 echo "silversearcher-ag" >&2 && sudo apt-get install --assume-yes silversearcher-ag
 echo "libx11-dev" >&2 && sudo apt-get install --assume-yes libx11-dev
@@ -50,6 +50,7 @@ echo "xdotool" >&2 && sudo apt-get install --assume-yes xdotool
 echo "mplayer" >&2 && sudo apt-get install --assume-yes mplayer
 echo "vlc" >&2 && sudo apt-get install --assume-yes vlc
 echo "curl" >&2 && sudo apt-get install --assume-yes curl
+echo "ncal" >&2 && sudo apt-get install --assume-yes ncal
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
