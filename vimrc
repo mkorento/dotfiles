@@ -151,6 +151,7 @@ let g:netrw_dirhistmax = 0
 " This avoids cutting off parameters (after '?') and anchors (after '#').
 " See http://vi.stackexchange.com/q/2801/1631
 let g:netrw_gx="<cWORD>"
+let g:syntastic_haskell_checkers = ['scan', 'hlint']
 let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_c_checkers = ['gcc', 'make']
 let g:syntastic_python_checkers = ['flake8', 'pep257', 'pep8', 'pyflakes',
@@ -285,7 +286,6 @@ function! NumList()
 endf
 
 fun! TodoStage()
-    exe "normal o\<Esc>"
     .!cp /home/mika/luettavaa/todo /home/mika/luettavaa/todo_staged
 
     exec "quitall!"
@@ -395,6 +395,40 @@ function! Flash()
     set nocursorcolumn
     set nocursorline
 endfunction
+
+function! AESTHETIC()
+    exe "normal 0"
+
+    let abc=getline('.')
+    let i=0
+    let length=strchars(abc)-1
+    while i < length
+        let i+=1
+        exe "normal a \<Esc>l"
+    endw
+
+    exe "normal 0"
+    exe "normal gUU"
+endfunction
+
+command! AESTHETIC call AESTHETIC()
+
+function! IsoPieni()
+    exe "normal 0"
+
+    let abc=getline('.')
+    let i=0
+    let length=strchars(abc)-1
+    while i < length
+        let i+=1
+        exe "normal l"
+        exe "normal gUl"
+        exe "normal l"
+    endw
+
+endfunction
+
+command! IsoPieni call IsoPieni()
 
 if &term == 'linux'
     colorscheme system16
