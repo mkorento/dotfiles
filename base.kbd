@@ -44,9 +44,10 @@
   tab    q    w    e    r    t    y    u    i    o    p    [    ]    ret
   @ctr   a    s    d    f    g    h    j    k    l    ;    '    \
   lsft   102d z    x    c    v    b    n    m    ,    .    /    rsft
-  caps   @num lalt            spc                     ralt           rctl
+  caps   lmet lalt            spc                     ralt           rctl
 )
 
+;; unused at the moment
 (deflayer numbers
   _     _     _    _    _    _    _    _    _    _    _    _    _    _
   _     _     _    _    _    _    _    7    8    9    _    _    _    _
