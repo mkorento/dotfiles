@@ -95,7 +95,6 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym Mod1+r restart
 bindsym Mod1+z workspace next
 bindsym Mod1+v workspace back_and_forth
-bindsym Mod1+k exec killall replay
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -112,9 +111,6 @@ bindsym $mod+Shift+space floating toggle
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move right
-
-# bindcode Mod1+84 exec vaihda-keymap
-# bindcode Mod1+38 exec vaihda-keymap
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -143,9 +139,11 @@ for_window [class="^Zenity$"] focus parent; fullscreen; focus child;
 exec "echo $DISPLAY > /tmp/x_display_number"
 
 # 2.startup programs
-exec xmodmap /home/mika/.Xmodmap
-exec "inputplug -c /home/mika/scripts/usb_keyboard_plugin"
-exec "/mnt/levy/Webcam/siivoa.py > /tmp/siivous_log 2>&1"
+# exec "/home/mika/.local/bin/kmonad /home/mika/tmp/kmonad/base.kbd"
+exec "xmodmap /home/mika/.Xmodmap"
+# exec "inputplug -c /home/mika/scripts/usb_keyboard_plugin"
+
+# exec "/mnt/levy/Webcam/siivoa.py > /tmp/siivous_log 2>&1"
 exec mpd
 exec /home/mika/scripts/redshift
 exec xbindkeys
@@ -153,7 +151,13 @@ exec "dropbox start"
 exec ~/.fehbg
 exec "set_theme"
 exec /home/mika/tmpscripts/__tearing_pois_nvidia
-# exec "hexchat --minimize=2"
+# exec /home/mika/scripts/esta-powersaving
+# exec /home/mika/tmpscripts/disable_screensaver
+exec "hhpc -i 10"
+
+exec "/home/mika/tmpscripts/kaynnista_pulse_eq >/tmp/harmann.txt 2>&1"
+
+exec /home/mika/tmpscripts/set_keyb
 
 # application rules
 assign [class="Cheese"] → 9
@@ -161,6 +165,7 @@ assign [class="Cheese"] → 9
 assign [class="DrRacket"] → 2
 assign [class="Chromium-browser"] → 1
 assign [class="Brave-browser"] → 1
+assign [class="firefox-aurora"] → 1
 
 # päivitä taustakuvat kerran päivässä
 # exec /home/mika/tmpscripts/login_download_wallpapers &
