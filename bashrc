@@ -106,3 +106,6 @@ if [ -f "/var/log/notifications/errors" ]; then
     cat "/var/log/notifications/errors"
     echo -n '\033[00m'
 fi
+
+set_theme
+
