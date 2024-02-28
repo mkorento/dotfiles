@@ -134,6 +134,7 @@ bar {
 
 for_window [class="^Animate$"] fullscreen; floating enable
 for_window [class="^Zenity$"] focus parent; fullscreen; focus child;
+for_window [class="Anki" title="Lisää"] floating enable
 
 # 1.store DISPLAY in /tmp for use in startup programs
 exec "echo $DISPLAY > /tmp/x_display_number"
@@ -163,8 +164,8 @@ exec /home/mika/tmpscripts/set_keyb
 assign [class="Cheese"] → 9
 
 assign [class="DrRacket"] → 2
-assign [class="Chromium-browser"] → 1
-assign [class="Brave-browser"] → 1
+assign [class="Chromium-browser"] → 2
+assign [class="Brave-browser"] → 2
 assign [class="firefox-aurora"] → 1
 
 # päivitä taustakuvat kerran päivässä
