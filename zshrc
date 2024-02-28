@@ -49,9 +49,6 @@ zstyle ':completion:*:kill:*'   force-list always
 # trailing slash (useful in ln)
 zstyle ':completion:*' squeeze-slashes true
 
-# case insensitive completion
-zstyle ':completion:*' matcher-list 'm:{a-z-_}={A-Z_-}'
-
 # generate descriptions with magic
 zstyle ':completion:*' auto-description 'specify: %d'
 
@@ -619,9 +616,13 @@ compdef _ag ag
 GPG_TTY=$(tty); export GPG_TTY
 
 check_disk_usage
-
-if [ -f "/var/log/notifications/errors" ]; then
-    echo -n '\033[1;37;41m'
-    cat "/var/log/notifications/errors"
-    echo -n '\033[00m'
+if [ -n "$(ls -A /var/log/notifications)" ]; then
+   echo -n '\033[1;37;41m'
+   for file in /var/log/notifications/*; do
+       cat "$file"
+   done
+   echo -n '\033[00m'
 fi
+
+set_theme
+
