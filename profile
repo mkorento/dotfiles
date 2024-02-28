@@ -47,10 +47,9 @@ PAGER=/usr/bin/less; export PAGER
 GROFF_NO_SGR=1; export GROFF_NO_SGR
 LESS="--RAW-CONTROL-CHARS"; export LESS
 
-LC_ALL=en_US.utf8; export LC_ALL
 LANG=en_US.utf8; export LANG
 
-BROWSER='/usr/bin/brave-browser'; export BROWSER
+BROWSER='/home/mika/bin/firefox-dev'; export BROWSER
 
 export PATH
 export MANPATH
@@ -85,6 +84,8 @@ if [ -e "$TMUX" ]; then
 fi
 
 alias tmux="tmux -2"
+
+# /home/mika/tmpscripts/set_keyb
 
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
