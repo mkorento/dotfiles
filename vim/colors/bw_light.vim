@@ -120,6 +120,9 @@ call s:highlight( 'htmlBoldUnderline',       'bold', 'gray',    'none')
 call s:highlight( 'htmlUnderlineItalic',     'none', 'gray',    'none')
 call s:highlight( 'htmlBoldUnderlineItalic', 'bold', 'gray',    'none')
 
+highlight Merkkijono cterm=NONE ctermfg=7 ctermbg=NONE
+syntax region Merkkijono start='"' end='"'
+
 set background=dark
 
 let &cpo = s:cpo_save
