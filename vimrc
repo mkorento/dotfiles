@@ -182,6 +182,9 @@ if has("autocmd")
     \   exe "normal g`\"" |
     \ endif
 
+    "disable processing .ass files because it slows vim down to a crawl
+    autocmd! bufreadpost *.ass set syntax=off
+
     augroup NoSimultaneousEdits
         autocmd!
         autocmd SwapExists * let v:swapchoice = 'o'
