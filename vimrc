@@ -457,7 +457,8 @@ else
 endif
 
 " syntax for default ft=
-highlight Mikan cterm=italic ctermfg=1 ctermbg=NONE
+highlight Mikan cterm=italic ctermfg=5 ctermbg=NONE
 syntax region Mikan start="_" end="_" oneline
+syntax region Mikan start="_" end="_" oneline containedin=Merkkijono contained
 syntax match Mikan /^_.*$/
 
