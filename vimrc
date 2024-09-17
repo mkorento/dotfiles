@@ -223,6 +223,20 @@ function! GenerateReference()
 endf
 command Ref call GenerateReference()
 
+function! Ylaraja()
+    exe "normal 80i=\<Esc>"
+    exe "normal o\<Esc>"
+    exe "normal 80i⌄\<Esc>0"
+endf
+command Ylaraja call Ylaraja()
+
+function! Alaraja()
+    exe "normal 80i^\<Esc>"
+    exe "normal o\<Esc>"
+    exe "normal 80i=\<Esc>0"
+endf
+command Alaraja call Alaraja()
+
 function! FixQuotation()
     mark r
     silent! %s/‘/'/gei
