@@ -133,6 +133,9 @@ xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
 onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
 
+" undotree
+nnoremap <F5> :UndotreeToggle<CR>
+
 let $VIMHOME = $HOME."/.vim"
 let g:CSApprox_verbose_level = 0
 let g:EasyMotion_leader_key = '<nop>'
