@@ -32,7 +32,7 @@ alias sudo="sudo "
 alias cp="/bin/cp -v -i"
 alias smv="/bin/mv -v --no-clobber"
 alias mv="echo '$red''KÄYTÄ smv !!! $reset';mv -v"
-alias rm="echo '$red''KÄYTÄ srm !!! $reset';rm -v"
+alias rm="echo '$red''KÄYTÄ rem !!! $reset';rm -v"
 
 alias uusimmat_alhaalla="ls -r1t"
 
