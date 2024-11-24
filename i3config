@@ -153,7 +153,7 @@ exec ~/.fehbg
 exec "set_theme"
 exec /home/mika/tmpscripts/__tearing_pois_nvidia
 # exec /home/mika/scripts/esta-powersaving
-# exec /home/mika/tmpscripts/disable_screensaver
+exec /home/mika/tmpscripts/disable_screensaver
 exec "hhpc -i 10"
 
 exec "/home/mika/tmpscripts/kaynnista_pulse_eq >/tmp/harmann.txt 2>&1"

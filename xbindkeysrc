@@ -48,6 +48,10 @@
 "xvkbd -no-jump-pointer -xsendevent -text "\r""
   control+m
 
+# disable C-[ to learn better habits
+"noop"
+  m:0x4 + c:20
+
 # set directly keycode (here control + f with my keyboard)
 # "xterm"
 #   c:41 + m:0x4
