@@ -139,21 +139,6 @@ if [ -f "$HOME/.functions" ]; then
     source "$HOME/.functions"
 fi
 
-alias ls="ls --color=always"
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias r="ls -latru"
-alias o="ls -latru"
-alias cdr="cd"
-
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=always'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
 if [ -f "$HOME/.git_aliases" ]; then
     . "$HOME/.git_aliases"
 fi
@@ -171,10 +156,6 @@ cd () { builtin cd "$@" && ls -latru; }
 if [ -n "$TMUX" ]; then
     ls --color=auto -latru
 fi
-
-for c in cp chmod chown rename; do
-    alias $c="$c -v"
-done
 
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode

@@ -56,21 +56,6 @@ fi
 export PS1
 unset color_prompt force_color_prompt
 
-alias ls="ls --color=always"
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias r="ls -latru"
-alias o="ls -latru"
-alias cdr="cd"
-
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=always'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
 if [ -f "$HOME/.git_aliases" ]; then
     . "$HOME/.git_aliases"
 fi
