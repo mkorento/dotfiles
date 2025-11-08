@@ -1,3 +1,4 @@
+
 #define fg_light    #586E75
 #define bg_light    #fdf6e3
 #define fg_dark     #839496
@@ -16,7 +17,7 @@
 #define magenta     #D33682
 #define darkcyan    #2AA198
 #define cyan        #2AA198
-#define gray        #839496
+#define grey        #839496
 #define white       #FDF6E3
 
 ! C-, -> ESC-[ ,
@@ -52,8 +53,8 @@ URxvt.keysym.C-D: \033[\043
 ! C-S-w -> ESC-[ W
 URxvt.keysym.C-W: \033[\127
 
-URxvt*foreground: fg_light
-URxvt*background: bg_light
+URxvt*foreground: fg_dark
+URxvt*background: bg_dark
 
 xterm*foreground: fg_dark
 xterm*background: bg_dark
@@ -61,8 +62,16 @@ xterm*background: bg_dark
 URxvt.cursorColor: #aaaaaa
 xterm.cursorColor: #aaaaaa
 
-URxvt*colorUL : grey
+URxvt*colorUL : white
 Rxvt*colorIT  : darkred
+
+xterm*colorUL : white
+xterm*colorIT : darkred
+xterm*colorULMode: true
+xterm*italicUL: false
+xterm*renderFont: true
+xterm*underLinePosition: 1
+xterm*underLineThickness: 1
 
 URxvt*color0  : black
 URxvt*color8  : darkgrey
@@ -78,7 +87,7 @@ URxvt*color5  : darkmagenta
 URxvt*color13 : magenta
 URxvt*color6  : darkcyan
 URxvt*color14 : cyan
-URxvt*color7  : gray
+URxvt*color7  : grey
 URxvt*color15 : white
 
 xterm*color0  : black
@@ -95,7 +104,7 @@ xterm*color5  : darkmagenta
 xterm*color13 : magenta
 xterm*color6  : darkcyan
 xterm*color14 : cyan
-xterm*color7  : gray
+xterm*color7  : grey
 xterm*color15 : white
 
 URxvt*fading: 20
@@ -120,10 +129,14 @@ URxvt*boldFont: xft:Mx437 IBM VGA 8x16:pixelsize=18:style=Bold
 URxvt*italicFont: xft:Mx437 IBM VGA 8x16:pixelsize=18:Italic
 URxvt*boldItalicFont: xft:Mx437 IBM VGA 8x16:pixelsize=18:Italic
 
-xterm*font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
-xterm*boldFont: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
-xterm*italicFont: -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
-xterm*boldItalicFont: -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+xterm*font: xft:Mx437 IBM VGA 8x16:pixelsize=18
+xterm*boldFont: xft:Mx437 IBM VGA 8x16:pixelsize=18
+xterm*italicFont: xft:Mx437 IBM VGA 8x16:pixelsize=18:Italic
+xterm*boldItalicFont: xft:Mx437 IBM VGA 8x16:pixelsize=18:Italic
+xterm*allowBoldFonts: false
+xterm*boldMode: false
+xterm*colorBDMode: false
+xterm*colorBD: black
 
 emacs.font: -*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
 
