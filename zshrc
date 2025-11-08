@@ -212,15 +212,15 @@ for color in {000..255}; do
     BG[$color]="%{[48;5;${color}m%}"
 done
 
-normal_mode_colour='%F{012}'
-vi_mode_colour='%F{11}'
+normal_mode_colour="$FG[012]"
+vi_mode_colour="$FG[011]"
 prompt_char_color="$normal_mode_colour"
 
 if [ `id -u` -eq 0 ]; then
-    PROMPT='$BG[009]$FG[016]%n@%m%{$reset_color%} %F{009}${PWD/$HOME/~} \
+    PROMPT='$BG[009]$FG[016]%n@%m%{$reset_color%} $FG[009]${PWD/$HOME/~} \
 $(get-git-branch)$prompt_char_color$%f '
 else
-    PROMPT='%F{012}%n@%m%{$reset_color%} %F{012}${PWD/$HOME/~} \
+    PROMPT='$FG[012]%n@%m%{$reset_color%} $FG[012]${PWD/$HOME/~} \
 $(get-git-branch)$prompt_char_color$%f '
 fi
 
