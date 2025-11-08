@@ -134,7 +134,7 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 # Make existing path tokens white and underlined
 ZSH_HIGHLIGHT_STYLES[path]='fg=#FDF6E3,underline'
 # If the plugin uses 'path_prefix' for partial matches, set that too:
-ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#FDF6E3,underline'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#839496,underline'
 
 if [ -d "$HOME/.zsh" ]; then
     if [ -d "$HOME/.zsh/zsh-syntax-highlighting" ]; then
