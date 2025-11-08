@@ -51,6 +51,7 @@ echo "mplayer" >&2 && sudo apt-get install --assume-yes mplayer
 echo "vlc" >&2 && sudo apt-get install --assume-yes vlc
 echo "curl" >&2 && sudo apt-get install --assume-yes curl
 echo "ncal" >&2 && sudo apt-get install --assume-yes ncal
+echo "inputplug" >&2 && sudo apt-get install --assume-yes inputplug
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo chsh -s /usr/bin/zsh $USER
