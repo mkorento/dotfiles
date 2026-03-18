@@ -129,12 +129,19 @@ export SAVEHIST=$HISTSIZE
 export KEYTIMEOUT=10
 export PROMPT_EOL_MARK=""
 
-# ensure array exists
+# SYNTAX HIGHLIGHTING
+# 1.ensure array exists
 typeset -A ZSH_HIGHLIGHT_STYLES
-# Make existing path tokens white and underlined
-ZSH_HIGHLIGHT_STYLES[path]='fg=#FDF6E3,underline'
-# If the plugin uses 'path_prefix' for partial matches, set that too:
-ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#839496,underline'
+
+# 2.Reset all styles to none
+for key in ${(k)ZSH_HIGHLIGHT_STYLES}; do
+  ZSH_HIGHLIGHT_STYLES[$key]='none'
+done
+
+# 3.existing path tokens
+ZSH_HIGHLIGHT_STYLES[path]='fg=#586E75,underline'
+# 4.partial path tokens
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#829395,underline'
 
 if [ -d "$HOME/.zsh" ]; then
     if [ -d "$HOME/.zsh/zsh-syntax-highlighting" ]; then
