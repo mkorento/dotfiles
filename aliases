@@ -24,15 +24,16 @@ alias ssh=TERM="xterm ssh"
 alias scheme="rlwrap scheme"
 alias racket="rlwrap racket"
 alias scala="rlwrap scala"
-alias python="rlwrap -i python"
+# alias python="rlwrap -i python"
+alias python="rlwrap --always-readline --no-children -i python"
 alias irb="irb --readline"
 alias feh="feh --fullscreen"
 
 alias sudo="sudo "
 alias cp="/bin/cp -v -i"
 alias smv="/bin/mv -v --no-clobber"
-alias mv="echo '$red''KÄYTÄ smv !!! $reset';mv -v"
-alias rm="echo '$red''KÄYTÄ rem !!! $reset';rm -v"
+alias mv="echo '$red''KÄYTÄ smv !!! $reset';mv -v -i"
+alias rm="echo '$red''KÄYTÄ rem !!! $reset';rm -v -I"
 
 alias uusimmat_alhaalla="ls -r1t"
 
@@ -43,8 +44,15 @@ alias sz=". ~/.zshrc"
 alias tmux="tmux -2"
 alias mit-scheme="rlwrap mit-scheme"
 alias elk="rlwrap elk"
-alias kal="ncal -M -b -y 2024"
+alias kal="ncal -M -b -w -y 2026"
+
+alias yt-dlp="/home/mika/sources/yt-dlp/yt-dlp.sh --cookies-from-browser firefox --remote-components ejs:github --js-runtimes node:/usr/local/bin/node --js-runtimes deno:/usr/local/bin/deno"
+
+alias mplayer="echo '$red''KÄYTÄ mpv !!! $reset';/home/mika/bin/mplayer"
 
 # alias pi="ssh pi"
+
+alias protontricks='flatpak run com.github.Matoking.protontricks'
+alias protontricks-launch='flatpak run --command=protontricks-launch com.github.Matoking.protontricks'
 
 # vim: ft=conf
