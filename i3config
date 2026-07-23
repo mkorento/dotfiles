@@ -33,8 +33,7 @@ font -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -141,17 +140,15 @@ for_window [class="Anki" title="Lisää"] floating enable
 exec "echo $DISPLAY > /tmp/x_display_number"
 
 # 2.startup programs
-
-# näpis-asioita:
+# exec "/home/mika/.local/bin/kmonad /home/mika/tmp/kmonad/base.kbd"
 exec "xmodmap /home/mika/.Xmodmap"
-exec /home/mika/tmpscripts/set_keyb
-exec xbindkeys
 # exec "inputplug -c /home/mika/scripts/usb_keyboard_plugin"
 
 # exec "/mnt/levy/Webcam/siivoa.py > /tmp/siivous_log 2>&1"
 exec mpd
 exec /home/mika/scripts/redshift
-# exec "dropbox start"
+exec xbindkeys
+exec "dropbox start"
 exec ~/.fehbg
 exec "set_theme"
 exec /home/mika/tmpscripts/__tearing_pois_nvidia
@@ -159,19 +156,19 @@ exec /home/mika/tmpscripts/__tearing_pois_nvidia
 exec /home/mika/tmpscripts/disable_screensaver
 exec "hhpc -i 10"
 
-# exec "/home/mika/tmpscripts/kaynnista_pulse_eq >/tmp/harmann.txt 2>&1"
-exec "/home/mika/tmpscripts/kaynnista_easyeffects_eq >/tmp/harmann.txt 2>&1"
+exec "/home/mika/tmpscripts/kaynnista_pulse_eq >/tmp/harmann.txt 2>&1"
+
+exec /home/mika/tmpscripts/set_keyb
 
 # application rules
-assign [class="Brave-browser"] → 1
-assign [class="firefox-aurora"] → 2
-assign [class="Chromium-browser"] → 2
-assign [class="firefox-dev"] → 2
-assign [class="DrRacket"] → 2
 assign [class="Cheese"] → 9
 
-for_window [class="Wine"] border none
-for_window [class="Wine"] floating enable
-for_window [class="Wine"] fullscreen enable
-for_window [class="Wine"] move to workspace current
+assign [class="DrRacket"] → 2
+assign [class="Chromium-browser"] → 2
+assign [class="Brave-browser"] → 2
+assign [class="firefox-aurora"] → 1
+
+# päivitä taustakuvat kerran päivässä
+# exec /home/mika/tmpscripts/login_download_wallpapers &
+# muista myös: systemctl enable/disable download_wallpapers.service
 
